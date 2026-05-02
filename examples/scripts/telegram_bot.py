@@ -18,7 +18,7 @@ from telegram.ext import ApplicationBuilder, ContextTypes, CommandHandler, Messa
 sys.path.insert(0, str(Path(__file__).parent))
 from analyze_image import analyze_image
 from transcribe_audio import transcribe_audio
-# from browser_agent import google_search, browse_url
+from browser_agent import google_search, browse_url
 # from calendar_agent import list_events, quick_add
 from gemini_client import GeminiClient, get_mobile_system_prompt
 # import quicksave
