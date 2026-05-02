@@ -10,7 +10,7 @@
 
 set -e
 
-PROJECT_ROOT="$(cd "$(dirname "$0")" && pwd)"
+PROJECT_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 VENV_PATH="${PROJECT_ROOT}/.venv"
 PYTHON_MIN="3.10"
 

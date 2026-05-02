@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS sessions (
 -- Index for date-based queries
 CREATE INDEX IF NOT EXISTS idx_sessions_date ON sessions(date DESC);
 -- Index for vector similarity search
-CREATE INDEX IF NOT EXISTS idx_sessions_embedding ON sessions USING ivfflat (embedding vector_cosine_ops) WITH (lists = 100);
+CREATE INDEX IF NOT EXISTS idx_sessions_embedding ON sessions USING hnsw (embedding vector_cosine_ops) WITH (m = 16, ef_construction = 64);
 -- ============================================
 -- TABLE: case_studies
 -- Stores case studies with embeddings
@@ -47,13 +47,13 @@ CREATE TABLE IF NOT EXISTS case_studies (
 -- Index for code lookup
 CREATE INDEX IF NOT EXISTS idx_case_studies_code ON case_studies(code);
 -- Index for vector similarity search
-CREATE INDEX IF NOT EXISTS idx_case_studies_embedding ON case_studies USING ivfflat (embedding vector_cosine_ops) WITH (lists = 100);
+CREATE INDEX IF NOT EXISTS idx_case_studies_embedding ON case_studies USING hnsw (embedding vector_cosine_ops) WITH (m = 16, ef_construction = 64);
 -- ============================================
 -- FUNCTION: search_sessions
 -- Semantic search across sessions
 -- ============================================
 CREATE OR REPLACE FUNCTION search_sessions(
-        query_embedding vector(768),
+        query_embedding vector(3072),
         match_threshold FLOAT DEFAULT 0.7,
         match_count INT DEFAULT 5
     ) RETURNS TABLE (
@@ -80,7 +80,7 @@ $$;
 -- Semantic search across case studies
 -- ============================================
 CREATE OR REPLACE FUNCTION search_case_studies(
-        query_embedding vector(768),
+        query_embedding vector(3072),
         match_threshold FLOAT DEFAULT 0.7,
         match_count INT DEFAULT 5
     ) RETURNS TABLE (

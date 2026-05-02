@@ -11,7 +11,7 @@ class SystemLoader:
         from athena.boot.constants import BOLD, DIM, PROJECT_ROOT, RED, RESET
 
         ensure_env = (
-            PROJECT_ROOT / "Athena-Public" / "examples" / "scripts" / "ensure_env.sh"
+            PROJECT_ROOT / "examples" / "scripts" / "ensure_env.sh"
         )
 
         if not ensure_env.exists():

@@ -7,7 +7,7 @@
 -- ARCHITECTURE:
 --   - Storage: Postgres Tables + JSONB Metadata
 --   - Vector:  text-embedding-3-large (3072 dims)
---   - Index:   NONE (Exact Search) - due to pgvector < 0.5.0 limit (2000 dims)
+--   - Index:   HNSW (Approximate Nearest Neighbor)
 --   - Automation: Auto-Tagging Triggers (on Insert/Update)
 --
 -- USAGE:
@@ -37,7 +37,12 @@ CREATE TABLE IF NOT EXISTS sessions (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
--- Note: Index intentionally omitted for <100k rows (Exact Search preferred over broken Index)
+-- sessions: vector similarity index
+CREATE INDEX IF NOT EXISTS idx_sessions_embedding
+ON sessions
+USING hnsw ((embedding::halfvec(3072)) halfvec_cosine_ops)
+WITH (m = 16, ef_construction = 64);
+
 CREATE INDEX IF NOT EXISTS idx_sessions_date ON sessions(date DESC);
 -- -----------------------------------------------------------------------------
 -- TABLE: case_studies
@@ -55,6 +60,12 @@ CREATE TABLE IF NOT EXISTS case_studies (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
+-- case_studies: vector similarity index
+CREATE INDEX IF NOT EXISTS idx_case_studies_embedding
+ON case_studies
+USING hnsw ((embedding::halfvec(3072)) halfvec_cosine_ops)
+WITH (m = 16, ef_construction = 64);
+
 CREATE INDEX IF NOT EXISTS idx_case_studies_code ON case_studies(code);
 -- -----------------------------------------------------------------------------
 -- TABLE: protocols
@@ -74,6 +85,12 @@ CREATE TABLE IF NOT EXISTS protocols (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
+-- protocols: vector similarity index
+CREATE INDEX IF NOT EXISTS idx_protocols_embedding
+ON protocols
+USING hnsw ((embedding::halfvec(3072)) halfvec_cosine_ops)
+WITH (m = 16, ef_construction = 64);
+
 CREATE INDEX IF NOT EXISTS idx_protocols_code ON protocols(code);
 CREATE INDEX IF NOT EXISTS idx_protocols_category ON protocols(category);
 -- -----------------------------------------------------------------------------
@@ -92,6 +109,12 @@ CREATE TABLE IF NOT EXISTS capabilities (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
+
+-- capabilities: vector similarity index
+CREATE INDEX IF NOT EXISTS idx_capabilities_embedding
+ON capabilities
+USING hnsw ((embedding::halfvec(3072)) halfvec_cosine_ops)
+WITH (m = 16, ef_construction = 64);
 -- -----------------------------------------------------------------------------
 -- TABLE: playbooks
 -- Stores operational playbooks
@@ -107,6 +130,12 @@ CREATE TABLE IF NOT EXISTS playbooks (
     metadata JSONB DEFAULT '{}'::jsonb,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
+
+-- playbooks: vector similarity index
+CREATE INDEX IF NOT EXISTS idx_playbooks_embedding
+ON playbooks
+USING hnsw ((embedding::halfvec(3072)) halfvec_cosine_ops)
+WITH (m = 16, ef_construction = 64);
 -- -----------------------------------------------------------------------------
 -- TABLE: references
 -- Stores reference documents
@@ -122,6 +151,12 @@ CREATE TABLE IF NOT EXISTS "references" (
     metadata JSONB DEFAULT '{}'::jsonb,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
+
+-- references: vector similarity index
+CREATE INDEX IF NOT EXISTS idx_references_embedding
+ON "references"
+USING hnsw ((embedding::halfvec(3072)) halfvec_cosine_ops)
+WITH (m = 16, ef_construction = 64);
 -- -----------------------------------------------------------------------------
 -- TABLE: frameworks
 -- Stores framework documents
@@ -137,6 +172,12 @@ CREATE TABLE IF NOT EXISTS frameworks (
     metadata JSONB DEFAULT '{}'::jsonb,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
+
+-- frameworks: vector similarity index
+CREATE INDEX IF NOT EXISTS idx_frameworks_embedding
+ON frameworks
+USING hnsw ((embedding::halfvec(3072)) halfvec_cosine_ops)
+WITH (m = 16, ef_construction = 64);
 -- -----------------------------------------------------------------------------
 -- TABLE: workflows
 -- Stores workflow definitions
@@ -152,6 +193,96 @@ CREATE TABLE IF NOT EXISTS workflows (
     metadata JSONB DEFAULT '{}'::jsonb,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
+
+-- workflows: vector similarity index
+CREATE INDEX IF NOT EXISTS idx_workflows_embedding
+ON workflows
+USING hnsw ((embedding::halfvec(3072)) halfvec_cosine_ops)
+WITH (m = 16, ef_construction = 64);
+
+-- -----------------------------------------------------------------------------
+-- TABLE: user_profile
+-- Stores user psychology, constraints, operating principles
+-- -----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS user_profile (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    filename TEXT UNIQUE NOT NULL,
+    title TEXT,
+    category TEXT,
+    content TEXT NOT NULL,
+    file_path TEXT NOT NULL,
+    embedding vector(3072),
+    metadata JSONB DEFAULT '{}'::jsonb,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_user_profile_embedding
+ON user_profile
+USING hnsw ((embedding::halfvec(3072)) halfvec_cosine_ops)
+WITH (m = 16, ef_construction = 64);
+
+-- -----------------------------------------------------------------------------
+-- TABLE: system_docs
+-- Stores system state, manifests, patterns
+-- -----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS system_docs (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    doc_type TEXT NOT NULL,
+    filename TEXT UNIQUE NOT NULL,
+    title TEXT,
+    content TEXT NOT NULL,
+    file_path TEXT UNIQUE NOT NULL,
+    embedding vector(3072),
+    metadata JSONB DEFAULT '{}'::jsonb,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_system_docs_embedding
+ON system_docs
+USING hnsw ((embedding::halfvec(3072)) halfvec_cosine_ops)
+WITH (m = 16, ef_construction = 64);
+
+-- -----------------------------------------------------------------------------
+-- TABLE: entities
+-- Stores parsed entity data (people, groups, etc.)
+-- -----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS entities (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    entity_name TEXT NOT NULL,
+    entity_type TEXT,
+    content TEXT NOT NULL,
+    metadata JSONB DEFAULT '{}'::jsonb,
+    embedding vector(3072),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_entities_embedding
+ON entities
+USING hnsw ((embedding::halfvec(3072)) halfvec_cosine_ops)
+WITH (m = 16, ef_construction = 64);
+
+CREATE INDEX IF NOT EXISTS idx_entities_name ON entities(entity_name);
+
+-- -----------------------------------------------------------------------------
+-- TABLE: insights
+-- Stores marketing analysis, strategic notes
+-- -----------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS insights (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    filename TEXT NOT NULL,
+    title TEXT,
+    content TEXT,
+    file_path TEXT UNIQUE NOT NULL,
+    embedding vector(3072),
+    metadata JSONB DEFAULT '{}'::jsonb,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_insights_embedding
+ON insights
+USING hnsw ((embedding::halfvec(3072)) halfvec_cosine_ops)
+WITH (m = 16, ef_construction = 64);
 -- ==============================================================================
 -- SEARCH FUNCTIONS (RPC)
 -- ==============================================================================
@@ -367,6 +498,118 @@ ORDER BY w.embedding <=> query_embedding
 LIMIT match_count;
 END;
 $$;
+
+-- Search user_profile
+CREATE OR REPLACE FUNCTION search_user_profile(
+        query_embedding vector(3072),
+        match_threshold FLOAT DEFAULT 0.3,
+        match_count INT DEFAULT 5
+    ) RETURNS TABLE (
+        id UUID,
+        filename TEXT,
+        title TEXT,
+        category TEXT,
+        content TEXT,
+        metadata JSONB,
+        similarity FLOAT
+    ) LANGUAGE plpgsql AS $$ BEGIN RETURN QUERY
+SELECT up.id,
+    up.filename,
+    up.title,
+    up.category,
+    up.content,
+    up.metadata,
+    1 - (up.embedding <=> query_embedding) AS similarity
+FROM user_profile up
+WHERE up.embedding IS NOT NULL
+    AND 1 - (up.embedding <=> query_embedding) > match_threshold
+ORDER BY up.embedding <=> query_embedding
+LIMIT match_count;
+END;
+$$;
+
+-- Search system_docs
+CREATE OR REPLACE FUNCTION search_system_docs(
+        query_embedding vector(3072),
+        match_threshold FLOAT DEFAULT 0.3,
+        match_count INT DEFAULT 5
+    ) RETURNS TABLE (
+        id UUID,
+        doc_type TEXT,
+        filename TEXT,
+        content TEXT,
+        metadata JSONB,
+        similarity FLOAT
+    ) LANGUAGE plpgsql AS $$ BEGIN RETURN QUERY
+SELECT sd.id,
+    sd.doc_type,
+    sd.filename,
+    sd.content,
+    sd.metadata,
+    1 - (sd.embedding <=> query_embedding) AS similarity
+FROM system_docs sd
+WHERE sd.embedding IS NOT NULL
+    AND 1 - (sd.embedding <=> query_embedding) > match_threshold
+ORDER BY sd.embedding <=> query_embedding
+LIMIT match_count;
+END;
+$$;
+
+-- Search entities
+CREATE OR REPLACE FUNCTION search_entities(
+        query_embedding vector(3072),
+        match_threshold FLOAT DEFAULT 0.3,
+        match_count INT DEFAULT 10
+    ) RETURNS TABLE (
+        id UUID,
+        entity_name TEXT,
+        entity_type TEXT,
+        content TEXT,
+        metadata JSONB,
+        similarity FLOAT
+    ) LANGUAGE plpgsql AS $$ BEGIN RETURN QUERY
+SELECT e.id,
+    e.entity_name,
+    e.entity_type,
+    e.content,
+    e.metadata,
+    1 - (e.embedding <=> query_embedding) AS similarity
+FROM entities e
+WHERE e.embedding IS NOT NULL
+    AND 1 - (e.embedding <=> query_embedding) > match_threshold
+ORDER BY e.embedding <=> query_embedding
+LIMIT match_count;
+END;
+$$;
+
+-- Search insights
+CREATE OR REPLACE FUNCTION search_insights(
+        query_embedding vector(3072),
+        match_threshold FLOAT DEFAULT 0.3,
+        match_count INT DEFAULT 5
+    ) RETURNS TABLE (
+        id UUID,
+        filename TEXT,
+        title TEXT,
+        content TEXT,
+        file_path TEXT,
+        metadata JSONB,
+        similarity FLOAT
+    ) LANGUAGE plpgsql AS $$ BEGIN RETURN QUERY
+SELECT i.id,
+    i.filename,
+    i.title,
+    i.content,
+    i.file_path,
+    i.metadata,
+    1 - (i.embedding <=> query_embedding) AS similarity
+FROM insights i
+WHERE i.embedding IS NOT NULL
+    AND 1 - (i.embedding <=> query_embedding) > match_threshold
+ORDER BY i.embedding <=> query_embedding
+LIMIT match_count;
+END;
+$$;
 -- ==============================================================================
 -- AUTOMATION TRIGGERS
 -- ==============================================================================
@@ -436,6 +679,26 @@ CREATE TRIGGER tr_workflows_auto_tag BEFORE
 INSERT
     OR
 UPDATE ON workflows FOR EACH ROW EXECUTE FUNCTION auto_enrich_metadata();
+DROP TRIGGER IF EXISTS tr_user_profile_auto_tag ON user_profile;
+CREATE TRIGGER tr_user_profile_auto_tag BEFORE
+INSERT
+    OR
+UPDATE ON user_profile FOR EACH ROW EXECUTE FUNCTION auto_enrich_metadata();
+DROP TRIGGER IF EXISTS tr_system_docs_auto_tag ON system_docs;
+CREATE TRIGGER tr_system_docs_auto_tag BEFORE
+INSERT
+    OR
+UPDATE ON system_docs FOR EACH ROW EXECUTE FUNCTION auto_enrich_metadata();
+DROP TRIGGER IF EXISTS tr_entities_auto_tag ON entities;
+CREATE TRIGGER tr_entities_auto_tag BEFORE
+INSERT
+    OR
+UPDATE ON entities FOR EACH ROW EXECUTE FUNCTION auto_enrich_metadata();
+DROP TRIGGER IF EXISTS tr_insights_auto_tag ON insights;
+CREATE TRIGGER tr_insights_auto_tag BEFORE
+INSERT
+    OR
+UPDATE ON insights FOR EACH ROW EXECUTE FUNCTION auto_enrich_metadata();
 -- ==============================================================================
 -- SCHEMA COMPLETE
 -- ==============================================================================

@@ -83,8 +83,9 @@ def _find_project_root(start: Path | None = None) -> Path:
 def _run(cmd: list[str], cwd: str = None, timeout: int = 10) -> tuple[int, str]:
     """Run a command and return (returncode, combined output)."""
     try:
+        env = os.environ.copy()
         r = subprocess.run(
-            cmd, capture_output=True, text=True, timeout=timeout, cwd=cwd
+            cmd, capture_output=True, text=True, timeout=timeout, cwd=cwd, env=env
         )
         return r.returncode, (r.stdout + r.stderr).strip()
     except subprocess.TimeoutExpired:
@@ -517,12 +518,19 @@ def check_11_database(root: Path, fix: bool = False) -> list[CheckResult]:
             [
                 sys.executable,
                 "-c",
-                f"from supabase import create_client; c = create_client('{url}', '{key}'); print('ok')",
+                f"from supabase import create_client; c = create_client('{url}', '{key}'); c.table('sessions').select('id').limit(1).execute(); print('ok')",
             ],
             timeout=10,
         )
         if code == 0 and "ok" in output:
-            return [CheckResult("Database", PASS, "Supabase connected")]
+            return [CheckResult("Database", PASS, "Supabase connected & schema verified")]
+        elif "Could not find the table" in output or "relation" in output.lower():
+            return [
+                CheckResult(
+                    "Database Schema", FAIL, "Missing expected tables (public.sessions)",
+                    "Run supabase/MASTER_SCHEMA.sql in the Supabase SQL Editor"
+                )
+            ]
         else:
             return [
                 CheckResult(

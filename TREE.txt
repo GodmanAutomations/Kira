@@ -1,0 +1,523 @@
+.
+├── AGENTS.md
+├── Athena-Public.wiki
+│   ├── FAQ.md
+│   ├── Getting-Started.md
+│   ├── Home.md
+│   ├── Philosophy.md
+│   ├── The-Compounding-Effect.md
+│   ├── Use-Cases.md
+│   └── Workflow-Reference.md
+├── CLAUDE.md -> AGENTS.md
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── Dockerfile.sandbox
+├── LICENSE
+├── README.md
+├── SAFETY.md
+├── SECURITY.md
+├── SUPPORT.md
+├── TREE.txt
+├── athena.yaml
+├── community
+│   ├── CHANGELOG.md
+│   └── ROADMAP.md
+├── docs
+│   ├── ABOUT_ME.md
+│   ├── ARCHITECTURE.md
+│   ├── BENCHMARKS.md
+│   ├── BEST_PRACTICES.md
+│   ├── CAPABILITIES.md
+│   ├── CASE_STUDIES.md
+│   ├── CHANGELOG.md
+│   ├── CLI.md
+│   ├── COMPATIBLE_IDES.md
+│   ├── DEMO.md
+│   ├── DISCIPLINE.md
+│   ├── ENGINEERING_DEPTH.md
+│   ├── EXOCORTEX.md
+│   ├── FAQ.md
+│   ├── FEATURES.md
+│   ├── GETTING_STARTED.md
+│   ├── GLOSSARY.md
+│   ├── GRAPHRAG.md
+│   ├── IMPORTING.md
+│   ├── KNOWLEDGE_GRAPH.md
+│   ├── LOCAL_MODE.md
+│   ├── MANIFESTO.md
+│   ├── MCP_SERVER.md
+│   ├── MEMORY_BANK.md
+│   ├── MULTI_MODEL_STRATEGY.md
+│   ├── PROJECT_IDEAS.md
+│   ├── REFERENCES.md
+│   ├── REQUIREMENTS.md
+│   ├── SECURITY.md
+│   ├── SEMANTIC_SEARCH.md
+│   ├── SPEC_SHEET.md
+│   ├── TAG_INDEX.md
+│   ├── TECH_DEBT.md
+│   ├── TIPS.md
+│   ├── TOP_10_PROTOCOLS.md
+│   ├── TRILATERAL_FEEDBACK.md
+│   ├── UPDATING.md
+│   ├── USER_DRIVEN_RSI.md
+│   ├── USE_CASES.md
+│   ├── VECTORRAG.md
+│   ├── WHAT_IS_AN_AI_AGENT.md
+│   ├── WORKFLOWS.md
+│   ├── YOUR_FIRST_AGENT.md
+│   ├── YOUR_FIRST_SESSION.md
+│   ├── athena_banner.png
+│   ├── audit
+│   │   └── SYSTEM_AUDIT_MANIFEST.md
+│   ├── case-studies
+│   │   ├── Case_Blog_Evolution_2026.md
+│   │   ├── Case_Sam_Altman_AI_Future.md
+│   │   ├── Case_Web_Design_2026.md
+│   │   └── Decision_Framework_Application.md
+│   ├── concepts
+│   │   ├── Cognitive_Architecture.md
+│   │   ├── Grace_Protocol.md
+│   │   ├── Half_Half_Half_Rule.md
+│   │   ├── Iteration_Arbitrage.md
+│   │   ├── Meta_Game_Thesis.md
+│   │   ├── Outcome_Economy.md
+│   │   ├── Quadrant_IV.md
+│   │   └── Time_Compression_Thesis.md
+│   ├── drafts
+│   │   └── reddit_post_v9.1.0.md
+│   ├── favicon.png
+│   ├── images
+│   │   └── dual_helix_rsi.png
+│   ├── ios_shortcut_template.md
+│   ├── marketing
+│   │   ├── DIFFERENTIATION.md
+│   │   └── REDDIT_LAUNCH_POST.md
+│   ├── protocols
+│   │   ├── 131-bimodal-arena-analysis.md
+│   │   ├── 409-parallel-worktree-orchestration.md
+│   │   ├── 410-agent-status-broadcasting.md
+│   │   ├── 411-dynamic-skill-injection.md
+│   │   ├── 412-dm-pairing-gate.md
+│   │   ├── 413-multi-agent-coordination.md
+│   │   ├── 414-ide-bridge-acp-adapter.md
+│   │   ├── 415-exoskeleton-architecture.md
+│   │   ├── 416-xml-prompting.md
+│   │   ├── 417-adaptive-latency-principle.md
+│   │   ├── 418-rev9-architecture.md
+│   │   ├── 419-sandboxed-execution-modes.md
+│   │   ├── 500-diagnostic-relay.md
+│   │   ├── content
+│   │   └── engineering
+│   └── reddit_draft_amnesia.md
+├── examples
+│   ├── ANALYTICS_REPORT.md
+│   ├── CASE_STUDY_EXAMPLE.md
+│   ├── DEMO_SCRIPT.md
+│   ├── PATTERN_EXAMPLE.md
+│   ├── agents
+│   │   ├── README.md
+│   │   ├── marketing-strategist.md
+│   │   ├── risk-guardian.md
+│   │   ├── strategic-advisor.md
+│   │   └── trading-analyst.md
+│   ├── case_studies
+│   │   ├── CS-001-sunk-cost-career-pivot.md
+│   │   ├── CS-002-scope-creep-freelance.md
+│   │   ├── CS-003-confirmation-bias-research.md
+│   │   ├── CS-004-plea-bargain-diagnostic.md
+│   │   ├── CS-005-min-max-purchasing-framework.md
+│   │   ├── CS-006-the-replacement-trap.md
+│   │   └── README.md
+│   ├── concepts
+│   │   ├── adaptive_latency.md
+│   │   ├── amoral_realism.md
+│   │   ├── anti_hallucination.md
+│   │   ├── origin_story.md
+│   │   └── paradigm_shift.md
+│   ├── demo.html
+│   ├── demo.webp
+│   ├── demo_screenshot.png
+│   ├── framework
+│   │   ├── Athena_Profile.md
+│   │   ├── Constraints_Master.md
+│   │   ├── Core_Identity.md
+│   │   ├── DEAD_MAN_SWITCH.md
+│   │   ├── Design_DNA.md
+│   │   ├── Governance_Audit_2025.md
+│   │   ├── Output_Standards.md
+│   │   ├── System_Manifest.md
+│   │   └── System_Principles.md
+│   ├── graphrag_visualization.png
+│   ├── guides
+│   │   ├── Engineering_Execution_Standard.md
+│   │   ├── Engineering_Infrastructure_Hub.md
+│   │   └── Engineering_Strategy_Framework.md
+│   ├── hooks
+│   │   ├── README.md
+│   │   └── pre_compact.py
+│   ├── knowledge_graph_demo.html
+│   ├── logs
+│   │   └── debug_session_example.md
+│   ├── protocols
+│   │   ├── README.md
+│   │   ├── architecture
+│   │   ├── coding
+│   │   ├── content
+│   │   ├── decision
+│   │   ├── engineering
+│   │   ├── memory
+│   │   ├── meta
+│   │   ├── pattern-detection
+│   │   ├── reasoning
+│   │   ├── research
+│   │   ├── safety
+│   │   ├── strategy
+│   │   ├── trading
+│   │   ├── verification
+│   │   └── workflow
+│   ├── quickstart
+│   │   ├── 01_boot.py
+│   │   ├── 02_search.py
+│   │   ├── 03_commit.py
+│   │   └── README.md
+│   ├── scripts
+│   │   ├── README.md
+│   │   ├── _archived
+│   │   ├── agent_broadcast.py
+│   │   ├── agentic_search.py
+│   │   ├── analyze.py
+│   │   ├── archive_manager.py
+│   │   ├── ask_codebase.py
+│   │   ├── assess_complexity.py
+│   │   ├── athena_cockpit.py
+│   │   ├── athena_doctor.py
+│   │   ├── athena_status.py
+│   │   ├── athenad.py
+│   │   ├── auto_file_insights.py
+│   │   ├── auto_linker.py
+│   │   ├── auto_tagger.py
+│   │   ├── batch_audit.py
+│   │   ├── biologist_lens.py
+│   │   ├── boot.py
+│   │   ├── boot_handoff.py
+│   │   ├── browser_agent.py
+│   │   ├── build_graph.py
+│   │   ├── calendar_agent.py
+│   │   ├── calibration_score.py
+│   │   ├── canonical_tier_analysis.py
+│   │   ├── capture.py
+│   │   ├── code_indexer.py
+│   │   ├── committer.py
+│   │   ├── compact_context.py
+│   │   ├── compress_context.py
+│   │   ├── compress_protocols.py
+│   │   ├── compress_sessions.py
+│   │   ├── create_session.py
+│   │   ├── cross_reference.py
+│   │   ├── daily_briefing.py
+│   │   ├── data_engine.py
+│   │   ├── deep_fix_links.py
+│   │   ├── deploy_v1.sh
+│   │   ├── diagnose.py
+│   │   ├── distill_sessions.py
+│   │   ├── dspy_optimizer.py
+│   │   ├── embed_codex.py
+│   │   ├── ensure_env.sh
+│   │   ├── env_keychain.sh
+│   │   ├── evaluator.py
+│   │   ├── exec_deep_reindex.sh
+│   │   ├── exocortex.py
+│   │   ├── extract_entities.py
+│   │   ├── fast_search.py
+│   │   ├── fix_frontmatter.py
+│   │   ├── flashrank_demo.py
+│   │   ├── gemini_client.py
+│   │   ├── generate_distribution.py
+│   │   ├── generate_eev_chart.py
+│   │   ├── generate_protocol.py
+│   │   ├── generate_protocol_summaries.py
+│   │   ├── generate_sfw_graph.py
+│   │   ├── generate_skill_index.py
+│   │   ├── git_commit.py
+│   │   ├── graph_audit.py
+│   │   ├── harvest_check.py
+│   │   ├── hybrid_router.py
+│   │   ├── hybrid_think.py
+│   │   ├── index_graphrag.py
+│   │   ├── jargon_injector.py
+│   │   ├── jit_inject.py
+│   │   ├── kelly_calculator.py
+│   │   ├── kelly_sensitivity.py
+│   │   ├── kinetic_engine.py
+│   │   ├── lib
+│   │   ├── librarian
+│   │   ├── lightrag_wrapper.py
+│   │   ├── load_rules.py
+│   │   ├── log_invocation.py
+│   │   ├── memory_compressor.py
+│   │   ├── memory_integrity.py
+│   │   ├── memory_server.py
+│   │   ├── metadata_enforce.py
+│   │   ├── metadata_extractor.py
+│   │   ├── mu_graphrag_bridge.py
+│   │   ├── nocturnal_consolidation.py
+│   │   ├── nurse_filing.py
+│   │   ├── nurse_security.py
+│   │   ├── orphan_detector.py
+│   │   ├── outcome_logger.py
+│   │   ├── pairing.py
+│   │   ├── parallel_orchestrator.py
+│   │   ├── parallel_session.sh
+│   │   ├── parallel_swarm.py
+│   │   ├── pattern_recognition.py
+│   │   ├── populate_forward_lineage.py
+│   │   ├── pre_commit_check.py
+│   │   ├── protocol_compliance.py
+│   │   ├── protocol_heatmap.py
+│   │   ├── protocol_scaffold.py
+│   │   ├── prototype_context_cache.py
+│   │   ├── query_codex.py
+│   │   ├── query_graphrag.py
+│   │   ├── quicksave.py
+│   │   ├── reaper.py
+│   │   ├── recall.py
+│   │   ├── reconcile_memory.py
+│   │   ├── recover_from_supabase.py
+│   │   ├── refactor.py
+│   │   ├── regenerate_workflow_index.py
+│   │   ├── reindex_supabase.py
+│   │   ├── remediate_case_study_ids.py
+│   │   ├── rename_protocols.py
+│   │   ├── repair_links.py
+│   │   ├── reranker.py
+│   │   ├── research_agent.py
+│   │   ├── response_wrapper.py
+│   │   ├── resume_session.py
+│   │   ├── retrieval_audit.py
+│   │   ├── ror_sensitivity.py
+│   │   ├── run_mcp.py
+│   │   ├── run_tests.py
+│   │   ├── safe_boot.sh
+│   │   ├── scrapling_wrapper.py
+│   │   ├── search_web.py
+│   │   ├── security
+│   │   ├── self_optimize.py
+│   │   ├── semantic_audit.py
+│   │   ├── setup_calendar_auth.py
+│   │   ├── setup_graphrag.py
+│   │   ├── shutdown.py
+│   │   ├── skill_loader.py
+│   │   ├── skill_watcher.py
+│   │   ├── slurp_url.py
+│   │   ├── smart_search.py
+│   │   ├── stale_detector.py
+│   │   ├── structure_map.py
+│   │   ├── supabase_schema.sql
+│   │   ├── supabase_search.py
+│   │   ├── supabase_search_functions.sql
+│   │   ├── supabase_setup.py
+│   │   ├── supabase_sync.py
+│   │   ├── swarm_agent.py
+│   │   ├── sync_to_public.py
+│   │   ├── sync_wealth_case_study.sh
+│   │   ├── telegram_bot.py
+│   │   ├── token_budget.py
+│   │   ├── trading_response.md
+│   │   ├── trading_response2.md
+│   │   ├── update_hot_manifest.py
+│   │   ├── upload_entities_to_supabase.py
+│   │   ├── upload_to_supabase.py
+│   │   ├── variance_sim.py
+│   │   ├── visualize_got.py
+│   │   ├── visualize_graph.py
+│   │   ├── watchdog.py
+│   │   └── worktree_manager.py
+│   ├── session_logs
+│   │   ├── README.md
+│   │   └── example-session.md
+│   ├── skills
+│   │   ├── README.md
+│   │   ├── business
+│   │   ├── coding
+│   │   ├── decision
+│   │   ├── quality
+│   │   ├── research
+│   │   └── workflow
+│   ├── templates
+│   │   ├── SKILL_INDEX_template.md
+│   │   ├── Skill_Frontend_Patterns.md
+│   │   ├── TASK_LOG_template.md
+│   │   ├── case_study_template.md
+│   │   ├── cluster_index_template.md
+│   │   ├── core_identity_template.md
+│   │   ├── framework_mirror
+│   │   ├── memory_bank
+│   │   ├── memory_bank_template.md
+│   │   ├── operating_principles_template.md
+│   │   ├── protocol_template.md
+│   │   ├── rfc_template.md
+│   │   ├── session_log_template.md
+│   │   ├── skill_template.md
+│   │   └── workflow_template.md
+│   └── workflows
+│       ├── 333-diagnostic.md
+│       ├── 416-agent-swarm.md
+│       ├── _archived
+│       ├── _domain
+│       ├── _shared.md
+│       ├── ads.md
+│       ├── analyze.md
+│       ├── archive-client.md
+│       ├── archive.md
+│       ├── async-dev.md
+│       ├── audit-canonical.md
+│       ├── audit-code.md
+│       ├── audit.md
+│       ├── battleplan.md
+│       ├── blank.md
+│       ├── brand-generator.md
+│       ├── bridge.md
+│       ├── brief.md
+│       ├── check.md
+│       ├── circuit.md
+│       ├── daemon.md
+│       ├── deploy.md
+│       ├── diagnose.md
+│       ├── diagram.md
+│       ├── do.md
+│       ├── doc.md
+│       ├── doctor.md
+│       ├── dream.md
+│       ├── due-diligence.md
+│       ├── dump.md
+│       ├── easy.md
+│       ├── end.md
+│       ├── fix.md
+│       ├── fresh.md
+│       ├── grill.md
+│       ├── gto.md
+│       ├── guide.md
+│       ├── minmax.md
+│       ├── needful.md
+│       ├── notebook-portfolio.md
+│       ├── notebooklm-bridge.md
+│       ├── plan.md
+│       ├── preset.md
+│       ├── primer.md
+│       ├── project.md
+│       ├── refactor-code.md
+│       ├── refactor.md
+│       ├── reindex.md
+│       ├── release-public.md
+│       ├── research-arbitrage.md
+│       ├── research.md
+│       ├── resume.md
+│       ├── review.md
+│       ├── save.md
+│       ├── search.md
+│       ├── semantic.md
+│       ├── shorthand-commands.md
+│       ├── spec.md
+│       ├── start.md
+│       ├── steal.md
+│       ├── test.md
+│       ├── think.md
+│       ├── tutorial.md
+│       ├── ugc-factory.md
+│       ├── ui-check.md
+│       ├── ui-ux-pro-max.md
+│       ├── ultraend.md
+│       ├── ultrastart.md
+│       ├── ultrathink.md
+│       ├── vibe.md
+│       ├── video.md
+│       ├── voice-agent-deploy.md
+│       └── web-build.md
+├── pyproject.toml
+├── robots.txt
+├── scripts
+│   ├── athena_status.py
+│   ├── auto_tagger.py
+│   ├── boot.py
+│   ├── bump_version.sh
+│   ├── code_indexer.py
+│   ├── context_monitor.py
+│   ├── core
+│   │   ├── __init__.py
+│   │   ├── auditor.py
+│   │   ├── boot_knowledge.py
+│   │   ├── index_workspace.py
+│   │   ├── orchestration
+│   │   ├── quicksave.py
+│   │   ├── reasoning
+│   │   ├── reflection.py
+│   │   ├── retrieval
+│   │   └── smart_search.py
+│   ├── env_keychain.sh
+│   ├── hooks
+│   │   └── pre-commit
+│   ├── launch_athena.sh
+│   ├── log_invocation.py
+│   ├── parallel_orchestrator.py
+│   ├── quicksave.py
+│   ├── reconcile_memory.py
+│   ├── safe_boot.sh
+│   ├── shutdown.py
+│   └── structure_map.py
+├── sitemap.xml
+├── src
+│   └── athena
+│       ├── __init__.py
+│       ├── __main__.py
+│       ├── auditors
+│       ├── boot
+│       ├── cli
+│       ├── core
+│       ├── generators
+│       ├── intelligence
+│       ├── mcp_server.py
+│       ├── memory
+│       ├── sessions.py
+│       ├── templates
+│       └── tools
+├── supabase
+│   ├── MASTER_SCHEMA.sql
+│   ├── config.toml
+│   ├── functions
+│   │   └── sync-athena
+│   └── migrations
+│       ├── 003_full_workspace_sync.sql
+│       ├── 004_fix_search_functions.sql
+│       ├── 005_add_insights.sql
+│       ├── 006_add_title_to_system_docs.sql
+│       ├── 006_fix_search_insights.sql
+│       ├── 007_drop_insights_index.sql
+│       ├── 008_security_hardening.sql
+│       ├── 009_cleanup_duplicates.sql
+│       ├── 010_upgrade_architecture.sql
+│       ├── 011_fix_architecture_rollback.sql
+│       ├── 012_fix_architecture_no_index.sql
+│       ├── 013_fix_search_functions.sql
+│       ├── 014_auto_tagging.sql
+│       ├── 015_rls_vector_tables.sql
+│       ├── 20260214050000_fix_metadata_schema.sql
+│       ├── 999_manual_reindex.sql
+│       ├── migrate_768_to_3072.sql
+│       └── upgrade_a_memory_prism.sql
+├── tests
+│   ├── test_eval_harness.py
+│   └── test_great_steal.py
+├── tools
+│   ├── README.md
+│   └── exocortex_search.yaml
+└── wiki
+    ├── FAQ.md
+    ├── Getting-Started.md
+    ├── Home.md
+    ├── Philosophy.md
+    ├── The-Compounding-Effect.md
+    ├── Use-Cases.md
+    └── Workflow-Reference.md
+
+81 directories, 440 files
