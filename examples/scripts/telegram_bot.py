@@ -21,12 +21,13 @@ from transcribe_audio import transcribe_audio
 from browser_agent import google_search, browse_url
 # from calendar_agent import list_events, quick_add
 from gemini_client import GeminiClient, get_mobile_system_prompt
-# import quicksave
+from sqlite_memory import save_message, load_history, clear_user_history
+import requests
+import chromadb
 
-# Initialize Athena Brain (Global Client for conversation persistence)
-print("🧠 Loading Athena Core Identity...")
-ATHENA_CLIENT = GeminiClient(system_prompt=get_mobile_system_prompt())
-print(f"✅ Athena Online. [Model: {ATHENA_CLIENT.model_name}]")
+# ATHENA_CLIENT removed from global to allow per-user persistent sessions.
+# ATHENA_CLIENT = GeminiClient(system_prompt=get_mobile_system_prompt())
+# print(f"✅ Athena Online. [Model: {ATHENA_CLIENT.model_name}]")
 
 # Session State (for /start → /end paradigm)
 SESSION_ACTIVE = False
@@ -47,6 +48,39 @@ logging.basicConfig(
     level=logging.INFO
 )
 logger = logging.getLogger(__name__)
+
+# RAG Configuration
+CHROMA_HOST = "localhost"
+CHROMA_PORT = 8001
+COLLECTION_NAME = "athena_gemini_kb"
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+
+def get_gemini_embedding(text):
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-001:embedContent?key={GOOGLE_API_KEY}"
+    payload = {"model": "models/gemini-embedding-001", "content": {"parts": [{"text": text}]}}
+    try:
+        response = requests.post(url, json=payload, timeout=10)
+        response.raise_for_status()
+        return response.json()["embedding"]["values"]
+    except Exception as e:
+        logger.error(f"Embedding error: {e}")
+        return None
+
+def query_athena_kb(query_text, n_results=3):
+    try:
+        client = chromadb.HttpClient(host=CHROMA_HOST, port=CHROMA_PORT)
+        collection = client.get_collection(name=COLLECTION_NAME)
+        query_emb = get_gemini_embedding(query_text)
+        if not query_emb: return ""
+        
+        results = collection.query(query_embeddings=[query_emb], n_results=n_results)
+        context = "\n\n[RETRIEVED CONTEXT]\n"
+        for doc in results['documents'][0]:
+            context += f"- {doc}\n"
+        return context
+    except Exception as e:
+        logger.error(f"RAG query error: {e}")
+        return ""
 
 def md_to_html(text: str) -> str:
     """Convert common Markdown patterns to Telegram HTML."""
@@ -106,9 +140,12 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Reset session
     SESSION_ACTIVE = True
     SESSION_LOG = []
-    ATHENA_CLIENT.clear_history()
     
-    await update.message.reply_text("⚡ Session Started.\n\nChat freely — everything is logged.\n\nType /end when done to sync to cloud.")
+    # Clear persistent history if user starts fresh
+    user_id = str(update.effective_user.id)
+    clear_user_history(user_id)
+    
+    await update.message.reply_text("⚡ Session Started.\n\nChat freely — everything is logged and persisted to SQLite.\n\nType /end when done.")
 
 async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Conversational handler - chat with Athena via Gemini."""
@@ -121,16 +158,41 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
     
     text = update.message.text
+    user_id = str(update.effective_user.id)
     
-    # Log user message
+    # Log user message to session log (for /end summary)
     SESSION_LOG.append((get_timestamp(), "User", text))
     
+    # Save to SQLite Persistent Memory
+    save_message(user_id, "user", text)
+    
     try:
-        # Send to Gemini
-        response = ATHENA_CLIENT.chat(text)
+        # Load persistent history for this user
+        past_history = load_history(user_id)
+        
+        # Initialize user-specific client with history
+        client = GeminiClient(
+            system_prompt=get_mobile_system_prompt(),
+            initial_history=past_history
+        )
+        
+        # Send to Gemini with RAG Context
+        rag_context = query_athena_kb(text)
+        prompt_with_rag = text
+        if rag_context:
+            prompt_with_rag = f"{text}\n\n{rag_context}"
+            logger.info("Injected RAG context into prompt")
+
+        response = client.chat(prompt_with_rag)
+        
+        # Save Athena response to SQLite Persistent Memory
+        save_message(user_id, "model", response)
         
         # Log Athena response
         SESSION_LOG.append((get_timestamp(), "Athena", response[:500]))
+        
+        # Clean response of raw [RETRIEVED CONTEXT] markers if LLM leaked them
+        response = response.split("[RETRIEVED CONTEXT]")[0].strip()
         
         # Truncate if needed (Telegram limit 4096)
         if len(response) > 4000:
@@ -191,18 +253,19 @@ async def handle_end(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 cwd=workspace
             )
         
-        # Git commit and push
+        # Git commit (local only)
         subprocess.run(["git", "add", "-A"], cwd=workspace)
-        subprocess.run(
+        result = subprocess.run(
             ["git", "commit", "-m", f"sync(telegram): {len(SESSION_LOG)} exchanges from mobile"],
-            cwd=workspace
+            cwd=workspace,
+            capture_output=True,
+            text=True
         )
-        result = subprocess.run(["git", "push", "origin", "main"], cwd=workspace, capture_output=True, text=True)
         
-        if result.returncode == 0:
-            await update.message.reply_text(f"✅ Synced {len(SESSION_LOG)} exchanges to cloud.\n\nSession closed.")
+        if result.returncode == 0 or "nothing to commit" in result.stdout:
+            await update.message.reply_text(f"✅ Synced {len(SESSION_LOG)} exchanges locally. (Push requires explicit approval)\n\nSession closed.")
         else:
-            await update.message.reply_text(f"⚠️ Logged locally but push failed: {result.stderr[:200]}")
+            await update.message.reply_text(f"⚠️ Logged locally but commit failed: {result.stderr[:200]}")
         
         # Reset
         SESSION_ACTIVE = False
@@ -385,6 +448,44 @@ async def handle_schedule(update: Update, context: ContextTypes.DEFAULT_TYPE):
         logger.error(f"Schedule error: {e}")
         await update.message.reply_text(f"❌ Error: {str(e)}")
 
+async def handle_save(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Dynamic RAG ingestion: /save <category> <content>"""
+    if not await auth_check(update): return
+    
+    if len(context.args) < 2:
+        await update.message.reply_text("❌ Usage: /save <category> <your content>")
+        return
+        
+    category = context.args[0]
+    content = " ".join(context.args[1:])
+    
+    await update.message.reply_text(f"🧠 Embedding memory in category '{category}'...")
+    
+    try:
+        embedding = get_gemini_embedding(content)
+        if not embedding:
+            raise Exception("Failed to generate embedding")
+            
+        client = chromadb.HttpClient(host=CHROMA_HOST, port=CHROMA_PORT)
+        collection = client.get_or_create_collection(name=COLLECTION_NAME)
+        
+        # Generate unique ID based on content
+        import hashlib
+        mem_id = f"telegram_{hashlib.md5(content.encode()).hexdigest()[:12]}"
+        
+        collection.upsert(
+            ids=[mem_id],
+            embeddings=[embedding],
+            documents=[content],
+            metadatas=[{"category": category, "source": "telegram", "timestamp": get_timestamp()}]
+        )
+        
+        await update.message.reply_text(f"✅ Memory saved to {category}. I'll remember this.")
+        
+    except Exception as e:
+        logger.error(f"Save error: {e}")
+        await update.message.reply_text(f"❌ Failed to save memory: {str(e)}")
+
 async def handle_events(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not await auth_check(update): return
     
@@ -411,6 +512,7 @@ if __name__ == '__main__':
     application.add_handler(CommandHandler('search', handle_search))
     application.add_handler(CommandHandler('browse', handle_browse))
     application.add_handler(CommandHandler('schedule', handle_schedule))
+    application.add_handler(CommandHandler('save', handle_save))
     application.add_handler(CommandHandler('events', handle_events))
     application.add_handler(MessageHandler(filters.TEXT & (~filters.COMMAND), handle_text))
     application.add_handler(MessageHandler(filters.VOICE, handle_voice))
