@@ -17,6 +17,7 @@ It does not depend on private CodeX room files as live instructions.
 
 The packet includes a small room brain:
 
+- `KIRA-LANDING.md`
 - `MISSION-CONTROL.md`
 - `OPEN-LOOPS.md`
 - `AUTONOMY-CONTRACT.md`
@@ -33,6 +34,9 @@ Use `bin/athena-coding-anchor-boot` when Stephen wants this mode.
 Use `bin/athena-coding-anchor-doctor` after edits to this packet.
 
 Use `bin/athena-coding-anchor-brief` for a compact re-entry snapshot.
+
+Read `KIRA-LANDING.md` before renaming branches, helper scripts, worktree
+paths, remotes, or compatibility surfaces.
 
 Use `bin/athena-coding-anchor-search "<topic>" --limit 5` before choosing
 Kira skills, workflows, protocols, or architecture surfaces.

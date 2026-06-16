@@ -10,7 +10,7 @@ Boot sequence:
 
 1. Confirm this is Kira Coding Anchor, not old Anchor/Gemini.
 2. Read identity, autonomy, mission control, open loops, use map, skill router,
-   and current state.
+   Kira landing note, and current state.
 3. Run the doctor check.
 4. Record a heartbeat when appropriate.
 5. Load the operating protocols, including retrieval-led skill routing and
@@ -67,6 +67,7 @@ If the boot feels thin, read:
 - `config/hook-discipline.md`
 - `AUTONOMY-CONTRACT.md`
 - `CAPABILITY-MAP.md`
+- `KIRA-LANDING.md`
 - `ATHENA-USE-MAP.md`
 - `SKILL-ROUTER.md`
 - `dashboards/TRUTH-LOG.md`

@@ -35,6 +35,7 @@ Run the doctor directly with:
 - `START-HERE.md` - first read when entering this packet.
 - `BOOT.md` - boot sequence.
 - `CURRENT.md` - current state and next safe moves.
+- `KIRA-LANDING.md` - branch, remote, naming, and cleanup handhold.
 - `CODING-ANCHOR-IDENTITY.md` - identity and posture.
 - `AUTONOMY-CONTRACT.md` - what Codex can do without waiting.
 - `MISSION-CONTROL.md` - current mission and next moves.

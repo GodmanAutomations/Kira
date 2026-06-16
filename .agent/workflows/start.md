@@ -1,5 +1,5 @@
 ---
-description: Boot the Athena system and load context
+description: Boot the Kira system and load context
 ---
 
 # /start — Execution Script
@@ -7,19 +7,20 @@ description: Boot the Athena system and load context
 > **Latency Profile**: LOW (<3K tokens boot)
 > **Philosophy**: Boot from verified local surfaces. Load later.
 
-## Phase 1: Athena Coding Anchor Boot
+## Phase 1: Kira Coding Anchor Boot
 
 // turbo
 
-- [ ] Load `.agent/boot/coding-anchor/CODING-ANCHOR-IDENTITY.md` — Athena-local execution posture
+- [ ] Load `.agent/boot/coding-anchor/KIRA-LANDING.md` — branch, remote, and naming state
+- [ ] Load `.agent/boot/coding-anchor/CODING-ANCHOR-IDENTITY.md` — Kira-local execution posture
 - [ ] Load `.agent/boot/coding-anchor/AUTONOMY-CONTRACT.md` — authority and stop/ask gates
 - [ ] Load `.agent/boot/coding-anchor/CURRENT.md` — current verified boot state
 - [ ] Load `.agent/boot/coding-anchor/MISSION-CONTROL.md` and `.agent/boot/coding-anchor/OPEN-LOOPS.md`
 - [ ] Run `.agent/boot/coding-anchor/bin/athena-coding-anchor-doctor`
 - [ ] Record heartbeat with `.agent/boot/coding-anchor/bin/athena-coding-anchor-tick`
-- [ ] Load `.context/project_state.md` and `.context/CANONICAL.md` when the task needs broader Athena state
+- [ ] Load `.context/project_state.md` and `.context/CANONICAL.md` when the task needs broader Kira state
 
-**Confirm**: "Athena Coding Anchor boot complete. Boot packet loaded, doctor checked, heartbeat recorded."
+**Confirm**: "Kira Coding Anchor boot complete. Boot packet loaded, doctor checked, heartbeat recorded."
 
 ## Phase 2: Triple-Lock Reminder
 

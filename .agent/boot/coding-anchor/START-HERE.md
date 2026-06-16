@@ -7,13 +7,14 @@ First pass:
 
 1. Read `CODING-ANCHOR-IDENTITY.md`.
 2. Read `BOOT.md`.
-3. Read `AUTONOMY-CONTRACT.md`.
-4. Read `MISSION-CONTROL.md`.
-5. Read `OPEN-LOOPS.md`.
-6. Read `ATHENA-USE-MAP.md`.
-7. Read `SKILL-ROUTER.md` when choosing Kira skills.
-8. Read `CURRENT.md`.
-9. Run `bin/athena-coding-anchor-doctor`.
+3. Read `KIRA-LANDING.md`.
+4. Read `AUTONOMY-CONTRACT.md`.
+5. Read `MISSION-CONTROL.md`.
+6. Read `OPEN-LOOPS.md`.
+7. Read `ATHENA-USE-MAP.md`.
+8. Read `SKILL-ROUTER.md` when choosing Kira skills.
+9. Read `CURRENT.md`.
+10. Run `bin/athena-coding-anchor-doctor`.
 
 Then work in slices:
 

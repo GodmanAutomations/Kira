@@ -15,6 +15,10 @@ printf 'Start\n'
 sed -n '1,100p' "$ROOT/START-HERE.md"
 printf '\n'
 
+printf 'Kira Landing\n'
+sed -n '1,140p' "$ROOT/KIRA-LANDING.md"
+printf '\n'
+
 printf 'Autonomy\n'
 sed -n '1,160p' "$ROOT/AUTONOMY-CONTRACT.md"
 printf '\n'
@@ -79,6 +83,7 @@ printf '%s\n' "- $ROOT/protocols/trading-risk-gate.md"
 printf '%s\n' "- $ROOT/protocols/visual-verification-gate.md"
 printf '%s\n' "- $ROOT/protocols/verification-loop.md"
 printf '%s\n' "- $ROOT/protocols/zenith-execution-gate.md"
+printf '%s\n' "- $ROOT/KIRA-LANDING.md"
 printf '%s\n' "- $ROOT/skills/academic-delivery/SKILL.md"
 printf '%s\n' "- $ROOT/skills/atomic-execution/SKILL.md"
 printf '%s\n' "- $ROOT/skills/brand-foundations/SKILL.md"
