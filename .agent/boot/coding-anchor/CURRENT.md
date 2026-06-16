@@ -2,11 +2,18 @@
 
 Date: 2026-06-14
 
-This packet was created as an Athena-local adaptation inside:
+This packet was created as a Kira-local adaptation inside:
 
 `.agent/boot/coding-anchor`
 
 It does not depend on private CodeX room files as live instructions.
+
+## Rename Decisions
+
+- Preferred branch name for this packet line: `codex/kira-coding-anchor-boot`.
+- Keep executable and file paths under `.agent/boot/coding-anchor/` stable for
+  this pass; do not rush a path-level rename.
+- Local folder rename can be handled later as a separate, low-risk cleanup.
 
 The packet includes a small room brain:
 
@@ -28,7 +35,7 @@ Use `bin/athena-coding-anchor-doctor` after edits to this packet.
 Use `bin/athena-coding-anchor-brief` for a compact re-entry snapshot.
 
 Use `bin/athena-coding-anchor-search "<topic>" --limit 5` before choosing
-Athena skills, workflows, protocols, or architecture surfaces.
+Kira skills, workflows, protocols, or architecture surfaces.
 
 Use `SKILL-ROUTER.md` to decide whether a source skill is adopted, adopt-soon,
 usable from source, or needs repair.
@@ -111,4 +118,4 @@ scope change, or pricing pushback needs pricing boundaries.
 ## Known Source Gift
 
 The design was informed by the live CodeX Coding Anchor packet, then translated
-into Athena-local, public-safe behavior. See `SOURCE.md`.
+into Kira-local, public-safe behavior. See `SOURCE.md`.

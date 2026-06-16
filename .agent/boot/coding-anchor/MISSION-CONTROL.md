@@ -4,7 +4,7 @@ Last updated: 2026-06-14
 
 ## Active Mission
 
-Install the best parts of the CodeX Coding Anchor feel as an Athena-local boot
+Install the best parts of the CodeX Coding Anchor feel as a Kira-local boot
 packet:
 
 - crisp identity
@@ -41,7 +41,7 @@ packet:
 
 ## Current Status
 
-- Athena has a public framework workspace with existing workflows and docs.
+- Kira has a public framework workspace with existing workflows and docs.
 - `/start` now has a concrete boot packet to load.
 - `semantic-search` is adopted locally with a corrected wrapper around
   `.agent/scripts/smart_search.py`.
@@ -61,7 +61,7 @@ packet:
 - `visual-verify-ui` is adopted locally as the default visual QA gate for
   frontend, layout, and screenshot-backed verification.
 - `context-compactor` is adopted locally as the default continuation handoff
-  skill for long Athena Coding Anchor sessions.
+  skill for long Kira Coding Anchor sessions.
 - `deep-research-loop` is adopted locally as the default multi-source research
   skill for external/current facts.
 - `decision-journal` is adopted locally as the default decision and
@@ -101,8 +101,8 @@ packet:
 
 ## Next Moves
 
-1. Use this packet on the next serious Athena coding mission.
-2. Search Athena context with `bin/athena-coding-anchor-search` before choosing
+1. Use this packet on the next serious Kira coding mission.
+2. Search Kira context with `bin/athena-coding-anchor-search` before choosing
    skills or protocols for broad repo work.
 3. Use `bin/athena-coding-anchor-spec` before unclear or multi-file feature
    work.
@@ -156,7 +156,7 @@ packet:
 27. Create a mission note with `bin/athena-coding-anchor-mission` when a project
    effort needs a durable local handhold.
 28. Use the truth log for verified claims.
-29. Keep private CodeX room material out of Athena unless Stephen explicitly
+29. Keep private CodeX room material out of Kira unless Stephen explicitly
    asks for a scoped adaptation pass.
 
 ## Definition Of Good

@@ -5,7 +5,10 @@ Adapted on 2026-06-14 from Stephen's live CodeX Coding Anchor packet:
 `/Users/stephengodman/CodeX/Coding Anchor Files/codex-coding-anchor`
 
 This file is provenance only. The source path is not a runtime dependency for
-Athena.
+Kira.
+
+Historical provenance note: the upstream public framework lineage is
+`Athena-Public`; keep that naming where historically accurate.
 
 ## Adaptation Boundary
 
@@ -18,7 +21,7 @@ Athena.
 
 ## Intent
 
-Athena should inherit the useful operating spine:
+Kira should inherit the useful operating spine:
 
 - land in current truth
 - make the smallest useful move
