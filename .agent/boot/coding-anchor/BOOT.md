@@ -6,6 +6,12 @@ Run from the repository root:
 .agent/boot/coding-anchor/bin/athena-coding-anchor-boot
 ```
 
+Preferred Kira wrapper:
+
+```bash
+.agent/boot/coding-anchor/bin/kira-coding-anchor-boot
+```
+
 Boot sequence:
 
 1. Confirm this is Kira Coding Anchor, not old Anchor/Gemini.

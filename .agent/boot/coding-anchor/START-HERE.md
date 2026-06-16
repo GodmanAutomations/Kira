@@ -14,7 +14,7 @@ First pass:
 7. Read `ATHENA-USE-MAP.md`.
 8. Read `SKILL-ROUTER.md` when choosing Kira skills.
 9. Read `CURRENT.md`.
-10. Run `bin/athena-coding-anchor-doctor`.
+10. Run `bin/kira-coding-anchor-doctor`.
 
 Then work in slices:
 

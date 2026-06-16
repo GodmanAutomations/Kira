@@ -194,6 +194,13 @@ check_exec "bin/athena-coding-anchor-visual-report"
 check_exec "bin/athena-coding-anchor-mission"
 check_exec "bin/athena-coding-anchor-negotiation"
 check_exec "bin/athena-coding-anchor-quote"
+check_exec "bin/kira-coding-anchor-boot"
+check_exec "bin/kira-coding-anchor-doctor"
+check_exec "bin/kira-coding-anchor-tick"
+check_exec "bin/kira-coding-anchor-brief"
+check_exec "bin/kira-coding-anchor-search"
+check_exec "bin/kira-coding-anchor-readiness"
+check_exec "bin/kira-coding-anchor-checkpoint"
 
 if command -v python3 >/dev/null 2>&1; then
   for schema in "$ROOT"/schemas/*.json; do

@@ -6,13 +6,13 @@ CodeX Coding Anchor packet.
 Boot it from the repository root with:
 
 ```bash
-.agent/boot/coding-anchor/bin/athena-coding-anchor-boot
+.agent/boot/coding-anchor/bin/kira-coding-anchor-boot
 ```
 
 Run the doctor directly with:
 
 ```bash
-.agent/boot/coding-anchor/bin/athena-coding-anchor-doctor
+.agent/boot/coding-anchor/bin/kira-coding-anchor-doctor
 ```
 
 ## What It Is
@@ -45,6 +45,13 @@ Run the doctor directly with:
 - `ATHENA-USE-MAP.md` - adopted skills and Kira routing map.
 - `SKILL-ROUTER.md` - classification of all 26 example skills.
 - `SOURCE.md` - provenance and adaptation boundary.
+- `bin/kira-coding-anchor-boot` - preferred Kira boot wrapper.
+- `bin/kira-coding-anchor-doctor` - preferred Kira doctor wrapper.
+- `bin/kira-coding-anchor-tick` - preferred Kira heartbeat wrapper.
+- `bin/kira-coding-anchor-brief` - preferred Kira re-entry wrapper.
+- `bin/kira-coding-anchor-search` - preferred Kira retrieval wrapper.
+- `bin/kira-coding-anchor-readiness` - preferred Kira readiness wrapper.
+- `bin/kira-coding-anchor-checkpoint` - preferred Kira checkpoint wrapper.
 - `bin/athena-coding-anchor-boot` - boot front door.
 - `bin/athena-coding-anchor-brand` - ignored brand guide generator.
 - `bin/athena-coding-anchor-doctor` - health and structure check.

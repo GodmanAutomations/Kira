@@ -16,8 +16,8 @@ description: Boot the Kira system and load context
 - [ ] Load `.agent/boot/coding-anchor/AUTONOMY-CONTRACT.md` — authority and stop/ask gates
 - [ ] Load `.agent/boot/coding-anchor/CURRENT.md` — current verified boot state
 - [ ] Load `.agent/boot/coding-anchor/MISSION-CONTROL.md` and `.agent/boot/coding-anchor/OPEN-LOOPS.md`
-- [ ] Run `.agent/boot/coding-anchor/bin/athena-coding-anchor-doctor`
-- [ ] Record heartbeat with `.agent/boot/coding-anchor/bin/athena-coding-anchor-tick`
+- [ ] Run `.agent/boot/coding-anchor/bin/kira-coding-anchor-doctor`
+- [ ] Record heartbeat with `.agent/boot/coding-anchor/bin/kira-coding-anchor-tick`
 - [ ] Load `.context/project_state.md` and `.context/CANONICAL.md` when the task needs broader Kira state
 
 **Confirm**: "Kira Coding Anchor boot complete. Boot packet loaded, doctor checked, heartbeat recorded."

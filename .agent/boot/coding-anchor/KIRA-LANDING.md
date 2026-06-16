@@ -11,9 +11,9 @@ This is the current landing state for the Kira Coding Anchor boot packet.
   `/Users/stephengodman/000_AI/agent-frameworks/Athena-Public-codex-boot`
 - Boot packet root: `.agent/boot/coding-anchor/`
 - Boot command:
-  `.agent/boot/coding-anchor/bin/athena-coding-anchor-boot`
+  `.agent/boot/coding-anchor/bin/kira-coding-anchor-boot`
 - Doctor command:
-  `.agent/boot/coding-anchor/bin/athena-coding-anchor-doctor`
+  `.agent/boot/coding-anchor/bin/kira-coding-anchor-doctor`
 
 ## Naming Decisions
 
@@ -21,7 +21,9 @@ This is the current landing state for the Kira Coding Anchor boot packet.
 - `Athena-Public` remains historical provenance and may appear in source
   paths, upstream lineage notes, and the current worktree path.
 - Keep `ATHENA-USE-MAP.md` and `athena-coding-anchor-*` helper names stable
-  for now. They are compatibility names, not identity claims.
+  for now. They are compatibility targets, not identity claims.
+- Prefer `kira-coding-anchor-*` wrappers for human-facing boot, doctor,
+  search, readiness, checkpoint, brief, and heartbeat work.
 - Keep the old remote branch `codex/athena-coding-anchor-boot` for now as a
   compatibility pointer. Do not delete it until downstream references are
   checked.
@@ -39,7 +41,7 @@ This is the current landing state for the Kira Coding Anchor boot packet.
 ## Safe Next Moves
 
 1. Use the packet on real Kira work before renaming paths or helpers.
-2. If renaming helpers, add compatibility wrappers first.
+2. If renaming more helpers, add compatibility wrappers first.
 3. If deleting old remote branches, confirm no active agents, automations, or
    docs still reference them.
 4. If renaming the local worktree folder, close running sessions that depend on
@@ -51,4 +53,3 @@ This is the current landing state for the Kira Coding Anchor boot packet.
 - Do not rename every `athena-coding-anchor-*` helper in one unverified sweep.
 - Do not treat the source CodeX packet as a runtime dependency.
 - Do not import private CodeX room state into Kira.
-

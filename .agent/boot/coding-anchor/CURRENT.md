@@ -29,16 +29,16 @@ The packet includes a small room brain:
 
 ## Current Safe Move
 
-Use `bin/athena-coding-anchor-boot` when Stephen wants this mode.
+Use `bin/kira-coding-anchor-boot` when Stephen wants this mode.
 
-Use `bin/athena-coding-anchor-doctor` after edits to this packet.
+Use `bin/kira-coding-anchor-doctor` after edits to this packet.
 
-Use `bin/athena-coding-anchor-brief` for a compact re-entry snapshot.
+Use `bin/kira-coding-anchor-brief` for a compact re-entry snapshot.
 
 Read `KIRA-LANDING.md` before renaming branches, helper scripts, worktree
 paths, remotes, or compatibility surfaces.
 
-Use `bin/athena-coding-anchor-search "<topic>" --limit 5` before choosing
+Use `bin/kira-coding-anchor-search "<topic>" --limit 5` before choosing
 Kira skills, workflows, protocols, or architecture surfaces.
 
 Use `SKILL-ROUTER.md` to decide whether a source skill is adopted, adopt-soon,
@@ -53,7 +53,7 @@ refactor work that needs a bill of materials.
 Use `bin/athena-coding-anchor-red-team "<artifact>"` before declaring a
 significant boot, docs, code, or release artifact ready.
 
-Use `bin/athena-coding-anchor-checkpoint "<scope>"` after a verified durable
+Use `bin/kira-coding-anchor-checkpoint "<scope>"` after a verified durable
 slice so Stephen does not have to remember the word `commit`.
 
 Use `bin/athena-coding-anchor-task "<task name>"` when the next slice needs an
@@ -106,7 +106,7 @@ Use `bin/athena-coding-anchor-deliverable "<deliverable>"` when a report,
 essay, deck, proposal, assignment, capstone, or client document needs a formal
 delivery plan and red-team-before-delivery gate.
 
-Use `bin/athena-coding-anchor-readiness "<scope>"` before checkpointing,
+Use `bin/kira-coding-anchor-readiness "<scope>"` before checkpointing,
 publishing, or handing off a long boot-packet run.
 
 Use `bin/athena-coding-anchor-circuit-breaker "<domain>"` when repeated
