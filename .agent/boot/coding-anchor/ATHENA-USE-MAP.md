@@ -33,6 +33,19 @@ Verified on 2026-06-14:
 | Preserve long-session state | `skills/context-compactor/SKILL.md` + `bin/athena-coding-anchor-compact` | Creates a compact continuation handoff without rewriting Athena's public memory bank. |
 | Research current or external facts | `skills/deep-research-loop/SKILL.md` + `bin/athena-coding-anchor-research-brief` | Cross-checks claims, sources, confidence, and gaps before acting. |
 | Record meaningful choices | `skills/decision-journal/SKILL.md` + `bin/athena-coding-anchor-decision` | Captures alternatives, assumptions, confidence, and post-mortem structure. |
+| Score multi-factor choices | `skills/mcda-solver/SKILL.md` + `bin/athena-coding-anchor-mcda` | Forces options, criteria, weights, sensitivity checks, and dealbreaker review. |
+| Build brand foundations | `skills/brand-foundations/SKILL.md` + `bin/athena-coding-anchor-brand` | Grounds naming, voice, positioning, value, proof, and visual direction before public work. |
+| Check distribution physics | `skills/distribution-physics/SKILL.md` + `bin/athena-coding-anchor-distribution` | Tests PMOD, channels, acquisition friction, unit economics, and Four Fits before launch work. |
+| Audit SEO surfaces | `skills/seo-auditor/SKILL.md` + `bin/athena-coding-anchor-seo-audit` | Checks metadata, headings, internal links, content gaps, indexability, and barnacle opportunities. |
+| Review trust and social contracts | `skills/consiglieri-protocol/SKILL.md` + `bin/athena-coding-anchor-trust-review` | Checks exit, pressure, information leakage, blast radius, incentives, and Adult-to-Adult response shape. |
+| Gate repeated risk | `skills/trading-risk-gate/SKILL.md` + `bin/athena-coding-anchor-risk-gate` | Reviews ruin classes, ergodicity, survival probability, and WR/RR assumptions before repeated exposure. |
+| Plan execution constraints | `skills/zenith-execution/SKILL.md` + `bin/athena-coding-anchor-execution-plan` | Defines Half-Kelly, invalidation, simulation, drawdown, and pause rules after the risk gate passes. |
+| Analyze data and experiments | `skills/statistical-analysis/SKILL.md` + `bin/athena-coding-anchor-statistics` | Audits data quality, assumptions, tests, effect sizes, confidence, and practical meaning. |
+| Review repeated-action performance | `skills/trade-journal-analyzer/SKILL.md` + `bin/athena-coding-anchor-performance-review` | Classifies records as noise, execution gap, structural flaw, or edge decay before changing the system. |
+| Check readiness before save or handoff | `protocols/readiness-checkpoint-gate.md` + `bin/athena-coding-anchor-readiness` | Summarizes adopted skills, helpers, ignored generated artifacts, source-only boundaries, and git state. |
+| Pause damaging loops | `skills/circuit-breaker/SKILL.md` + `bin/athena-coding-anchor-circuit-breaker` | Stops repeated failures, fatigue, and compulsive retrying before damage compounds. |
+| Protect negotiation leverage | `skills/power-inversion/SKILL.md` + `bin/athena-coding-anchor-negotiation` | Maps BATNA, protects assets, and requires commitment before releasing value. |
+| Prepare client quotes | `skills/client-pricing/SKILL.md` + `bin/athena-coding-anchor-quote` | Defines scope, anchor, floor, payment terms, and pushback boundaries. |
 | Keep work bounded and verifiable | `protocols/autonomous-work-loop.md` + `protocols/verification-loop.md` | Already part of Coding Anchor boot. |
 | Choose future skills | `SKILL-ROUTER.md` plus `examples/skills/*/SKILL.md` | Prevents copying the whole skill library blindly. |
 
@@ -40,7 +53,7 @@ Verified on 2026-06-14:
 
 | Skill | Path | Adopt When |
 | :--- | :--- | :--- |
-| `circuit-breaker` | `examples/skills/quality/circuit-breaker/SKILL.md` | Useful later as a fatigue/losing-streak stop rule for long autonomous lanes. |
+| `academic-delivery` | `examples/skills/workflow/academic-delivery/SKILL.md` | Keep source-only unless Kira needs formal document/work-product delivery gates. |
 
 ## Routing Rule
 
@@ -118,3 +131,97 @@ When making a meaningful decision:
    call.
 3. Create a note with `bin/athena-coding-anchor-decision` when the rationale
    should survive the session.
+
+When scoring a multi-factor choice:
+
+1. Use `skills/mcda-solver/SKILL.md`.
+2. Create a matrix with `bin/athena-coding-anchor-mcda`.
+3. Check weights, dealbreakers, and sensitivity before recommending.
+
+When building brand foundations:
+
+1. Use `skills/brand-foundations/SKILL.md`.
+2. Create a guide with `bin/athena-coding-anchor-brand`.
+3. Define purpose, enemy, audience, voice, value, proof, visual direction,
+   open questions, and next slice.
+
+When checking distribution physics:
+
+1. Use `skills/distribution-physics/SKILL.md`.
+2. Create a plan with `bin/athena-coding-anchor-distribution`.
+3. Check PMOD, primary and backup channels, channel tax, CAC, LTV, margin,
+   Four Fits, one experiment, and kill criteria.
+
+When auditing SEO:
+
+1. Use `skills/seo-auditor/SKILL.md`.
+2. Create a triage note with `bin/athena-coding-anchor-seo-audit`.
+3. Check search intent, metadata, heading structure, internal links, content
+   gaps, technical blockers, barnacle opportunities, prioritized fixes, and
+   verification.
+
+When reviewing trust and social contracts:
+
+1. Use `skills/consiglieri-protocol/SKILL.md`.
+2. Create a trust review with `bin/athena-coding-anchor-trust-review`.
+3. Check Pryce Test, Exit Test, information security, time pressure, blast
+   radius, counterparty incentives, Vibe Veto signals, Adult-to-Adult rewrite,
+   and proceed/pause/exit decision.
+
+When gating repeated risk:
+
+1. Use `skills/trading-risk-gate/SKILL.md`.
+2. Create a review with `bin/athena-coding-anchor-risk-gate`.
+3. Check ruin classes, per-trial ruin probability, repeated-trial survival,
+   WR/RR assumptions, variance drag, and pass/warn/veto/sandbox verdict.
+
+When planning execution constraints:
+
+1. Use `skills/zenith-execution/SKILL.md`.
+2. Create a plan with `bin/athena-coding-anchor-execution-plan`.
+3. Confirm risk gate pass, define Half-Kelly or lower sizing, structural
+   invalidation, sequence simulation, drawdown thresholds, pause rules, and
+   execute/reduce/wait/abstain verdict.
+
+When analyzing data or experiments:
+
+1. Use `skills/statistical-analysis/SKILL.md`.
+2. Create a plan with `bin/athena-coding-anchor-statistics`.
+3. Audit data quality, variable types, missingness, assumptions, test choice,
+   effect sizes, confidence intervals where applicable, practical meaning, and
+   limitations.
+
+When reviewing repeated-action performance:
+
+1. Use `skills/trade-journal-analyzer/SKILL.md`.
+2. Create a review with `bin/athena-coding-anchor-performance-review`.
+3. Classify the record as noise, execution gap, structural flaw, or edge decay
+   before changing the system.
+
+Before checkpointing, publishing, or handing off a long boot-packet run:
+
+1. Use `protocols/readiness-checkpoint-gate.md`.
+2. Create a readiness report with `bin/athena-coding-anchor-readiness`.
+3. Confirm doctor, syntax checks, schemas, stale/private scan, ignored
+   artifacts, and intentional git state before saving or publishing.
+
+When a loop starts going bad:
+
+1. Use `skills/circuit-breaker/SKILL.md`.
+2. Stop the lane, name red flags, and create an AAR with
+   `bin/athena-coding-anchor-circuit-breaker` when useful.
+3. Resume only with a smaller next action, better input, or Stephen direction.
+
+When negotiating or protecting a deal:
+
+1. Use `skills/power-inversion/SKILL.md`.
+2. Create a prep note with `bin/athena-coding-anchor-negotiation`.
+3. Secure commitment before releasing valuable work, information, access, or
+   strategy.
+
+When preparing a quote:
+
+1. Use `skills/client-pricing/SKILL.md`.
+2. Create a quote prep with `bin/athena-coding-anchor-quote`.
+3. Define scope, exclusions, anchor, floor, payment terms, and pushback plan
+   before sending or accepting price changes.

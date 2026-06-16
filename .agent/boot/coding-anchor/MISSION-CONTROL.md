@@ -18,6 +18,19 @@ packet:
 - context handoff compaction
 - source-backed research briefs
 - decision journaling
+- weighted decision matrices
+- brand foundations and visual-direction prep
+- distribution physics and channel viability
+- SEO triage for public/search-dependent surfaces
+- trust and social-contract pre-flight review
+- ruin, ergodicity, and sequence-risk review
+- sizing, invalidation, and execution-constraint planning
+- statistical analysis and effect-size reporting
+- post-action analytics and edge review
+- readiness/checkpoint reports before save, publish, or handoff
+- circuit breakers for damaging loops
+- negotiation leverage protection
+- client pricing boundaries
 - diagnostic refactor scans
 - adversarial review gates
 - atomic execution slices
@@ -52,6 +65,32 @@ packet:
   skill for external/current facts.
 - `decision-journal` is adopted locally as the default decision and
   post-mortem note skill.
+- `mcda-solver` is adopted locally as the default weighted decision matrix
+  skill.
+- `brand-foundations` is adopted locally as the default brand guide, voice,
+  positioning, and visual-direction skill.
+- `distribution-physics` is adopted locally as the default go-to-market,
+  channel fit, and distribution viability skill.
+- `seo-auditor` is adopted locally as the default technical SEO and search
+  visibility triage skill.
+- `consiglieri-protocol` is adopted locally as the default trust, safety, and
+  social-contract review skill.
+- `trading-risk-gate` is adopted locally as the default ruin, ergodicity, and
+  sequence-risk review skill.
+- `zenith-execution` is adopted locally as the default sizing, invalidation,
+  simulation, and execution-constraint planning skill.
+- `statistical-analysis` is adopted locally as the default data audit,
+  assumption-checking, and effect-size reporting skill.
+- `trade-journal-analyzer` is adopted locally as the default post-action
+  analytics, drawdown classification, and edge review skill.
+- `readiness-checkpoint-gate.md` and `athena-coding-anchor-readiness` now
+  provide a compact current-state report before save, publish, or handoff.
+- `circuit-breaker` is adopted locally as the default pause/AAR skill for
+  repeated failures, fatigue, or compulsive retrying.
+- `power-inversion` is adopted locally as the default negotiation and
+  commitment-protection skill.
+- `client-pricing` is adopted locally as the default quote, scope, anchor,
+  floor, and pricing-pushback skill.
 - `SKILL-ROUTER.md` now classifies the 26 example skills and marks stale-path
   hazards.
 - The packet should be treated as posture and verification machinery, not as
@@ -82,10 +121,36 @@ packet:
    research.
 12. Use `bin/athena-coding-anchor-decision` for meaningful decisions or
    post-mortem handholds.
-13. Create a mission note with `bin/athena-coding-anchor-mission` when a project
+13. Use `bin/athena-coding-anchor-mcda` when a choice has multiple options and
+   weighted criteria.
+14. Use `bin/athena-coding-anchor-brand` when naming, voice, positioning, or
+   visual identity work needs a grounded guide.
+15. Use `bin/athena-coding-anchor-distribution` when launch, acquisition, or
+   channel strategy needs a PMOD and Four Fits check.
+16. Use `bin/athena-coding-anchor-seo-audit` when a public page, docs surface,
+   article, or landing page needs SEO triage.
+17. Use `bin/athena-coding-anchor-trust-review` when a meeting, partnership,
+   collaboration, or loaded message needs a social-contract safety check.
+18. Use `bin/athena-coding-anchor-risk-gate` when repeated exposure, leverage,
+   sequence risk, or absorbing barriers need a ruin-first review.
+19. Use `bin/athena-coding-anchor-execution-plan` after a risk gate passes and
+   sizing, invalidation, simulation, or pause rules are needed.
+20. Use `bin/athena-coding-anchor-statistics` when data, surveys,
+   experiments, metrics, or claims need statistical analysis planning.
+21. Use `bin/athena-coding-anchor-performance-review` when repeated actions
+   need post-action analytics and edge review.
+22. Use `bin/athena-coding-anchor-readiness` before checkpointing, publishing,
+   or handing off a long boot-packet run.
+23. Use `bin/athena-coding-anchor-circuit-breaker` when repeated failure or
+   fatigue makes continuing risky.
+24. Use `bin/athena-coding-anchor-negotiation` before releasing leverage in a
+   deal, quote, partnership, or information exchange.
+25. Use `bin/athena-coding-anchor-quote` before sending or revising client
+   pricing.
+26. Create a mission note with `bin/athena-coding-anchor-mission` when a project
    effort needs a durable local handhold.
-14. Use the truth log for verified claims.
-15. Keep private CodeX room material out of Athena unless Stephen explicitly
+27. Use the truth log for verified claims.
+28. Keep private CodeX room material out of Athena unless Stephen explicitly
    asks for a scoped adaptation pass.
 
 ## Definition Of Good

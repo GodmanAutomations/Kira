@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+OUT_DIR="$ROOT/brand-guides"
+mkdir -p "$OUT_DIR"
+
+BRAND="${*:-brand}"
+SLUG="$(printf '%s' "$BRAND" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//; s/-$//; s/--*/-/g')"
+if [ -z "$SLUG" ]; then
+  SLUG="brand"
+fi
+
+STAMP="$(date '+%Y%m%d-%H%M%S')"
+OUT="$OUT_DIR/$STAMP-$SLUG-brand-guidelines.md"
+
+cat > "$OUT" <<MD
+# Brand Guide: $BRAND
+
+Generated: $(date '+%Y-%m-%dT%H:%M:%S%z')
+
+## Brand
+
+- Name:
+- Category:
+- Audience promise:
+- Current status:
+
+## Purpose And Enemy
+
+- Purpose:
+- Core enemy:
+- What this brand refuses:
+- What this brand protects:
+
+## Audience
+
+- Primary audience:
+- Psychographics:
+- Pain:
+- Desired transformation:
+- Buying or adoption trigger:
+
+## Voice And Archetype
+
+- Archetype:
+- Voice:
+- Tone boundaries:
+- Words to use:
+- Words to avoid:
+
+## Value Proposition
+
+- One-line proposition:
+- Why now:
+- Why this brand:
+- Primary proof:
+
+## Visual Direction
+
+- Color direction:
+- Typography direction:
+- Density / layout feel:
+- Image or icon style:
+- Anti-direction:
+
+## Do / Don't
+
+- Do:
+- Don't:
+
+## Open Questions
+
+- Question:
+- Owner:
+- Evidence needed:
+
+## Next Slice
+
+- Next creative decision:
+- Next implementation action:
+- Verification:
+MD
+
+printf '%s\n' "$OUT"

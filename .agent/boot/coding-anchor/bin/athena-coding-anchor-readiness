@@ -1,0 +1,105 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+if REPO_ROOT="$(git -C "$ROOT" rev-parse --show-toplevel 2>/dev/null)"; then
+  :
+else
+  REPO_ROOT="$(cd "$ROOT/../../.." && pwd)"
+fi
+OUT_DIR="$ROOT/readiness-reports"
+mkdir -p "$OUT_DIR"
+
+SCOPE="${1:-Athena Coding Anchor readiness}"
+STAMP="$(date '+%Y%m%d-%H%M%S')"
+SLUG="$(printf '%s' "$SCOPE" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//;s/-$//' | cut -c1-60)"
+[ -n "$SLUG" ] || SLUG="readiness"
+OUT="$OUT_DIR/$STAMP-$SLUG.md"
+
+branch="$(git -C "$REPO_ROOT" branch --show-current 2>/dev/null || printf 'unknown')"
+skill_count="$(find "$ROOT/skills" -mindepth 2 -maxdepth 2 -name SKILL.md -type f | wc -l | tr -d ' ')"
+protocol_count="$(find "$ROOT/protocols" -maxdepth 1 -name '*.md' -type f | wc -l | tr -d ' ')"
+helper_count="$(find "$ROOT/bin" -maxdepth 1 -type f -perm -111 | wc -l | tr -d ' ')"
+schema_count="$(find "$ROOT/schemas" -maxdepth 1 -name '*.json' -type f | wc -l | tr -d ' ')"
+
+runtime_dirs=(
+  brand-guides
+  circuit-breakers
+  commit-plans
+  context-handoffs
+  decisions
+  decision-matrices
+  distribution-plans
+  execution-plans
+  missions
+  negotiations
+  performance-reviews
+  quotes
+  readiness-reports
+  receipts
+  reports
+  research-briefs
+  reviews
+  risk-reviews
+  seo-audits
+  specs
+  statistical-analyses
+  tasks
+  trust-reviews
+  visual-checks
+)
+
+{
+  printf '# Athena Coding Anchor Readiness\n\n'
+  printf 'Scope: %s\n\n' "$SCOPE"
+  printf 'Generated: %s\n\n' "$(date '+%Y-%m-%dT%H:%M:%S%z')"
+  printf 'Repo: `%s`\n\n' "$REPO_ROOT"
+  printf 'Branch: `%s`\n\n' "$branch"
+
+  printf '## Coverage\n\n'
+  printf -- '- Adopted skills: %s\n' "$skill_count"
+  printf -- '- Protocol files: %s\n' "$protocol_count"
+  printf -- '- Executable helpers: %s\n' "$helper_count"
+  printf -- '- JSON schemas: %s\n\n' "$schema_count"
+
+  printf '## Adopted Skills\n\n'
+  find "$ROOT/skills" -mindepth 2 -maxdepth 2 -name SKILL.md -type f \
+    | sed "s#^$ROOT/skills/##;s#/SKILL.md##" \
+    | sort \
+    | sed 's/^/- /'
+  printf '\n\n'
+
+  printf '## Helper Scripts\n\n'
+  find "$ROOT/bin" -maxdepth 1 -type f -perm -111 \
+    | sed "s#^$ROOT/bin/##" \
+    | sort \
+    | sed 's/^/- /'
+  printf '\n\n'
+
+  printf '## Runtime Artifact Dirs\n\n'
+  for dir in "${runtime_dirs[@]}"; do
+    if [ -d "$ROOT/$dir" ]; then
+      if git -C "$REPO_ROOT" check-ignore -q "$ROOT/$dir/example.md" 2>/dev/null; then
+        printf -- '- `%s/` present, generated files ignored\n' "$dir"
+      else
+        printf -- '- `%s/` present, generated files not ignored\n' "$dir"
+      fi
+    else
+      printf -- '- `%s/` missing\n' "$dir"
+    fi
+  done
+  printf '\n'
+
+  printf '## Source Skill Boundary\n\n'
+  printf 'Keep source-only and needs-repair skills governed by `SKILL-ROUTER.md`.\n'
+  printf 'Do not import stale-path skills into boot until their paths work in this checkout.\n\n'
+
+  printf '## Git Snapshot\n\n'
+  git -C "$REPO_ROOT" status --short --branch
+  printf '\n'
+
+  printf '## Verdict\n\n'
+  printf 'Ready only after doctor, syntax checks, schema validation, stale/private scan, and intentional-file review pass.\n'
+} > "$OUT"
+
+printf '%s\n' "$OUT"

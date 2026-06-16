@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+OUT_DIR="$ROOT/seo-audits"
+mkdir -p "$OUT_DIR"
+
+TARGET="${*:-target}"
+SLUG="$(printf '%s' "$TARGET" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//; s/-$//; s/--*/-/g')"
+if [ -z "$SLUG" ]; then
+  SLUG="target"
+fi
+
+STAMP="$(date '+%Y%m%d-%H%M%S')"
+OUT="$OUT_DIR/$STAMP-$SLUG-seo-triage.md"
+
+cat > "$OUT" <<MD
+# SEO Triage: $TARGET
+
+Generated: $(date '+%Y-%m-%dT%H:%M:%S%z')
+
+## Target
+
+- URL / file:
+- Page role:
+- Audience:
+- Desired action:
+
+## Search Intent
+
+- Primary query:
+- Intent:
+- Existing authority:
+- Distribution channel:
+
+## Metadata Checks
+
+- Title:
+- Meta description:
+- Canonical URL:
+- Open Graph:
+- Twitter Card:
+- Schema needed:
+
+## Structure Checks
+
+- H1:
+- H2/H3 hierarchy:
+- Semantic sections:
+- Internal links in:
+- Internal links out:
+- URL slug:
+
+## Content Checks
+
+- Direct answer:
+- Hidden-gem insight:
+- Source-backed claims:
+- Freshness:
+- Content gaps:
+- Next step:
+
+## Technical Checks
+
+- Mobile readability:
+- Performance risk:
+- Image alt text:
+- Lazy/async images:
+- Link health:
+- Indexability blockers:
+
+## Barnacle SEO
+
+- High-authority surfaces:
+- Community/search result opportunities:
+- Repurposable asset:
+
+## Prioritized Fixes
+
+| Priority | Fix | Impact | Effort | Verification |
+| :--- | :--- | :--- | :--- | :--- |
+| P0 |  |  |  |  |
+| P1 |  |  |  |  |
+| P2 |  |  |  |  |
+
+## Open Questions
+
+- Question:
+- Evidence needed:
+
+## Next Slice
+
+- Next SEO action:
+- Verification:
+MD
+
+printf '%s\n' "$OUT"

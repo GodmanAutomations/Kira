@@ -15,6 +15,9 @@ Verified: 2026-06-14
    behavior and its paths work in this checkout.
 5. Do not invoke source skills with missing scripts, missing directories, or
    private workspace assumptions until repaired.
+6. Before checkpointing a long adoption run, use
+   `protocols/readiness-checkpoint-gate.md` and
+   `bin/athena-coding-anchor-readiness`.
 
 ## Adopted Now
 
@@ -30,29 +33,30 @@ Verified: 2026-06-14
 | `context-compactor` | `skills/context-compactor/SKILL.md` | Preserve long-session state, current branch, verification, and next slice in a compact handoff. |
 | `deep-research-loop` | `skills/deep-research-loop/SKILL.md` | Research external/current facts with source, conflict, and confidence discipline. |
 | `decision-journal` | `skills/decision-journal/SKILL.md` | Record meaningful choices, assumptions, alternatives, and post-mortem classifications. |
+| `circuit-breaker` | `skills/circuit-breaker/SKILL.md` | Pause repeated failures, fatigue, compulsive retries, or damaging autonomous loops. |
+| `mcda-solver` | `skills/mcda-solver/SKILL.md` | Score multi-factor decisions with weighted criteria, dealbreakers, and sensitivity checks. |
+| `brand-foundations` | `skills/brand-foundations/SKILL.md` | Build brand guides for naming, voice, positioning, value, proof, and visual direction. |
+| `distribution-physics` | `skills/distribution-physics/SKILL.md` | Check PMOD, channels, acquisition friction, unit economics, and Four Fits before launch work. |
+| `seo-auditor` | `skills/seo-auditor/SKILL.md` | Audit public pages for metadata, structure, internal links, content gaps, and search visibility. |
+| `consiglieri-protocol` | `skills/consiglieri-protocol/SKILL.md` | Review high-stakes meetings, partnerships, collaborations, and loaded messages for trust and safety. |
+| `trading-risk-gate` | `skills/trading-risk-gate/SKILL.md` | Review ruin classes, ergodicity, survival probability, and WR/RR assumptions before repeated exposure. |
+| `zenith-execution` | `skills/zenith-execution/SKILL.md` | Plan sizing, invalidation, simulation, drawdown, and pause rules after a risk gate passes. |
+| `statistical-analysis` | `skills/statistical-analysis/SKILL.md` | Audit data quality, assumptions, test choice, effect sizes, and practical interpretation. |
+| `trade-journal-analyzer` | `skills/trade-journal-analyzer/SKILL.md` | Review repeated-action records for noise, execution gap, structural flaw, or edge decay. |
+| `power-inversion` | `skills/power-inversion/SKILL.md` | Protect negotiation leverage with BATNA mapping and commitment devices before releasing value. |
+| `client-pricing` | `skills/client-pricing/SKILL.md` | Prepare quotes with scope, anchor, floor, payment terms, and pushback boundaries. |
 
 ## Adopt Soon
 
 | Skill | Source Path | Why Next |
 | :--- | :--- | :--- |
-| `circuit-breaker` | `examples/skills/quality/circuit-breaker/SKILL.md` | Useful as a stop rule for fatigue, losing streaks, or repeated failed autonomous loops. |
+| `academic-delivery` | `examples/skills/workflow/academic-delivery/SKILL.md` | Keep source-only unless Kira needs formal document/work-product delivery gates. |
 
 ## Use From Source
 
 | Skill | Source Path | Trigger Family |
 | :--- | :--- | :--- |
-| `brand-foundations` | `examples/skills/business/brand-foundations/SKILL.md` | Brand, positioning, voice, visual identity. |
-| `client-pricing` | `examples/skills/business/client-pricing/SKILL.md` | Quote, rate card, scope creep, commercial pricing. |
-| `distribution-physics` | `examples/skills/business/distribution-physics/SKILL.md` | Go-to-market, channels, acquisition, launch viability. |
-| `seo-auditor` | `examples/skills/business/seo-auditor/SKILL.md` | SEO audit, Lighthouse-style checks, ranking issues. |
-| `mcda-solver` | `examples/skills/decision/mcda-solver/SKILL.md` | Multi-criteria decision matrices and weighted scoring. |
-| `trading-risk-gate` | `examples/skills/decision/trading-risk-gate/SKILL.md` | Ruin checks, position risk, ergodicity, Law #1 trading gates. |
-| `zenith-execution` | `examples/skills/decision/zenith-execution/SKILL.md` | Kelly sizing, stop loss, Monte Carlo, portfolio execution. |
-| `consiglieri-protocol` | `examples/skills/quality/consiglieri-protocol/SKILL.md` | High-stakes social contracts, partnerships, trust gates. |
-| `power-inversion` | `examples/skills/quality/power-inversion/SKILL.md` | Negotiation, BATNA, leverage, commitment protection. |
-| `statistical-analysis` | `examples/skills/research/statistical-analysis/SKILL.md` | SPSS, regression, chi-square, reliability, p-values, ANOVA. |
 | `academic-delivery` | `examples/skills/workflow/academic-delivery/SKILL.md` | Essays, reports, assignments, capstones, APA/MLA work. |
-| `trade-journal-analyzer` | `examples/skills/workflow/trade-journal-analyzer/SKILL.md` | Trade journal stats, drawdown classification, edge review. |
 
 ## Needs Repair Before Use
 
@@ -74,4 +78,15 @@ Verified: 2026-06-14
   adversarial review before shipping, one verified execution slice, then
   checkpoint hygiene that does not require Stephen to say `commit`, visual
   proof for UI work, compact handoffs for long sessions, research discipline
-  for external facts, then decision notes for meaningful choices.
+  for external facts, decision notes for meaningful choices, MCDA for weighted
+  choices, circuit breakers for damaging loops, then power inversion for
+  negotiation leverage, client pricing boundaries, brand foundations for
+  naming, voice, positioning, and visual direction, then distribution physics
+  for launch and channel viability, then SEO auditor for public/search
+  surface triage, Consiglieri for trust and social-contract review, then
+  trading-risk-gate and zenith-execution as generalized repeated-risk and
+  execution-constraint gates, then statistical analysis for data and
+  experiment interpretation, then trade-journal-analyzer as generalized
+  post-action analytics.
+- Readiness is a protocol/helper lane, not a source skill adoption: it exists
+  to make checkpoint and handoff decisions concrete after many slices.

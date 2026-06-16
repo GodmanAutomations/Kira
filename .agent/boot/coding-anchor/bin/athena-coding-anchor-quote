@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+OUT_DIR="$ROOT/quotes"
+mkdir -p "$OUT_DIR"
+
+DELIVERABLE="${*:-deliverable}"
+SLUG="$(printf '%s' "$DELIVERABLE" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//; s/-$//; s/--*/-/g')"
+if [ -z "$SLUG" ]; then
+  SLUG="deliverable"
+fi
+
+STAMP="$(date '+%Y%m%d-%H%M%S')"
+OUT="$OUT_DIR/$STAMP-$SLUG-quote.md"
+
+cat > "$OUT" <<MD
+# Quote Prep: $DELIVERABLE
+
+Generated: $(date '+%Y-%m-%dT%H:%M:%S%z')
+
+## Deliverable
+
+- Client:
+- Deliverable:
+- Outcome value:
+- Deadline:
+
+## Scope
+
+- Included:
+- Excluded:
+- Assumptions:
+
+## Pricing
+
+- Anchor:
+- Target:
+- Floor:
+- Walk-away:
+- Speed premium:
+- Complexity premium:
+
+## Commitment
+
+- Deposit / retainer / SOW:
+- Payment terms:
+- What is released after commitment:
+
+## Pushback Plan
+
+- If within 20% of anchor:
+- If 40-60% of anchor:
+- If below floor:
+- Max rounds:
+
+## Quote Draft
+
+Hi [Client],
+
+Based on the scope ([deliverable], [timeline], [known constraints]):
+
+Quote: [ANCHOR]
+
+This covers:
+- [included item]
+
+Not included:
+- [excluded item]
+
+Payment:
+- [deposit/terms]
+
+Let me know if you want to proceed.
+MD
+
+printf '%s\n' "$OUT"

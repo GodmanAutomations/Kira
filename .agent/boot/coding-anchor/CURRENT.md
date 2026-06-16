@@ -63,6 +63,47 @@ current facts need source-backed research.
 Use `bin/athena-coding-anchor-decision "<decision>"` when a meaningful choice
 needs alternatives, assumptions, and review notes.
 
+Use `bin/athena-coding-anchor-mcda "<decision>"` when a choice needs weighted
+criteria, scoring, and sensitivity checks.
+
+Use `bin/athena-coding-anchor-brand "<brand>"` when naming, voice,
+positioning, or visual identity needs a compact brand guide.
+
+Use `bin/athena-coding-anchor-distribution "<product>"` when launch,
+acquisition, or channel strategy needs a compact distribution plan.
+
+Use `bin/athena-coding-anchor-seo-audit "<target>"` when a public page, docs
+surface, article, or landing page needs SEO triage.
+
+Use `bin/athena-coding-anchor-trust-review "<situation>"` when a meeting,
+partnership, collaboration, or loaded message needs a social-contract safety
+check.
+
+Use `bin/athena-coding-anchor-risk-gate "<action>"` when repeated exposure,
+leverage, sequence risk, or absorbing barriers need a ruin-first review.
+
+Use `bin/athena-coding-anchor-execution-plan "<setup>"` after a risk gate
+passes and sizing, invalidation, simulation, or pause rules are needed.
+
+Use `bin/athena-coding-anchor-statistics "<analysis>"` when data, surveys,
+experiments, metrics, or claims need statistical analysis planning.
+
+Use `bin/athena-coding-anchor-performance-review "<system>"` when repeated
+actions need post-action analytics and edge review.
+
+Use `bin/athena-coding-anchor-readiness "<scope>"` before checkpointing,
+publishing, or handing off a long boot-packet run.
+
+Use `bin/athena-coding-anchor-circuit-breaker "<domain>"` when repeated
+failures, fatigue, or compulsive retrying need a pause/AAR.
+
+Use `bin/athena-coding-anchor-negotiation "<deal>"` when a negotiation,
+quote, partnership, or information release needs BATNA and commitment
+protection.
+
+Use `bin/athena-coding-anchor-quote "<deliverable>"` when a client quote,
+scope change, or pricing pushback needs pricing boundaries.
+
 ## Known Source Gift
 
 The design was informed by the live CodeX Coding Anchor packet, then translated

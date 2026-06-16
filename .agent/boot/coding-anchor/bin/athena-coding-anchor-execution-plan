@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+OUT_DIR="$ROOT/execution-plans"
+mkdir -p "$OUT_DIR"
+
+SETUP="${*:-setup}"
+SLUG="$(printf '%s' "$SETUP" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//; s/-$//; s/--*/-/g')"
+if [ -z "$SLUG" ]; then
+  SLUG="setup"
+fi
+
+STAMP="$(date '+%Y%m%d-%H%M%S')"
+OUT="$OUT_DIR/$STAMP-$SLUG-execution-plan.md"
+
+cat > "$OUT" <<MD
+# Execution Plan: $SETUP
+
+Generated: $(date '+%Y-%m-%dT%H:%M:%S%z')
+
+## Setup
+
+- Setup:
+- Objective:
+- Risk gate passed?:
+- Capital / bankroll / capacity at risk:
+
+## Edge Inputs
+
+- Win rate:
+- Reward/risk:
+- Sample size:
+- Confidence:
+- Evidence quality:
+
+## Sizing
+
+- Full Kelly: p - (q / b) =
+- Half-Kelly:
+- Hard cap:
+- Chosen exposure:
+- Reason for chosen exposure:
+
+## Structural Invalidation
+
+- Thesis:
+- What falsifies the thesis:
+- Stop condition:
+- Ordinary noise band:
+- Stop outside noise?:
+
+## Sequence Simulation
+
+- Planned repetitions:
+- Expected drawdown:
+- 5th percentile outcome:
+- Ruin probability:
+- Pause threshold:
+- Exit threshold:
+
+## Rebalance / Pause Rules
+
+- Rebalance trigger:
+- Reduce-size trigger:
+- Stop-new-risk trigger:
+- Review cadence:
+
+## Verdict
+
+- Execute / reduce / wait / simulate more / abstain:
+- Reason:
+
+## Next Slice
+
+- Next safe action:
+- Verification:
+MD
+
+printf '%s\n' "$OUT"

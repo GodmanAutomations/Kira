@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+OUT_DIR="$ROOT/risk-reviews"
+mkdir -p "$OUT_DIR"
+
+ACTION="${*:-action}"
+SLUG="$(printf '%s' "$ACTION" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//; s/-$//; s/--*/-/g')"
+if [ -z "$SLUG" ]; then
+  SLUG="action"
+fi
+
+STAMP="$(date '+%Y%m%d-%H%M%S')"
+OUT="$OUT_DIR/$STAMP-$SLUG-risk-gate.md"
+
+cat > "$OUT" <<MD
+# Risk Gate: $ACTION
+
+Generated: $(date '+%Y-%m-%dT%H:%M:%S%z')
+
+## Proposed Action
+
+- Action:
+- Domain:
+- One-shot or repeated:
+- Planned repetitions:
+- Exposure:
+
+## Ruin Class Check
+
+| Domain | Ruin Possible? | Estimated P(Ruin) | Notes |
+| :--- | :--- | :--- | :--- |
+| Biological |  |  |  |
+| Legal |  |  |  |
+| Financial |  |  |  |
+| Social |  |  |  |
+| Psychological |  |  |  |
+
+## Ergodicity Audit
+
+- Absorbing barrier:
+- Per-trial ruin probability:
+- Trial count:
+- Survival probability: (1 - r)^n =
+- Survival threshold met?:
+
+## WR/RR Check
+
+- Win rate:
+- Reward/risk:
+- Breakeven win rate:
+- Variance drag:
+- Losing-streak tolerance:
+
+## Verdict
+
+- Pass / warn / veto / sandbox:
+- Reason:
+- Required mitigation:
+
+## Next Slice
+
+- Evidence needed:
+- Next safe action:
+- Verification:
+MD
+
+printf '%s\n' "$OUT"

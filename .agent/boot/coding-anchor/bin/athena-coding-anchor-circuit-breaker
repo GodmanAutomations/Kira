@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+OUT_DIR="$ROOT/circuit-breakers"
+mkdir -p "$OUT_DIR"
+
+DOMAIN="${*:-active lane}"
+SLUG="$(printf '%s' "$DOMAIN" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//; s/-$//; s/--*/-/g')"
+if [ -z "$SLUG" ]; then
+  SLUG="active-lane"
+fi
+
+STAMP="$(date '+%Y%m%d-%H%M%S')"
+OUT="$OUT_DIR/$STAMP-$SLUG-circuit-breaker.md"
+
+cat > "$OUT" <<MD
+# Circuit Breaker AAR: $DOMAIN
+
+Generated: $(date '+%Y-%m-%dT%H:%M:%S%z')
+
+## Domain
+
+- Domain:
+- Current lane:
+
+## Red Flags
+
+- Failed attempts:
+- Scope creep:
+- Fatigue/context signals:
+- Verification failures:
+
+## Stop Action
+
+- Immediate pause:
+- What is frozen:
+- What must not be touched:
+
+## Diagnosis
+
+- [ ] Statistical noise
+- [ ] Missing information
+- [ ] Systemic failure
+- [ ] Edge degradation
+- [ ] Scope too wide
+
+## Verdict
+
+- Resume smaller:
+- Adjust system:
+- Exit lane:
+- Ask Stephen:
+
+## Next Safe Move
+
+- One smaller action:
+MD
+
+printf '%s\n' "$OUT"

@@ -63,4 +63,83 @@ Use this file for verified claims about the Athena Coding Anchor packet.
 - Decision: adopt `decision-journal` so meaningful choices can preserve
   alternatives, assumptions, confidence, and post-mortem structure without
   overloading the truth log.
+- Verified: the source `circuit-breaker` skill referenced an old
+  `.agent/skills/protocols/safety/48-circuit-breaker-systemic.md` path; the
+  current protocol exists at
+  `examples/protocols/safety/SAF-48-circuit-breaker-systemic.md`.
+- Decision: adopt `circuit-breaker` so repeated failures, fatigue, and
+  compulsive retry loops trigger a pause/AAR instead of compounding damage.
+- Decision: adopt `mcda-solver` so multi-factor choices get options, weights,
+  sensitivity checks, and dealbreaker review before recommendations.
+- Verified: `power-inversion` references Protocol 64 and Protocol 120; Protocol
+  64 exists in this checkout as
+  `examples/protocols/decision/DEC-64-commitment-device-framework.md`, while a
+  current Protocol 120 file was not found in `examples/protocols/`.
+- Decision: adopt `power-inversion` so negotiation, quote, partnership, and
+  information-release work protects leverage with BATNA and commitment-device
+  checks.
+- Decision: adopt `client-pricing` while adapting the source skill's example
+  rates into reusable anchor/floor/scope/pushback mechanics rather than
+  hardcoded universal price truth.
+- Verified: `brand-foundations` references
+  `.context/memories/protocols/strategy/319-brand-foundations-7-blocks.md`,
+  but that file was not found in this checkout.
+- Decision: adopt `brand-foundations` from the source skill's live mechanics:
+  purpose, enemy, psychographic audience, voice, value proposition, proof,
+  visual direction, open questions, and next slice.
+- Verified: `distribution-physics` references
+  `.context/memories/protocols/business/106-distribution-physics.md`, but that
+  file was not found in this checkout.
+- Verified: current Athena distribution strategy lives in
+  `examples/protocols/strategy/STR-162-product-market-operations-fit.md` and
+  `examples/protocols/strategy/STR-526-business-viability-assessment.md`.
+- Decision: adopt `distribution-physics` as PMOD plus channel tax, CAC/LTV,
+  Four Fits, experiment, and kill-criteria mechanics, not as a dependency on
+  the stale Protocol 106 path.
+- Verified: `seo-auditor` references
+  `.context/memories/protocols/marketing/279-seo-channel-strategy.md`, but
+  that file was not found in this checkout.
+- Verified: current SEO-adjacent checks exist in
+  `docs/protocols/content/220-blog-post-gold-standard.md`,
+  `examples/protocols/content/CNT-221-high-performance-ux-design.md`, and
+  `examples/protocols/architecture/ARC-503-cognitive-clusters.md`.
+- Decision: adopt `seo-auditor` as a technical and content triage gate for
+  metadata, headings, internal links, content gaps, indexability, barnacle
+  opportunities, prioritized fixes, and verification.
+- Verified: the source `consiglieri-protocol` skill references
+  `.agent/skills/protocols/decision/329-consiglieri-protocol.md`, but the
+  current public checkout keeps the protocol at
+  `examples/protocols/decision/DEC-197-consiglieri-protocol.md`.
+- Verified: the source `consiglieri-protocol` skill references
+  `.context/memories/protocols/psychology/20-adult-adult-communication.md`,
+  but that file was not found in this checkout.
+- Decision: adopt `consiglieri-protocol` as a public-safe trust and
+  social-contract review gate, preserving Pryce Test, Exit Test, information
+  security, time pressure, blast radius, Vibe Veto, incentive read, and
+  Adult-to-Adult response mechanics without importing private/date-specific
+  source framing.
+- Verified: `trading-risk-gate` is grounded by
+  `examples/protocols/safety/SAF-001-law-of-ruin.md` and
+  `examples/protocols/decision/DEC-193-ergodicity-check.md`.
+- Decision: adopt `trading-risk-gate` as a generalized repeated-risk gate for
+  ruin classes, ergodicity, survival probability, and WR/RR assumptions; keep
+  it advisory and non-executing.
+- Verified: `zenith-execution` is grounded by the source skill and the
+  Half-Kelly / volatility-gate material in
+  `examples/protocols/decision/DEC-330-economic-expected-value.md`.
+- Decision: adopt `zenith-execution` only as an execution-constraint planning
+  layer that runs after risk-gate pass; it must not place trades, move money,
+  rebalance portfolios, or bypass a ruin veto.
+- Decision: adopt `statistical-analysis` while stripping the source skill's
+  assignment-specific context; preserve data audit, assumption checks, test
+  selection, effect sizes, confidence/uncertainty, practical interpretation,
+  and report-ready summary mechanics.
+- Decision: adopt `trade-journal-analyzer` as a generalized post-action
+  analytics gate rather than a trading-only journal reader; preserve pattern
+  extraction, planned-vs-actual gap analysis, drawdown/streak classification,
+  edge health, and circuit-breaker escalation.
+- Decision: add `readiness-checkpoint-gate.md` and
+  `athena-coding-anchor-readiness` as a consolidation lane before save,
+  publish, or handoff; readiness reports summarize adopted skills, helper
+  coverage, ignored runtime artifacts, source-only boundaries, and git state.
 - Decision: keep generated receipts and heartbeat files out of normal commits.

@@ -1,0 +1,103 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+OUT_DIR="$ROOT/trust-reviews"
+mkdir -p "$OUT_DIR"
+
+SITUATION="${*:-situation}"
+SLUG="$(printf '%s' "$SITUATION" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//; s/-$//; s/--*/-/g')"
+if [ -z "$SLUG" ]; then
+  SLUG="situation"
+fi
+
+STAMP="$(date '+%Y%m%d-%H%M%S')"
+OUT="$OUT_DIR/$STAMP-$SLUG-trust-review.md"
+
+cat > "$OUT" <<MD
+# Trust Review: $SITUATION
+
+Generated: $(date '+%Y-%m-%dT%H:%M:%S%z')
+
+## Situation
+
+- Counterparty:
+- Desired outcome:
+- Stakes:
+- Decision needed:
+
+## Pryce Test
+
+- Too neat / too frictionless:
+- Assumed mutual interest:
+- Human irrationality ignored:
+- Verdict:
+
+## Exit Test
+
+- Physical exit:
+- Digital exit:
+- Financial exit:
+- Reputation exit:
+- Hidden handcuffs:
+- Verdict:
+
+## Information Security
+
+- Already shared:
+- Should stay unsaid:
+- Exposed leverage:
+- Next safe disclosure:
+
+## Time Pressure
+
+- Stated deadline:
+- External verification:
+- Real or artificial:
+- Response:
+
+## Blast Radius
+
+- People affected:
+- Permanent record risk:
+- Domain cross-contamination:
+- Smallest safe next step:
+
+## Vibe Veto
+
+- Inconsistency:
+- Pressure:
+- Boundary testing:
+- Disproportionate anger:
+- Isolation from checks:
+- Too good / urgent / frictionless:
+- Veto triggered:
+
+## Incentive Read
+
+| Party | Optimizing For | Likely Move | Evidence |
+| :--- | :--- | :--- | :--- |
+| Stephen |  |  |  |
+| Counterparty |  |  |  |
+| Third party |  |  |  |
+
+## Adult-to-Adult Rewrite
+
+- Emotional hook:
+- Operational payload:
+- Neutral response:
+
+## Decision
+
+- Proceed / pause / narrow / require commitment / exit:
+- Conditions:
+- Verification:
+
+## Next Slice
+
+- Next action:
+- Boundary:
+- Checkpoint:
+MD
+
+printf '%s\n' "$OUT"

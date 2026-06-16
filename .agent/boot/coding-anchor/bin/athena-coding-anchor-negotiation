@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+OUT_DIR="$ROOT/negotiations"
+mkdir -p "$OUT_DIR"
+
+DEAL="${*:-negotiation}"
+SLUG="$(printf '%s' "$DEAL" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//; s/-$//; s/--*/-/g')"
+if [ -z "$SLUG" ]; then
+  SLUG="negotiation"
+fi
+
+STAMP="$(date '+%Y%m%d-%H%M%S')"
+OUT="$OUT_DIR/$STAMP-$SLUG-negotiation.md"
+
+cat > "$OUT" <<MD
+# Negotiation Prep: $DEAL
+
+Generated: $(date '+%Y-%m-%dT%H:%M:%S%z')
+
+## Deal
+
+- Counterparty:
+- Desired outcome:
+- Asset or leverage at risk:
+
+## BATNA Map
+
+- Stephen BATNA:
+- Counterparty BATNA:
+- Who can walk more easily:
+
+## Commitment Device
+
+- Required commitment before release:
+- Deposit / retainer / SOW / escrow / effort / other:
+- What is released only after commitment:
+
+## Pricing / Value Anchor
+
+- Counterparty anchor:
+- Structural value:
+- Minimum acceptable offer:
+
+## Red Flags
+
+- Information-first ask:
+- Bypass risk:
+- Ghost/non-payment risk:
+- Scope creep risk:
+
+## Next Move
+
+- Calibrated language:
+- Walk-away condition:
+- Follow-up trigger:
+MD
+
+printf '%s\n' "$OUT"

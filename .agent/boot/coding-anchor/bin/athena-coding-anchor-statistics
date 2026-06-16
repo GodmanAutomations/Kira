@@ -1,0 +1,84 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+OUT_DIR="$ROOT/statistical-analyses"
+mkdir -p "$OUT_DIR"
+
+ANALYSIS="${*:-analysis}"
+SLUG="$(printf '%s' "$ANALYSIS" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//; s/-$//; s/--*/-/g')"
+if [ -z "$SLUG" ]; then
+  SLUG="analysis"
+fi
+
+STAMP="$(date '+%Y%m%d-%H%M%S')"
+OUT="$OUT_DIR/$STAMP-$SLUG-statistical-analysis.md"
+
+cat > "$OUT" <<MD
+# Statistical Analysis Plan: $ANALYSIS
+
+Generated: $(date '+%Y-%m-%dT%H:%M:%S%z')
+
+## Research Question
+
+- Question:
+- Decision this informs:
+- Dataset:
+- Unit of observation:
+
+## Variables
+
+| Variable | Role | Type | Coding | Notes |
+| :--- | :--- | :--- | :--- | :--- |
+|  | IV / DV / control | nominal / ordinal / interval / ratio |  |  |
+
+## Data Audit
+
+- N:
+- Missing data:
+- Outliers:
+- Duplicate rows:
+- Coding issues:
+- Sample size adequacy:
+
+## Test Plan
+
+| Hypothesis | Test | Why This Test | Assumptions To Check |
+| :--- | :--- | :--- | :--- |
+| H0:  |  |  |  |
+
+## Assumption Matrix
+
+| Test | Assumption | Check Method | Pass? | Note |
+| :--- | :--- | :--- | :--- | :--- |
+|  |  |  |  |  |
+
+## Results Template
+
+| Test | Statistic | df | p-value | Effect Size | CI | Decision |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+|  |  |  |  |  |  |  |
+
+## Interpretation
+
+- Statistical statement:
+- Effect size meaning:
+- Practical meaning:
+- Limitations:
+
+## Report Shape
+
+- Introduction:
+- Methodology:
+- Results:
+- Discussion:
+- Limitations:
+- Appendix:
+
+## Next Slice
+
+- Calculation needed:
+- Verification:
+MD
+
+printf '%s\n' "$OUT"

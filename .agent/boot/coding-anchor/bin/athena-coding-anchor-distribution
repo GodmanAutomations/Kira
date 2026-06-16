@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+OUT_DIR="$ROOT/distribution-plans"
+mkdir -p "$OUT_DIR"
+
+PRODUCT="${*:-product}"
+SLUG="$(printf '%s' "$PRODUCT" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//; s/-$//; s/--*/-/g')"
+if [ -z "$SLUG" ]; then
+  SLUG="product"
+fi
+
+STAMP="$(date '+%Y%m%d-%H%M%S')"
+OUT="$OUT_DIR/$STAMP-$SLUG-distribution-plan.md"
+
+cat > "$OUT" <<MD
+# Distribution Plan: $PRODUCT
+
+Generated: $(date '+%Y-%m-%dT%H:%M:%S%z')
+
+## Product And Audience
+
+- Product / offer:
+- Audience:
+- Desired action:
+- Current proof:
+
+## PMOD Scan
+
+- Problem:
+- Market:
+- Operations:
+- Distribution:
+- Verdict:
+
+## Channel Shortlist
+
+| Channel | Why It Fits | Channel Tax | Friction | Confidence |
+| :--- | :--- | :--- | :--- | :--- |
+| Primary |  |  |  |  |
+| Backup |  |  |  |  |
+
+## Unit Economics
+
+- Price / revenue per customer:
+- Gross margin:
+- Expected CAC:
+- Expected LTV:
+- Payback window:
+- Confidence:
+
+## Four Fits
+
+| Fit | Pass? | Evidence | Failure Mode |
+| :--- | :--- | :--- | :--- |
+| Market -> Product |  |  |  |
+| Product -> Channel |  |  |  |
+| Channel -> Model |  |  |  |
+| Model -> Market |  |  |  |
+
+## Experiment
+
+- Hypothesis:
+- Smallest test:
+- Budget / time box:
+- Success criteria:
+- Kill criteria:
+
+## Open Questions
+
+- Question:
+- Evidence needed:
+
+## Next Slice
+
+- Next distribution action:
+- Verification:
+MD
+
+printf '%s\n' "$OUT"

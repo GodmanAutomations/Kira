@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+OUT_DIR="$ROOT/performance-reviews"
+mkdir -p "$OUT_DIR"
+
+SYSTEM="${*:-system}"
+SLUG="$(printf '%s' "$SYSTEM" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//; s/-$//; s/--*/-/g')"
+if [ -z "$SLUG" ]; then
+  SLUG="system"
+fi
+
+STAMP="$(date '+%Y%m%d-%H%M%S')"
+OUT="$OUT_DIR/$STAMP-$SLUG-performance-review.md"
+
+cat > "$OUT" <<MD
+# Performance Review: $SYSTEM
+
+Generated: $(date '+%Y-%m-%dT%H:%M:%S%z')
+
+## Scope
+
+- System reviewed:
+- Date range:
+- Entry count:
+- Decision this review informs:
+
+## Entry Schema
+
+- Date:
+- Setup / type / channel:
+- Planned action:
+- Actual action:
+- Outcome:
+- Notes:
+
+## Segment Performance
+
+| Segment | Entries | Wins / Successes | Losses / Failures | Rate | Avg Outcome | Note |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+|  |  |  |  |  |  |  |
+
+## Planned Vs Actual
+
+- Planned reward / cost / effort:
+- Actual reward / cost / effort:
+- Execution gap:
+- Primary drift:
+
+## Streak And Drawdown
+
+- Current streak:
+- Longest adverse streak:
+- Recovery time:
+- Recent-window trend:
+- Baseline probability:
+
+## Classification
+
+- Noise:
+- Execution gap:
+- Structural flaw:
+- Thesis-breaker:
+- Classification:
+
+## Edge Health
+
+- Healthy / decaying / critical:
+- Evidence:
+- Confidence:
+
+## Prescribed Action
+
+- Continue / reduce / quarantine / stop / gather data:
+- Circuit breaker needed?:
+- Reason:
+
+## Next Slice
+
+- Next safe action:
+- Verification:
+MD
+
+printf '%s\n' "$OUT"

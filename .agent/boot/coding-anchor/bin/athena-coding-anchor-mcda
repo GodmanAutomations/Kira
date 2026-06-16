@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+OUT_DIR="$ROOT/decision-matrices"
+mkdir -p "$OUT_DIR"
+
+DECISION="${*:-decision matrix}"
+SLUG="$(printf '%s' "$DECISION" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//; s/-$//; s/--*/-/g')"
+if [ -z "$SLUG" ]; then
+  SLUG="decision-matrix"
+fi
+
+STAMP="$(date '+%Y%m%d-%H%M%S')"
+OUT="$OUT_DIR/$STAMP-$SLUG-mcda.md"
+
+cat > "$OUT" <<MD
+# Decision Matrix: $DECISION
+
+Generated: $(date '+%Y-%m-%dT%H:%M:%S%z')
+
+## Decision Question
+
+- Question:
+
+## Options
+
+- Option A:
+- Option B:
+- Option C:
+
+## Criteria And Weights
+
+| # | Criterion | Weight | Why It Matters |
+| :--- | :--- | :--- | :--- |
+| 1 | TBD | 0% | TBD |
+| 2 | TBD | 0% | TBD |
+| 3 | TBD | 0% | TBD |
+
+Total weight: 0%
+
+## Scoring Matrix
+
+| Option | Criterion 1 | Criterion 2 | Criterion 3 | Weighted Total |
+| :--- | :--- | :--- | :--- | :--- |
+| A | TBD | TBD | TBD | TBD |
+| B | TBD | TBD | TBD | TBD |
+| C | TBD | TBD | TBD | TBD |
+
+## Sensitivity Check
+
+- Highest-weight criterion:
+- Winner changes if weight shifts by 10%:
+
+## Veto / Dealbreaker Check
+
+- Ruin or hard stop criteria:
+
+## Recommendation
+
+- Winner:
+- Key differentiator:
+- Confidence:
+MD
+
+printf '%s\n' "$OUT"
