@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+REPORT_DIR="$ROOT/reports"
+mkdir -p "$REPORT_DIR"
+
+TARGET="${1:-target}"
+SAFE_SLUG="$(printf '%s' "$TARGET" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9._-' '-' | sed 's/^-//; s/-$//')"
+if [ -z "$SAFE_SLUG" ]; then
+  SAFE_SLUG="target"
+fi
+
+STAMP="$(date '+%Y%m%d-%H%M%S')"
+FILE="$REPORT_DIR/$STAMP-$SAFE_SLUG-refactor-report.md"
+
+cat > "$FILE" <<MD
+# Refactoring And Optimization Report: $TARGET
+
+Created: $(date '+%Y-%m-%dT%H:%M:%S%z')
+
+## Summary
+
+- Est. LOC reduction: TBD
+- Complexity reduction: TBD
+- Critical issues: TBD
+
+## Issue Matrix
+
+| Issue Category | Description | Proposed Solution | Est. LOC Reduction | Complexity Impact |
+| :--- | :--- | :--- | :--- | :--- |
+| TBD | TBD | TBD | TBD | TBD |
+
+## Critical Recommendations
+
+- TBD
+
+## Risks And Regressions
+
+- TBD
+
+## Verification Plan
+
+- TBD
+MD
+
+printf '%s\n' "$FILE"

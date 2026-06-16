@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+REVIEW_DIR="$ROOT/reviews"
+mkdir -p "$REVIEW_DIR"
+
+ARTIFACT="${1:-artifact}"
+SAFE_SLUG="$(printf '%s' "$ARTIFACT" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9._-' '-' | sed 's/^-//; s/-$//')"
+if [ -z "$SAFE_SLUG" ]; then
+  SAFE_SLUG="artifact"
+fi
+
+STAMP="$(date '+%Y%m%d-%H%M%S')"
+FILE="$REVIEW_DIR/$STAMP-$SAFE_SLUG-red-team.md"
+
+cat > "$FILE" <<MD
+# Red-Team Review: $ARTIFACT
+
+Created: $(date '+%Y-%m-%dT%H:%M:%S%z')
+
+## Artifact
+
+TBD
+
+## Phase 0: Priors
+
+1. Assumed thesis: TBD
+2. Falsifier: TBD
+3. Missing perspective: TBD
+
+## Phase 1: Adversarial Lenses
+
+| Lens | Finding |
+| :--- | :--- |
+| Skeptic | TBD |
+| User | TBD |
+| Regulator | TBD |
+| Cynic | TBD |
+| Future | TBD |
+
+## Phase 2: Bias Checklist
+
+- [ ] Sycophancy
+- [ ] Cherry-picking
+- [ ] False precision
+- [ ] Complexity bias
+
+## Phase 3: Severity-Weighted Findings
+
+| Severity | Finding | Fix |
+| :--- | :--- | :--- |
+| TBD | TBD | TBD |
+
+## Phase 4: Score
+
+Score: TBD / 100
+
+## Phase 5: Uncertainty
+
+I am least confident about TBD because TBD.
+MD
+
+printf '%s\n' "$FILE"

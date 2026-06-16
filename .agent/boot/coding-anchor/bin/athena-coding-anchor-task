@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+TASK_DIR="$ROOT/tasks"
+mkdir -p "$TASK_DIR"
+
+NAME="${1:-task}"
+SAFE_SLUG="$(printf '%s' "$NAME" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9._-' '-' | sed 's/^-//; s/-$//')"
+if [ -z "$SAFE_SLUG" ]; then
+  SAFE_SLUG="task"
+fi
+
+STAMP="$(date '+%Y%m%d-%H%M%S')"
+FILE="$TASK_DIR/$STAMP-$SAFE_SLUG.xml"
+
+cat > "$FILE" <<XML
+<task type="auto">
+  <name>$NAME</name>
+  <files>TBD</files>
+  <action>TBD</action>
+  <verify>TBD</verify>
+  <done>TBD</done>
+</task>
+XML
+
+printf '%s\n' "$FILE"

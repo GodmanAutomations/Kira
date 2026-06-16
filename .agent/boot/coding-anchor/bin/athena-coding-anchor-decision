@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+OUT_DIR="$ROOT/decisions"
+mkdir -p "$OUT_DIR"
+
+DECISION="${*:-decision}"
+SLUG="$(printf '%s' "$DECISION" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//; s/-$//; s/--*/-/g')"
+if [ -z "$SLUG" ]; then
+  SLUG="decision"
+fi
+
+STAMP="$(date '+%Y%m%d-%H%M%S')"
+OUT="$OUT_DIR/$STAMP-$SLUG-decision.md"
+
+{
+  printf '# Decision Entry: %s\n\n' "$DECISION"
+  printf 'Generated: %s\n\n' "$(date '+%Y-%m-%dT%H:%M:%S%z')"
+  printf '## The Decision\n\n'
+  printf '%s\n\n' '- '
+  printf '## Alternatives\n\n'
+  printf '%s\n' '- Alternative A:'
+  printf '%s\n\n' '- Alternative B:'
+  printf '## Confidence\n\n'
+  printf '%s\n\n' '- Confidence: unknown'
+  printf '## Assumptions\n\n'
+  printf '%s\n' '- '
+  printf '%s\n\n' '- '
+  printf '## What Would Change This\n\n'
+  printf '%s\n\n' '- Observable evidence:'
+  printf '## Expected Outcome\n\n'
+  printf '%s\n' '- Best case:'
+  printf '%s\n' '- Most likely:'
+  printf '%s\n\n' '- Worst case:'
+  printf '## Review Notes\n\n'
+  printf '%s\n' '- Review date or trigger:'
+} > "$OUT"
+
+printf '%s\n' "$OUT"

@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+REPO_ROOT="$(git -C "$ROOT" rev-parse --show-toplevel)"
+OUT_DIR="$ROOT/commit-plans"
+mkdir -p "$OUT_DIR"
+
+TOPIC="${*:-current diff}"
+SLUG="$(printf '%s' "$TOPIC" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//; s/-$//; s/--*/-/g')"
+if [ -z "$SLUG" ]; then
+  SLUG="current-diff"
+fi
+
+STAMP="$(date '+%Y%m%d-%H%M%S')"
+OUT="$OUT_DIR/$STAMP-$SLUG-commit-plan.md"
+
+{
+  printf '# Checkpoint Plan: %s\n\n' "$TOPIC"
+  printf 'Generated: %s\n\n' "$(date '+%Y-%m-%dT%H:%M:%S%z')"
+
+  printf '## Branch\n\n'
+  git -C "$REPO_ROOT" status --short --branch
+  printf '\n'
+
+  printf '## Diff Stat\n\n'
+  git -C "$REPO_ROOT" diff --stat || true
+  printf '\n'
+
+  printf '## Changed Files\n\n'
+  git -C "$REPO_ROOT" status --short
+  printf '\n'
+
+  printf '## Suggested Atomic Checkpoints\n\n'
+  printf '%s\n' '- Unit 1: group one feature, fix, docs change, or chore at a time.'
+  printf '%s\n' '- Keep generated runtime files out of the staged set.'
+  printf '%s\n\n' '- If unrelated work appears, leave it unstaged and name it in the report.'
+
+  printf '## Verification Gate\n\n'
+  printf '%s\n' '- Run the smallest meaningful check for the files being staged.'
+  printf '%s\n\n' '- For this boot packet, prefer doctor, script syntax checks, JSON validation, stale/private scan, and `git diff --check`.'
+
+  printf '## Commit Message Candidates\n\n'
+  printf '%s\n' '- feat(coding-anchor): add <specific capability>'
+  printf '%s\n' '- docs(coding-anchor): clarify <specific surface>'
+  printf '%s\n\n' '- chore(coding-anchor): tighten <specific maintenance surface>'
+
+  printf '## Checkpoint Boundary\n\n'
+  printf '%s\n' '- Do not require Stephen to say `commit`; listen for checkpoint/save/lock-in intent.'
+  printf '%s\n' '- Stage only intentional files for the current unit.'
+  printf '%s\n' '- Report remaining unstaged or untracked files after the commit.'
+} > "$OUT"
+
+printf '%s\n' "$OUT"

@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+OUT_DIR="$ROOT/visual-checks"
+mkdir -p "$OUT_DIR"
+
+TARGET="${*:-ui surface}"
+SLUG="$(printf '%s' "$TARGET" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//; s/-$//; s/--*/-/g')"
+if [ -z "$SLUG" ]; then
+  SLUG="ui-surface"
+fi
+
+STAMP="$(date '+%Y%m%d-%H%M%S')"
+OUT="$OUT_DIR/$STAMP-$SLUG-visual-report.md"
+
+{
+  printf '# Visual Verification Report: %s\n\n' "$TARGET"
+  printf 'Generated: %s\n\n' "$(date '+%Y-%m-%dT%H:%M:%S%z')"
+  printf '## Target\n\n'
+  printf '%s\n' '- URL or artifact:'
+  printf '%s\n' '- Route/component:'
+  printf '%s\n\n' '- State inspected:'
+  printf '## Viewports\n\n'
+  printf '%s\n' '- Desktop: not checked yet'
+  printf '%s\n' '- Mobile: not checked yet'
+  printf '%s\n\n' '- Tablet: optional'
+  printf '## Evidence\n\n'
+  printf '%s\n' '- Screenshot paths or browser notes:'
+  printf '%s\n\n' '- Console/network notes:'
+  printf '## Findings\n\n'
+  printf '%s\n' '- Pass/fail: pending visual inspection'
+  printf '%s\n\n' '- Defects:'
+  printf '## Next Slice\n\n'
+  printf '%s\n' '- Convert any defect into one atomic execution task.'
+} > "$OUT"
+
+printf '%s\n' "$OUT"

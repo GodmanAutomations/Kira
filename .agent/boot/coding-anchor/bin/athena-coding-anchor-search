@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+REPO_ROOT="$(cd "$ROOT/../../.." && pwd)"
+SEARCH_SCRIPT="$REPO_ROOT/.agent/scripts/smart_search.py"
+TELEMETRY_LOG="$REPO_ROOT/.agent/telemetry/retrieval_log.jsonl"
+TELEMETRY_SNAPSHOT=""
+TELEMETRY_EXISTED=0
+
+if [ "$#" -lt 1 ]; then
+  printf 'usage: %s "query" [--limit N]\n' "$(basename "$0")" >&2
+  exit 2
+fi
+
+if [ ! -f "$SEARCH_SCRIPT" ]; then
+  printf 'missing search script: %s\n' "$SEARCH_SCRIPT" >&2
+  exit 1
+fi
+
+cleanup() {
+  if [ -n "$TELEMETRY_SNAPSHOT" ] && [ -f "$TELEMETRY_SNAPSHOT" ]; then
+    if [ "$TELEMETRY_EXISTED" -eq 1 ]; then
+      cp "$TELEMETRY_SNAPSHOT" "$TELEMETRY_LOG"
+    else
+      rm -f "$TELEMETRY_LOG"
+    fi
+    rm -f "$TELEMETRY_SNAPSHOT"
+  fi
+}
+
+if [ -f "$TELEMETRY_LOG" ]; then
+  TELEMETRY_EXISTED=1
+  TELEMETRY_SNAPSHOT="$(mktemp)"
+  cp "$TELEMETRY_LOG" "$TELEMETRY_SNAPSHOT"
+elif [ -d "$(dirname "$TELEMETRY_LOG")" ]; then
+  TELEMETRY_SNAPSHOT="$(mktemp)"
+else
+  mkdir -p "$(dirname "$TELEMETRY_LOG")"
+  TELEMETRY_SNAPSHOT="$(mktemp)"
+fi
+
+trap cleanup EXIT
+
+python3 "$SEARCH_SCRIPT" "$@"

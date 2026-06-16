@@ -1,0 +1,175 @@
+#!/usr/bin/env bash
+set -u
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+RECEIPT_DIR="$ROOT/receipts"
+mkdir -p "$RECEIPT_DIR"
+
+STAMP="$(date '+%Y%m%d-%H%M%S')"
+RECEIPT="$RECEIPT_DIR/$STAMP-doctor.txt"
+STATUS=0
+
+: > "$RECEIPT"
+
+log() {
+  printf '%s\n' "$*" | tee -a "$RECEIPT"
+}
+
+pass() {
+  log "PASS $*"
+}
+
+fail() {
+  STATUS=1
+  log "FAIL $*"
+}
+
+check_file() {
+  if [ -f "$ROOT/$1" ]; then
+    pass "file $1"
+  else
+    fail "missing file $1"
+  fi
+}
+
+check_dir() {
+  if [ -d "$ROOT/$1" ]; then
+    pass "dir $1"
+  else
+    fail "missing dir $1"
+  fi
+}
+
+check_exec() {
+  if [ -x "$ROOT/$1" ]; then
+    pass "executable $1"
+  else
+    fail "not executable $1"
+  fi
+}
+
+log "Athena Coding Anchor Doctor"
+log "root: $ROOT"
+log "checked_at: $(date '+%Y-%m-%dT%H:%M:%S%z')"
+log ""
+
+check_file "AGENTS.md"
+check_file "README.md"
+check_file "SOURCE.md"
+check_file "ATHENA-USE-MAP.md"
+check_file "SKILL-ROUTER.md"
+check_file "CODING-ANCHOR-IDENTITY.md"
+check_file "AUTONOMY-CONTRACT.md"
+check_file "CAPABILITY-MAP.md"
+check_file "MISSION-CONTROL.md"
+check_file "OPEN-LOOPS.md"
+check_file "START-HERE.md"
+check_file "BOOT.md"
+check_file "CURRENT.md"
+check_file "dashboards/TRUTH-LOG.md"
+check_file "config/codex-runtime-notes.md"
+check_file "config/model-and-output-discipline.md"
+check_file "config/hook-discipline.md"
+check_file "protocols/before-tool-check.md"
+check_file "protocols/diagnostic-refactor-scan.md"
+check_file "protocols/red-team-review-gate.md"
+check_file "protocols/after-tool-check.md"
+check_file "protocols/after-response-check.md"
+check_file "protocols/atomic-execution-loop.md"
+check_file "protocols/autonomous-work-loop.md"
+check_file "protocols/context-handoff-gate.md"
+check_file "protocols/credential-prompt-handling.md"
+check_file "protocols/decision-journal-gate.md"
+check_file "protocols/mission-routing.md"
+check_file "protocols/micro-commit-gate.md"
+check_file "protocols/retrieval-led-skill-routing.md"
+check_file "protocols/research-brief-gate.md"
+check_file "protocols/spec-first-gate.md"
+check_file "protocols/structured-output-rule.md"
+check_file "protocols/visual-verification-gate.md"
+check_file "protocols/verification-loop.md"
+check_file "skills/atomic-execution/SKILL.md"
+check_file "skills/context-compactor/SKILL.md"
+check_file "skills/decision-journal/SKILL.md"
+check_file "skills/deep-research-loop/SKILL.md"
+check_file "skills/diagnostic-refactor/SKILL.md"
+check_file "skills/micro-commit/SKILL.md"
+check_file "skills/red-team-review/SKILL.md"
+check_file "skills/semantic-search/SKILL.md"
+check_file "skills/spec-driven-dev/SKILL.md"
+check_file "skills/visual-verify-ui/SKILL.md"
+check_file "schemas/tool-intent.schema.json"
+check_file "schemas/verification-receipt.schema.json"
+check_file "schemas/mission-state.schema.json"
+check_file "state/current-mission.json"
+
+check_dir "bin"
+check_dir "config"
+check_dir "commit-plans"
+check_dir "context-handoffs"
+check_dir "decisions"
+check_dir "dashboards"
+check_dir "missions"
+check_dir "protocols"
+check_dir "skills"
+check_dir "schemas"
+check_dir "receipts"
+check_dir "reports"
+check_dir "research-briefs"
+check_dir "reviews"
+check_dir "state"
+check_dir "specs"
+check_dir "tasks"
+check_dir "visual-checks"
+
+check_exec "bin/athena-coding-anchor-boot"
+check_exec "bin/athena-coding-anchor-doctor"
+check_exec "bin/athena-coding-anchor-brief"
+check_exec "bin/athena-coding-anchor-checkpoint"
+check_exec "bin/athena-coding-anchor-compact"
+check_exec "bin/athena-coding-anchor-commit-plan"
+check_exec "bin/athena-coding-anchor-decision"
+check_exec "bin/athena-coding-anchor-refactor-report"
+check_exec "bin/athena-coding-anchor-red-team"
+check_exec "bin/athena-coding-anchor-research-brief"
+check_exec "bin/athena-coding-anchor-search"
+check_exec "bin/athena-coding-anchor-spec"
+check_exec "bin/athena-coding-anchor-task"
+check_exec "bin/athena-coding-anchor-tick"
+check_exec "bin/athena-coding-anchor-visual-report"
+check_exec "bin/athena-coding-anchor-mission"
+
+if command -v python3 >/dev/null 2>&1; then
+  for schema in "$ROOT"/schemas/*.json; do
+    if python3 -m json.tool "$schema" >/dev/null 2>&1; then
+      pass "valid json $(basename "$schema")"
+    else
+      fail "invalid json $(basename "$schema")"
+    fi
+  done
+else
+  fail "python3 unavailable for json validation"
+fi
+
+if command -v rg >/dev/null 2>&1; then
+  if rg -n "I am Anchor|You are Anchor|Gemini CLI baseline|auto-load Anchor|private/JOURNAL|credentials.md|recovery-codes|launch-codex-coding-anchor" "$ROOT" \
+    --glob '!**/SOURCE.md' \
+    --glob '!**/receipts/**' \
+    --glob '!**/athena-coding-anchor-doctor' >/dev/null 2>&1; then
+    fail "stale private or old identity phrase found in packet"
+  else
+    pass "no stale private or old identity phrases in packet"
+  fi
+else
+  pass "rg unavailable; skipped stale phrase scan"
+fi
+
+log ""
+if [ "$STATUS" -eq 0 ]; then
+  log "RESULT pass"
+else
+  log "RESULT fail"
+fi
+log "receipt: $RECEIPT"
+
+exit "$STATUS"

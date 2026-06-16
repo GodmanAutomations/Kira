@@ -4,18 +4,22 @@ description: Boot the Athena system and load context
 
 # /start — Execution Script
 
-> **Latency Profile**: ULTRA-LOW (<2K tokens boot)  
-> **Philosophy**: Boot fast. Load later.
+> **Latency Profile**: LOW (<3K tokens boot)
+> **Philosophy**: Boot from verified local surfaces. Load later.
 
-## Phase 1: Instant Boot
+## Phase 1: Athena Coding Anchor Boot
 
 // turbo
 
-- [ ] Load `.framework/v8.0-alpha/modules/Core_Identity.md` — Laws, Identity, RSI
-- [ ] Load `.context/project_state.md` — Current workspace state
-- [ ] Create new session log in `session_logs/`
+- [ ] Load `.agent/boot/coding-anchor/CODING-ANCHOR-IDENTITY.md` — Athena-local execution posture
+- [ ] Load `.agent/boot/coding-anchor/AUTONOMY-CONTRACT.md` — authority and stop/ask gates
+- [ ] Load `.agent/boot/coding-anchor/CURRENT.md` — current verified boot state
+- [ ] Load `.agent/boot/coding-anchor/MISSION-CONTROL.md` and `.agent/boot/coding-anchor/OPEN-LOOPS.md`
+- [ ] Run `.agent/boot/coding-anchor/bin/athena-coding-anchor-doctor`
+- [ ] Record heartbeat with `.agent/boot/coding-anchor/bin/athena-coding-anchor-tick`
+- [ ] Load `.context/project_state.md` and `.context/CANONICAL.md` when the task needs broader Athena state
 
-**Confirm**: "⚡ Ready. (Core Identity loaded. Session XX started.)"
+**Confirm**: "Athena Coding Anchor boot complete. Boot packet loaded, doctor checked, heartbeat recorded."
 
 ## Phase 2: Triple-Lock Reminder
 

@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+OUT_DIR="$ROOT/research-briefs"
+mkdir -p "$OUT_DIR"
+
+TOPIC="${*:-research topic}"
+SLUG="$(printf '%s' "$TOPIC" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//; s/-$//; s/--*/-/g')"
+if [ -z "$SLUG" ]; then
+  SLUG="research-topic"
+fi
+
+STAMP="$(date '+%Y%m%d-%H%M%S')"
+OUT="$OUT_DIR/$STAMP-$SLUG-research-brief.md"
+
+{
+  printf '# Research Brief: %s\n\n' "$TOPIC"
+  printf 'Generated: %s\n\n' "$(date '+%Y-%m-%dT%H:%M:%S%z')"
+  printf '## Research Question\n\n'
+  printf '%s\n\n' '- What exact question is being answered?'
+  printf '## Sub-Questions\n\n'
+  printf '%s\n' '- '
+  printf '%s\n' '- '
+  printf '%s\n\n' '- '
+  printf '## Key Findings\n\n'
+  printf '%s\n\n' '- Finding: [source] [confidence]'
+  printf '## Conflicts And Gaps\n\n'
+  printf '%s\n\n' '- Single-source or stale claims:'
+  printf '## Recommendation\n\n'
+  printf '%s\n\n' '- Next action or explicit unknown:'
+  printf '## Sources\n\n'
+  printf '%s\n' '- URL, title, accessed date:'
+} > "$OUT"
+
+printf '%s\n' "$OUT"

@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+REPO_ROOT="$(git -C "$ROOT" rev-parse --show-toplevel)"
+OUT_DIR="$ROOT/context-handoffs"
+mkdir -p "$OUT_DIR"
+
+TOPIC="${*:-athena coding anchor continuation}"
+SLUG="$(printf '%s' "$TOPIC" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//; s/-$//; s/--*/-/g')"
+if [ -z "$SLUG" ]; then
+  SLUG="athena-coding-anchor-continuation"
+fi
+
+STAMP="$(date '+%Y%m%d-%H%M%S')"
+OUT="$OUT_DIR/$STAMP-$SLUG-handoff.md"
+
+{
+  printf '# Athena Coding Anchor Handoff: %s\n\n' "$TOPIC"
+  printf 'Generated: %s\n\n' "$(date '+%Y-%m-%dT%H:%M:%S%z')"
+
+  printf '## 1. Primary Request And Intent\n\n'
+  printf '%s\n\n' '- Fill in the active user intent and the latest explicit request.'
+
+  printf '## 2. Current Worktree And Branch\n\n'
+  git -C "$REPO_ROOT" status --short --branch
+  printf '\n'
+
+  printf '## 3. Files And Surfaces\n\n'
+  printf '%s\n' '- Modified or created files:'
+  printf '%s\n\n' '- Generated ignored artifacts:'
+
+  printf '## 4. Decisions And User Corrections\n\n'
+  printf '%s\n\n' '- Preserve wording preferences, boundaries, and durable decisions.'
+
+  printf '## 5. Verification\n\n'
+  printf '%s\n' '- Checks run:'
+  printf '%s\n\n' '- Checks still needed:'
+
+  printf '## 6. Errors And Fixes\n\n'
+  printf '%s\n\n' '- Note exact failures and how they were fixed.'
+
+  printf '## 7. Open Loops And Blockers\n\n'
+  printf '%s\n\n' '- List only live blockers or watch items.'
+
+  printf '## 8. Current Slice\n\n'
+  printf '%s\n\n' '- Describe the slice being worked immediately before handoff.'
+
+  printf '## 9. Next Smallest Useful Slice\n\n'
+  printf '%s\n' '- Name the next concrete action that continues the latest user request.'
+} > "$OUT"
+
+printf '%s\n' "$OUT"

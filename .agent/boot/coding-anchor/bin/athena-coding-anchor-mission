@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+MISSION_DIR="$ROOT/missions"
+mkdir -p "$MISSION_DIR"
+
+SLUG="${1:-mission}"
+SAFE_SLUG="$(printf '%s' "$SLUG" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9._-' '-' | sed 's/^-//; s/-$//')"
+if [ -z "$SAFE_SLUG" ]; then
+  SAFE_SLUG="mission"
+fi
+
+STAMP="$(date '+%Y%m%d-%H%M%S')"
+FILE="$MISSION_DIR/$STAMP-$SAFE_SLUG.md"
+
+cat > "$FILE" <<MD
+# Mission: $SLUG
+
+Created: $(date '+%Y-%m-%dT%H:%M:%S%z')
+
+## Goal
+
+TBD
+
+## Current Truth
+
+- TBD
+
+## Next Move
+
+- TBD
+
+## Verification
+
+- TBD
+MD
+
+printf '%s\n' "$FILE"

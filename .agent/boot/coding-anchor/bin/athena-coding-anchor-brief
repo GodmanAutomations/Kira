@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+printf 'Athena Coding Anchor brief\n'
+printf 'root: %s\n' "$ROOT"
+printf '\n'
+
+printf 'Operating sentence\n'
+rg -n "Find the true state" "$ROOT/CODING-ANCHOR-IDENTITY.md" || true
+printf '\n'
+
+printf 'Current\n'
+sed -n '1,90p' "$ROOT/CURRENT.md"
+printf '\n'
+
+printf 'Mission\n'
+sed -n '1,120p' "$ROOT/MISSION-CONTROL.md"
+printf '\n'
+
+printf 'Open loops\n'
+sed -n '1,120p' "$ROOT/OPEN-LOOPS.md"
+printf '\n'
+
+printf 'Athena use map\n'
+sed -n '1,120p' "$ROOT/ATHENA-USE-MAP.md"
+printf '\n'
+
+printf 'Skill router\n'
+sed -n '1,140p' "$ROOT/SKILL-ROUTER.md"

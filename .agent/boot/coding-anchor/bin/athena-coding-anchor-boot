@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+printf 'Athena Coding Anchor boot\n'
+printf 'root: %s\n' "$ROOT"
+printf '\n'
+
+printf 'Identity\n'
+sed -n '1,100p' "$ROOT/CODING-ANCHOR-IDENTITY.md"
+printf '\n'
+
+printf 'Start\n'
+sed -n '1,100p' "$ROOT/START-HERE.md"
+printf '\n'
+
+printf 'Autonomy\n'
+sed -n '1,160p' "$ROOT/AUTONOMY-CONTRACT.md"
+printf '\n'
+
+printf 'Mission Control\n'
+sed -n '1,160p' "$ROOT/MISSION-CONTROL.md"
+printf '\n'
+
+printf 'Open Loops\n'
+sed -n '1,160p' "$ROOT/OPEN-LOOPS.md"
+printf '\n'
+
+printf 'Athena Use Map\n'
+sed -n '1,160p' "$ROOT/ATHENA-USE-MAP.md"
+printf '\n'
+
+printf 'Skill Router\n'
+sed -n '1,180p' "$ROOT/SKILL-ROUTER.md"
+printf '\n'
+
+printf 'Current\n'
+sed -n '1,120p' "$ROOT/CURRENT.md"
+printf '\n'
+
+printf 'Heartbeat\n'
+"$ROOT/bin/athena-coding-anchor-tick"
+printf '\n'
+
+printf 'Doctor\n'
+"$ROOT/bin/athena-coding-anchor-doctor"
+printf '\n'
+
+printf 'Protocols loaded\n'
+printf '%s\n' "- $ROOT/protocols/before-tool-check.md"
+printf '%s\n' "- $ROOT/protocols/diagnostic-refactor-scan.md"
+printf '%s\n' "- $ROOT/protocols/red-team-review-gate.md"
+printf '%s\n' "- $ROOT/protocols/after-tool-check.md"
+printf '%s\n' "- $ROOT/protocols/after-response-check.md"
+printf '%s\n' "- $ROOT/protocols/atomic-execution-loop.md"
+printf '%s\n' "- $ROOT/protocols/autonomous-work-loop.md"
+printf '%s\n' "- $ROOT/protocols/context-handoff-gate.md"
+printf '%s\n' "- $ROOT/protocols/credential-prompt-handling.md"
+printf '%s\n' "- $ROOT/protocols/decision-journal-gate.md"
+printf '%s\n' "- $ROOT/protocols/mission-routing.md"
+printf '%s\n' "- $ROOT/protocols/micro-commit-gate.md"
+printf '%s\n' "- $ROOT/protocols/retrieval-led-skill-routing.md"
+printf '%s\n' "- $ROOT/protocols/research-brief-gate.md"
+printf '%s\n' "- $ROOT/protocols/spec-first-gate.md"
+printf '%s\n' "- $ROOT/protocols/visual-verification-gate.md"
+printf '%s\n' "- $ROOT/protocols/verification-loop.md"
+printf '%s\n' "- $ROOT/skills/atomic-execution/SKILL.md"
+printf '%s\n' "- $ROOT/skills/context-compactor/SKILL.md"
+printf '%s\n' "- $ROOT/skills/decision-journal/SKILL.md"
+printf '%s\n' "- $ROOT/skills/deep-research-loop/SKILL.md"
+printf '%s\n' "- $ROOT/skills/diagnostic-refactor/SKILL.md"
+printf '%s\n' "- $ROOT/skills/micro-commit/SKILL.md"
+printf '%s\n' "- $ROOT/skills/red-team-review/SKILL.md"
+printf '%s\n' "- $ROOT/skills/semantic-search/SKILL.md"
+printf '%s\n' "- $ROOT/skills/spec-driven-dev/SKILL.md"
+printf '%s\n' "- $ROOT/skills/visual-verify-ui/SKILL.md"
+printf '\n'
+printf 'Boot complete. Athena Coding Anchor is ready.\n'

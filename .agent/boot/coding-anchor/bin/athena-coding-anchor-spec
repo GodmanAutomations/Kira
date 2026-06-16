@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+SPEC_DIR="$ROOT/specs"
+mkdir -p "$SPEC_DIR"
+
+FEATURE="${1:-feature}"
+SAFE_SLUG="$(printf '%s' "$FEATURE" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9._-' '-' | sed 's/^-//; s/-$//')"
+if [ -z "$SAFE_SLUG" ]; then
+  SAFE_SLUG="feature"
+fi
+
+STAMP="$(date '+%Y%m%d-%H%M%S')"
+FILE="$SPEC_DIR/$STAMP-$SAFE_SLUG-design-spec.md"
+
+cat > "$FILE" <<MD
+# Design Spec: $FEATURE
+
+Created: $(date '+%Y-%m-%dT%H:%M:%S%z')
+
+## Goal
+
+TBD
+
+## Requirements
+
+1. TBD
+
+## Non-Requirements
+
+- TBD
+
+## Architecture
+
+TBD
+
+## Edge Cases
+
+- TBD
+
+## Acceptance Criteria
+
+- [ ] TBD
+MD
+
+printf '%s\n' "$FILE"
