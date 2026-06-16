@@ -52,6 +52,8 @@
 !.agent/boot/coding-anchor/distribution-plans/.gitkeep
 .agent/boot/coding-anchor/execution-plans/*
 !.agent/boot/coding-anchor/execution-plans/.gitkeep
+.agent/boot/coding-anchor/formal-deliverables/*
+!.agent/boot/coding-anchor/formal-deliverables/.gitkeep
 .agent/boot/coding-anchor/negotiations/*
 !.agent/boot/coding-anchor/negotiations/.gitkeep
 .agent/boot/coding-anchor/performance-reviews/*

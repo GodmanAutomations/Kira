@@ -43,6 +43,7 @@ Verified: 2026-06-14
 | `zenith-execution` | `skills/zenith-execution/SKILL.md` | Plan sizing, invalidation, simulation, drawdown, and pause rules after a risk gate passes. |
 | `statistical-analysis` | `skills/statistical-analysis/SKILL.md` | Audit data quality, assumptions, test choice, effect sizes, and practical interpretation. |
 | `trade-journal-analyzer` | `skills/trade-journal-analyzer/SKILL.md` | Review repeated-action records for noise, execution gap, structural flaw, or edge decay. |
+| `academic-delivery` | `skills/academic-delivery/SKILL.md` | Plan and verify formal reports, essays, decks, proposals, capstones, assignments, and client documents. |
 | `power-inversion` | `skills/power-inversion/SKILL.md` | Protect negotiation leverage with BATNA mapping and commitment devices before releasing value. |
 | `client-pricing` | `skills/client-pricing/SKILL.md` | Prepare quotes with scope, anchor, floor, payment terms, and pushback boundaries. |
 
@@ -50,13 +51,13 @@ Verified: 2026-06-14
 
 | Skill | Source Path | Why Next |
 | :--- | :--- | :--- |
-| `academic-delivery` | `examples/skills/workflow/academic-delivery/SKILL.md` | Keep source-only unless Kira needs formal document/work-product delivery gates. |
+| None currently | - | Remaining source skills either need repair or should stay outside the boot packet. |
 
 ## Use From Source
 
 | Skill | Source Path | Trigger Family |
 | :--- | :--- | :--- |
-| `academic-delivery` | `examples/skills/workflow/academic-delivery/SKILL.md` | Essays, reports, assignments, capstones, APA/MLA work. |
+| None currently | - | Use adopted local skills first; inspect source skills directly only during future repair/adoption passes. |
 
 ## Needs Repair Before Use
 
@@ -88,5 +89,8 @@ Verified: 2026-06-14
   execution-constraint gates, then statistical analysis for data and
   experiment interpretation, then trade-journal-analyzer as generalized
   post-action analytics.
+- Academic delivery is adopted as a formal deliverable gate, preserving intake,
+  V1-is-not-delivery, mandatory red-team, revision, compile, and exit checks
+  while removing school-specific source framing.
 - Readiness is a protocol/helper lane, not a source skill adoption: it exists
   to make checkpoint and handoff decisions concrete after many slices.

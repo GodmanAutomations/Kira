@@ -53,6 +53,7 @@ Run the doctor directly with:
 - `bin/athena-coding-anchor-compact` - ignored continuation handoff generator.
 - `bin/athena-coding-anchor-commit-plan` - ignored atomic commit-plan generator.
 - `bin/athena-coding-anchor-decision` - ignored decision-note generator.
+- `bin/athena-coding-anchor-deliverable` - ignored formal delivery-plan generator.
 - `bin/athena-coding-anchor-distribution` - ignored distribution plan generator.
 - `bin/athena-coding-anchor-execution-plan` - ignored sizing and execution-constraint generator.
 - `bin/athena-coding-anchor-mcda` - ignored decision matrix generator.
@@ -74,6 +75,7 @@ Run the doctor directly with:
 - `bin/athena-coding-anchor-visual-report` - ignored visual QA report generator.
 - `bin/athena-coding-anchor-mission` - mission-note starter.
 - `skills/semantic-search/SKILL.md` - adopted corrected semantic-search skill.
+- `skills/academic-delivery/SKILL.md` - adopted formal deliverable delivery skill.
 - `skills/atomic-execution/SKILL.md` - adopted one-slice execution skill.
 - `skills/brand-foundations/SKILL.md` - adopted brand, voice, positioning, and visual-direction skill.
 - `skills/circuit-breaker/SKILL.md` - adopted systemic pause skill.
@@ -96,6 +98,7 @@ Run the doctor directly with:
 - `skills/visual-verify-ui/SKILL.md` - adopted visual QA skill.
 - `skills/zenith-execution/SKILL.md` - adopted sizing, stop-condition, and execution-constraint skill.
 - `protocols/credential-prompt-handling.md` - API/password prompt handling.
+- `protocols/formal-delivery-gate.md` - formal deliverable delivery gate.
 - `protocols/readiness-checkpoint-gate.md` - readiness and checkpoint review.
 - `protocols/` - before/after work protocols.
 - `schemas/` - JSON schemas for reusable receipts.

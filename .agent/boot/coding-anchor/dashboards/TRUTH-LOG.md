@@ -142,4 +142,8 @@ Use this file for verified claims about the Athena Coding Anchor packet.
   `athena-coding-anchor-readiness` as a consolidation lane before save,
   publish, or handoff; readiness reports summarize adopted skills, helper
   coverage, ignored runtime artifacts, source-only boundaries, and git state.
+- Decision: adopt `academic-delivery` as a public-safe formal deliverable gate
+  rather than a school-specific assignment lane; preserve intake, scope,
+  research, V1-is-working-draft, mandatory red-team, revision, compile, and
+  exit-gate verification.
 - Decision: keep generated receipts and heartbeat files out of normal commits.

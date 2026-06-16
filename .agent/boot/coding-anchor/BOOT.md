@@ -52,10 +52,12 @@ Boot sequence:
     data quality, assumptions, effect sizes, uncertainty, and practical meaning.
 25. After repeated actions produce a record, classify performance as noise,
     execution gap, structural flaw, or edge decay before changing the system.
-26. Before checkpointing a long boot-packet run, generate a readiness report
+26. Before producing or sending a formal deliverable, intake the brief, draft
+    V1 as working copy, red-team it, revise, compile, and verify the exit gate.
+27. Before checkpointing a long boot-packet run, generate a readiness report
     that names adopted skills, helpers, ignored artifacts, source-only skills,
     and current git state.
-27. Before shipping or merging significant artifacts, run the red-team review
+28. Before shipping or merging significant artifacts, run the red-team review
    gate.
 
 If the boot feels thin, read:
@@ -82,6 +84,7 @@ If the boot feels thin, read:
 - `protocols/credential-prompt-handling.md`
 - `protocols/decision-journal-gate.md`
 - `protocols/distribution-physics-gate.md`
+- `protocols/formal-delivery-gate.md`
 - `protocols/mcda-decision-gate.md`
 - `protocols/mission-routing.md`
 - `protocols/micro-commit-gate.md`
@@ -95,6 +98,7 @@ If the boot feels thin, read:
 - `protocols/trading-risk-gate.md`
 - `protocols/verification-loop.md`
 - `protocols/zenith-execution-gate.md`
+- `skills/academic-delivery/SKILL.md`
 - `skills/atomic-execution/SKILL.md`
 - `skills/brand-foundations/SKILL.md`
 - `skills/circuit-breaker/SKILL.md`

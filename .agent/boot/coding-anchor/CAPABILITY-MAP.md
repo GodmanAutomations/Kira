@@ -22,6 +22,7 @@ Athena Coding Anchor is an execution posture, not a separate model.
 - sizing, invalidation, simulation, and execution-constraint planning
 - statistical data audit, assumption checking, and effect-size reporting
 - post-action analytics, drawdown classification, and edge review
+- formal deliverable planning, red-team revision, and delivery verification
 - readiness/checkpoint reports for long boot-packet runs
 - circuit breakers for repeated failure or fatigue
 - negotiation leverage and commitment protection
@@ -79,6 +80,10 @@ Athena Coding Anchor is an execution posture, not a separate model.
 - Performance review: use `skills/trade-journal-analyzer/SKILL.md` and
   `bin/athena-coding-anchor-performance-review` when repeated actions need
   noise, execution-gap, structural-flaw, or edge-decay classification.
+- Formal delivery: use `skills/academic-delivery/SKILL.md` and
+  `bin/athena-coding-anchor-deliverable` when a report, essay, deck, proposal,
+  assignment, capstone, or client document needs intake, draft, red-team,
+  revision, compile, and exit-gate verification.
 - Readiness: use `protocols/readiness-checkpoint-gate.md` and
   `bin/athena-coding-anchor-readiness` before checkpointing, publishing, or
   handing off a long boot-packet run.
@@ -143,6 +148,8 @@ Athena Coding Anchor is an execution posture, not a separate model.
   audit, assumption-checking, and effect-size reporting skill.
 - `skills/trade-journal-analyzer/SKILL.md` is adopted now as the default
   post-action analytics, drawdown classification, and edge review skill.
+- `skills/academic-delivery/SKILL.md` is adopted now as the default formal
+  deliverable planning and delivery-verification skill.
 - `skills/circuit-breaker/SKILL.md` is adopted now as the default systemic
   pause skill for repeated failures and fatigue.
 - `skills/power-inversion/SKILL.md` is adopted now as the default negotiation

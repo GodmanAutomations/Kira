@@ -27,6 +27,7 @@ packet:
 - sizing, invalidation, and execution-constraint planning
 - statistical analysis and effect-size reporting
 - post-action analytics and edge review
+- formal deliverable planning and red-team-before-delivery verification
 - readiness/checkpoint reports before save, publish, or handoff
 - circuit breakers for damaging loops
 - negotiation leverage protection
@@ -83,6 +84,8 @@ packet:
   assumption-checking, and effect-size reporting skill.
 - `trade-journal-analyzer` is adopted locally as the default post-action
   analytics, drawdown classification, and edge review skill.
+- `academic-delivery` is adopted locally as the default formal deliverable
+  planning, red-team revision, compile, and delivery-verification skill.
 - `readiness-checkpoint-gate.md` and `athena-coding-anchor-readiness` now
   provide a compact current-state report before save, publish, or handoff.
 - `circuit-breaker` is adopted locally as the default pause/AAR skill for
@@ -139,18 +142,21 @@ packet:
    experiments, metrics, or claims need statistical analysis planning.
 21. Use `bin/athena-coding-anchor-performance-review` when repeated actions
    need post-action analytics and edge review.
-22. Use `bin/athena-coding-anchor-readiness` before checkpointing, publishing,
+22. Use `bin/athena-coding-anchor-deliverable` when a formal report, essay,
+   deck, proposal, assignment, capstone, or client document needs an intake to
+   delivery plan.
+23. Use `bin/athena-coding-anchor-readiness` before checkpointing, publishing,
    or handing off a long boot-packet run.
-23. Use `bin/athena-coding-anchor-circuit-breaker` when repeated failure or
+24. Use `bin/athena-coding-anchor-circuit-breaker` when repeated failure or
    fatigue makes continuing risky.
-24. Use `bin/athena-coding-anchor-negotiation` before releasing leverage in a
+25. Use `bin/athena-coding-anchor-negotiation` before releasing leverage in a
    deal, quote, partnership, or information exchange.
-25. Use `bin/athena-coding-anchor-quote` before sending or revising client
+26. Use `bin/athena-coding-anchor-quote` before sending or revising client
    pricing.
-26. Create a mission note with `bin/athena-coding-anchor-mission` when a project
+27. Create a mission note with `bin/athena-coding-anchor-mission` when a project
    effort needs a durable local handhold.
-27. Use the truth log for verified claims.
-28. Keep private CodeX room material out of Athena unless Stephen explicitly
+28. Use the truth log for verified claims.
+29. Keep private CodeX room material out of Athena unless Stephen explicitly
    asks for a scoped adaptation pass.
 
 ## Definition Of Good

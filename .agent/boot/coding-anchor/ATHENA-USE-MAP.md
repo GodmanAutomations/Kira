@@ -42,6 +42,7 @@ Verified on 2026-06-14:
 | Plan execution constraints | `skills/zenith-execution/SKILL.md` + `bin/athena-coding-anchor-execution-plan` | Defines Half-Kelly, invalidation, simulation, drawdown, and pause rules after the risk gate passes. |
 | Analyze data and experiments | `skills/statistical-analysis/SKILL.md` + `bin/athena-coding-anchor-statistics` | Audits data quality, assumptions, tests, effect sizes, confidence, and practical meaning. |
 | Review repeated-action performance | `skills/trade-journal-analyzer/SKILL.md` + `bin/athena-coding-anchor-performance-review` | Classifies records as noise, execution gap, structural flaw, or edge decay before changing the system. |
+| Deliver formal work products | `skills/academic-delivery/SKILL.md` + `bin/athena-coding-anchor-deliverable` | Forces intake, V1 draft, red-team, revision, compile, and exit-gate verification before delivery. |
 | Check readiness before save or handoff | `protocols/readiness-checkpoint-gate.md` + `bin/athena-coding-anchor-readiness` | Summarizes adopted skills, helpers, ignored generated artifacts, source-only boundaries, and git state. |
 | Pause damaging loops | `skills/circuit-breaker/SKILL.md` + `bin/athena-coding-anchor-circuit-breaker` | Stops repeated failures, fatigue, and compulsive retrying before damage compounds. |
 | Protect negotiation leverage | `skills/power-inversion/SKILL.md` + `bin/athena-coding-anchor-negotiation` | Maps BATNA, protects assets, and requires commitment before releasing value. |
@@ -53,7 +54,7 @@ Verified on 2026-06-14:
 
 | Skill | Path | Adopt When |
 | :--- | :--- | :--- |
-| `academic-delivery` | `examples/skills/workflow/academic-delivery/SKILL.md` | Keep source-only unless Kira needs formal document/work-product delivery gates. |
+| None currently | - | Remaining source skills either need repair or should stay outside the boot packet. |
 
 ## Routing Rule
 
@@ -197,6 +198,13 @@ When reviewing repeated-action performance:
 2. Create a review with `bin/athena-coding-anchor-performance-review`.
 3. Classify the record as noise, execution gap, structural flaw, or edge decay
    before changing the system.
+
+When producing or reviewing a formal deliverable:
+
+1. Use `skills/academic-delivery/SKILL.md`.
+2. Create a plan with `bin/athena-coding-anchor-deliverable`.
+3. Intake the brief, draft V1 as working copy, red-team, revise, compile, and
+   verify the exit gate before delivery.
 
 Before checkpointing, publishing, or handing off a long boot-packet run:
 

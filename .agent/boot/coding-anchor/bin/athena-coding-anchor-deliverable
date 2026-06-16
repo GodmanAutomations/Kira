@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+OUT_DIR="$ROOT/formal-deliverables"
+mkdir -p "$OUT_DIR"
+
+DELIVERABLE="${*:-deliverable}"
+SLUG="$(printf '%s' "$DELIVERABLE" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//; s/-$//; s/--*/-/g')"
+if [ -z "$SLUG" ]; then
+  SLUG="deliverable"
+fi
+
+STAMP="$(date '+%Y%m%d-%H%M%S')"
+OUT="$OUT_DIR/$STAMP-$SLUG-delivery-plan.md"
+
+cat > "$OUT" <<MD
+# Formal Delivery Plan: $DELIVERABLE
+
+Generated: $(date '+%Y-%m-%dT%H:%M:%S%z')
+
+## Intake
+
+- Audience:
+- Deadline:
+- Deliverable type:
+- Word/page count:
+- Required format:
+- Rubric / acceptance criteria:
+- Required sources:
+- Final file/export:
+
+## Scope
+
+- Category: essay / report / problem set / deck / proposal / technical brief / client deliverable
+- Complexity:
+- Commercial scope/pricing needed?:
+- Dependencies:
+
+## Research Spine
+
+| Source / Context | Use | Status |
+| :--- | :--- | :--- |
+|  |  | needed / loaded / verified |
+
+## Draft Plan
+
+- Thesis / main claim:
+- Structure:
+- Evidence plan:
+- Citation style:
+- Target V1 completion:
+
+## Mandatory Red-Team
+
+- Rubric alignment:
+- Evidence density:
+- Counterargument / alternative interpretation:
+- Format compliance:
+- Audience fit:
+- Accepted fixes:
+- Rejected criticisms:
+
+## Revision And Compile
+
+- V2 changes:
+- Word/page count:
+- References / works cited:
+- Tables / figures:
+- Appendices:
+- Export path:
+
+## Exit Gate
+
+- Brief satisfied:
+- Format satisfied:
+- Word/page count within tolerance:
+- Claims evidenced:
+- Red-team complete:
+- Final proofread:
+- Delivery allowed?:
+
+## Next Slice
+
+- Next action:
+- Verification:
+MD
+
+printf '%s\n' "$OUT"
+

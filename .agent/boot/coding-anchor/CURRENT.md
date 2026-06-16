@@ -91,6 +91,10 @@ experiments, metrics, or claims need statistical analysis planning.
 Use `bin/athena-coding-anchor-performance-review "<system>"` when repeated
 actions need post-action analytics and edge review.
 
+Use `bin/athena-coding-anchor-deliverable "<deliverable>"` when a report,
+essay, deck, proposal, assignment, capstone, or client document needs a formal
+delivery plan and red-team-before-delivery gate.
+
 Use `bin/athena-coding-anchor-readiness "<scope>"` before checkpointing,
 publishing, or handing off a long boot-packet run.
 
