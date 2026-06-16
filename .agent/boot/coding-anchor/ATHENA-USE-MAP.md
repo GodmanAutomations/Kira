@@ -1,6 +1,6 @@
-# Athena Use Map
+# Kira Use Map
 
-This is the Coding Anchor map for using Athena's repo-native machinery without
+This is the Coding Anchor map for using Kira's repo-native machinery without
 loading the whole workspace into context.
 
 ## Current Inventory
@@ -16,13 +16,13 @@ Verified on 2026-06-14:
 - The working search script is `.agent/scripts/smart_search.py`.
 - The `semantic-search` skill still referenced an old
   `examples/scripts/smart_search.py` path, so this packet adopts a corrected
-  Athena-local version.
+  Kira-local version.
 
 ## Adopted Now
 
 | Need | Use | Why |
 | :--- | :--- | :--- |
-| Find relevant Athena context before acting | `skills/semantic-search/SKILL.md` + `bin/athena-coding-anchor-search` | Matches Athena's retrieval-first architecture and works in this checkout. |
+| Find relevant Kira context before acting | `skills/semantic-search/SKILL.md` + `bin/athena-coding-anchor-search` | Matches Kira's retrieval-first architecture and works in this checkout. |
 | Spec before feature work | `skills/spec-driven-dev/SKILL.md` + `bin/athena-coding-anchor-spec` | Pins goal, scope, architecture, edge cases, and acceptance checks before building. |
 | Execute the next slice | `skills/atomic-execution/SKILL.md` + `bin/athena-coding-anchor-task` | Turns plans into one verification-gated task instead of a sprawling pass. |
 | Diagnose before refactoring | `skills/diagnostic-refactor/SKILL.md` + `bin/athena-coding-anchor-refactor-report` | Creates a bill of materials before touching stale or messy surfaces. |
@@ -30,7 +30,7 @@ Verified on 2026-06-14:
 | Plan checkpoints | `skills/micro-commit/SKILL.md` + `bin/athena-coding-anchor-checkpoint` | Splits verified work into intentional save points without requiring Stephen to say `commit`. |
 | Handle auth prompts | `protocols/credential-prompt-handling.md` | Uses approved local secret sources and computer/browser automation without exposing secrets. |
 | Verify UI visually | `skills/visual-verify-ui/SKILL.md` + `bin/athena-coding-anchor-visual-report` | Requires browser/screenshot evidence for frontend and visual artifact work. |
-| Preserve long-session state | `skills/context-compactor/SKILL.md` + `bin/athena-coding-anchor-compact` | Creates a compact continuation handoff without rewriting Athena's public memory bank. |
+| Preserve long-session state | `skills/context-compactor/SKILL.md` + `bin/athena-coding-anchor-compact` | Creates a compact continuation handoff without rewriting Kira's public memory bank. |
 | Research current or external facts | `skills/deep-research-loop/SKILL.md` + `bin/athena-coding-anchor-research-brief` | Cross-checks claims, sources, confidence, and gaps before acting. |
 | Record meaningful choices | `skills/decision-journal/SKILL.md` + `bin/athena-coding-anchor-decision` | Captures alternatives, assumptions, confidence, and post-mortem structure. |
 | Score multi-factor choices | `skills/mcda-solver/SKILL.md` + `bin/athena-coding-anchor-mcda` | Forces options, criteria, weights, sensitivity checks, and dealbreaker review. |
@@ -58,7 +58,7 @@ Verified on 2026-06-14:
 
 ## Routing Rule
 
-Before broad Athena work:
+Before broad Kira work:
 
 1. Run `bin/athena-coding-anchor-search "<topic>" --limit 5`.
 2. Check `SKILL-ROUTER.md` for the matching source or adopted skill.

@@ -1,6 +1,6 @@
-# Athena Coding Anchor
+# Kira Coding Anchor
 
-This is a bootable, Athena-local coding posture adapted from Stephen's live
+This is a bootable, Kira-local coding posture adapted from Stephen's live
 CodeX Coding Anchor packet.
 
 Boot it from the repository root with:
@@ -17,8 +17,8 @@ Run the doctor directly with:
 
 ## What It Is
 
-- A repo-local boot spine for serious Athena work.
-- A translation of the live CodeX Coding Anchor posture into public-safe Athena
+- A repo-local boot spine for serious Kira work.
+- A translation of the live CodeX Coding Anchor posture into public-safe Kira
   files.
 - A small room brain: mission control, open loops, truth log, capability map,
   autonomy contract, schemas, and doctor checks.
@@ -41,7 +41,7 @@ Run the doctor directly with:
 - `OPEN-LOOPS.md` - active, watch, and parked loops.
 - `dashboards/TRUTH-LOG.md` - verified claims and decisions.
 - `CAPABILITY-MAP.md` - native lanes and routing.
-- `ATHENA-USE-MAP.md` - adopted skills and Athena routing map.
+- `ATHENA-USE-MAP.md` - adopted skills and Kira routing map.
 - `SKILL-ROUTER.md` - classification of all 26 example skills.
 - `SOURCE.md` - provenance and adaptation boundary.
 - `bin/athena-coding-anchor-boot` - boot front door.
@@ -65,7 +65,7 @@ Run the doctor directly with:
 - `bin/athena-coding-anchor-research-brief` - ignored research brief generator.
 - `bin/athena-coding-anchor-red-team` - adversarial review-template generator.
 - `bin/athena-coding-anchor-risk-gate` - ignored ruin and sequence-risk review generator.
-- `bin/athena-coding-anchor-search` - retrieval-first Athena context lookup.
+- `bin/athena-coding-anchor-search` - retrieval-first Kira context lookup.
 - `bin/athena-coding-anchor-seo-audit` - ignored SEO triage generator.
 - `bin/athena-coding-anchor-spec` - design spec-template generator.
 - `bin/athena-coding-anchor-statistics` - ignored statistical analysis plan generator.

@@ -8,7 +8,7 @@ Run from the repository root:
 
 Boot sequence:
 
-1. Confirm this is Athena Coding Anchor, not old Anchor/Gemini.
+1. Confirm this is Kira Coding Anchor, not old Anchor/Gemini.
 2. Read identity, autonomy, mission control, open loops, use map, skill router,
    and current state.
 3. Run the doctor check.

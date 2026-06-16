@@ -48,7 +48,7 @@ check_exec() {
   fi
 }
 
-log "Athena Coding Anchor Doctor"
+log "Kira Coding Anchor Doctor"
 log "root: $ROOT"
 log "checked_at: $(date '+%Y-%m-%dT%H:%M:%S%z')"
 log ""
