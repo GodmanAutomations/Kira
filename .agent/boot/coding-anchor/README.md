@@ -36,6 +36,7 @@ Run the doctor directly with:
 - `BOOT.md` - boot sequence.
 - `CURRENT.md` - current state and next safe moves.
 - `KIRA-LANDING.md` - branch, remote, naming, and cleanup handhold.
+- `KIRA-COMPATIBILITY.md` - canonical old-name and new-name surface map.
 - `CODING-ANCHOR-IDENTITY.md` - identity and posture.
 - `AUTONOMY-CONTRACT.md` - what Codex can do without waiting.
 - `MISSION-CONTROL.md` - current mission and next moves.

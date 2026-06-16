@@ -14,19 +14,22 @@ This is the current landing state for the Kira Coding Anchor boot packet.
   `.agent/boot/coding-anchor/bin/kira-coding-anchor-boot`
 - Doctor command:
   `.agent/boot/coding-anchor/bin/kira-coding-anchor-doctor`
+- Compatibility map: `KIRA-COMPATIBILITY.md`
 
 ## Naming Decisions
 
 - Kira is the live repository identity for this packet.
 - `Athena-Public` remains historical provenance and may appear in source
   paths, upstream lineage notes, and the current worktree path.
+- `KIRA-COMPATIBILITY.md` is the source of truth for old names that remain
+  intentionally supported.
 - Keep `KIRA-USE-MAP.md` and `athena-coding-anchor-*` helper names stable
   for now. They are compatibility targets, not identity claims.
 - Prefer `kira-coding-anchor-*` wrappers for human-facing boot, doctor,
   search, readiness, checkpoint, brief, and heartbeat work.
 - Keep the old remote branch `codex/athena-coding-anchor-boot` for now as a
-  compatibility pointer. Do not delete it until downstream references are
-  checked.
+  compatibility pointer. The observed `kira` ref is `4aca0a7`; do not delete
+  it until downstream references are checked.
 - Do not rename the local worktree folder during ordinary boot work. Treat that
   as a separate low-risk cleanup slice.
 

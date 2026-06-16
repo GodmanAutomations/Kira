@@ -18,6 +18,7 @@ It does not depend on private CodeX room files as live instructions.
 The packet includes a small room brain:
 
 - `KIRA-LANDING.md`
+- `KIRA-COMPATIBILITY.md`
 - `MISSION-CONTROL.md`
 - `OPEN-LOOPS.md`
 - `AUTONOMY-CONTRACT.md`
@@ -35,8 +36,8 @@ Use `bin/kira-coding-anchor-doctor` after edits to this packet.
 
 Use `bin/kira-coding-anchor-brief` for a compact re-entry snapshot.
 
-Read `KIRA-LANDING.md` before renaming branches, helper scripts, worktree
-paths, remotes, or compatibility surfaces.
+Read `KIRA-LANDING.md` and `KIRA-COMPATIBILITY.md` before renaming branches,
+helper scripts, worktree paths, remotes, or compatibility surfaces.
 
 Use `bin/kira-coding-anchor-search "<topic>" --limit 5` before choosing
 Kira skills, workflows, protocols, or architecture surfaces.

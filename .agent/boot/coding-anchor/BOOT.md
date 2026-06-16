@@ -74,6 +74,7 @@ If the boot feels thin, read:
 - `AUTONOMY-CONTRACT.md`
 - `CAPABILITY-MAP.md`
 - `KIRA-LANDING.md`
+- `KIRA-COMPATIBILITY.md`
 - `KIRA-USE-MAP.md`
 - `SKILL-ROUTER.md`
 - `dashboards/TRUTH-LOG.md`
