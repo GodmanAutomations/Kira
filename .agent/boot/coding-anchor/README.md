@@ -42,7 +42,7 @@ Run the doctor directly with:
 - `OPEN-LOOPS.md` - active, watch, and parked loops.
 - `dashboards/TRUTH-LOG.md` - verified claims and decisions.
 - `CAPABILITY-MAP.md` - native lanes and routing.
-- `ATHENA-USE-MAP.md` - adopted skills and Kira routing map.
+- `KIRA-USE-MAP.md` - adopted skills and Kira routing map.
 - `SKILL-ROUTER.md` - classification of all 26 example skills.
 - `SOURCE.md` - provenance and adaptation boundary.
 - `bin/kira-coding-anchor-boot` - preferred Kira boot wrapper.

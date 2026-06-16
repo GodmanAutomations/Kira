@@ -11,7 +11,7 @@ First pass:
 4. Read `AUTONOMY-CONTRACT.md`.
 5. Read `MISSION-CONTROL.md`.
 6. Read `OPEN-LOOPS.md`.
-7. Read `ATHENA-USE-MAP.md`.
+7. Read `KIRA-USE-MAP.md`.
 8. Read `SKILL-ROUTER.md` when choosing Kira skills.
 9. Read `CURRENT.md`.
 10. Run `bin/kira-coding-anchor-doctor`.

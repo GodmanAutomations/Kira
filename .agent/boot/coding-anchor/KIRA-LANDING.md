@@ -20,7 +20,7 @@ This is the current landing state for the Kira Coding Anchor boot packet.
 - Kira is the live repository identity for this packet.
 - `Athena-Public` remains historical provenance and may appear in source
   paths, upstream lineage notes, and the current worktree path.
-- Keep `ATHENA-USE-MAP.md` and `athena-coding-anchor-*` helper names stable
+- Keep `KIRA-USE-MAP.md` and `athena-coding-anchor-*` helper names stable
   for now. They are compatibility targets, not identity claims.
 - Prefer `kira-coding-anchor-*` wrappers for human-facing boot, doctor,
   search, readiness, checkpoint, brief, and heartbeat work.

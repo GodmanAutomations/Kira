@@ -24,7 +24,7 @@ sed -n '1,120p' "$ROOT/OPEN-LOOPS.md"
 printf '\n'
 
 printf 'Kira use map\n'
-sed -n '1,120p' "$ROOT/ATHENA-USE-MAP.md"
+sed -n '1,120p' "$ROOT/KIRA-USE-MAP.md"
 printf '\n'
 
 printf 'Skill router\n'

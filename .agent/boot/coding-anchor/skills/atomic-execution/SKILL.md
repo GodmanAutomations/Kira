@@ -33,7 +33,7 @@ Create a task template from the repository root:
 ```
 
 The generated task file is intentionally ignored by Git. Promote durable
-decisions to `ATHENA-USE-MAP.md`, `MISSION-CONTROL.md`, or `dashboards/TRUTH-LOG.md`
+decisions to `KIRA-USE-MAP.md`, `MISSION-CONTROL.md`, or `dashboards/TRUTH-LOG.md`
 only when they help future sessions.
 
 ## Task Shape

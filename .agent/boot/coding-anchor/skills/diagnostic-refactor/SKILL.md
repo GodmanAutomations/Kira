@@ -33,7 +33,7 @@ Create a report template from the repository root:
 ```
 
 Reports are ignored by Git by default. Promote durable findings to
-`SKILL-ROUTER.md`, `ATHENA-USE-MAP.md`, or `dashboards/TRUTH-LOG.md` only when
+`SKILL-ROUTER.md`, `KIRA-USE-MAP.md`, or `dashboards/TRUTH-LOG.md` only when
 they improve future routing.
 
 ## Scan Focus

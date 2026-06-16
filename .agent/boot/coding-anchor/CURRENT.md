@@ -21,7 +21,7 @@ The packet includes a small room brain:
 - `MISSION-CONTROL.md`
 - `OPEN-LOOPS.md`
 - `AUTONOMY-CONTRACT.md`
-- `ATHENA-USE-MAP.md`
+- `KIRA-USE-MAP.md`
 - `SKILL-ROUTER.md`
 - `CAPABILITY-MAP.md`
 - `dashboards/TRUTH-LOG.md`

@@ -32,7 +32,7 @@ sed -n '1,160p' "$ROOT/OPEN-LOOPS.md"
 printf '\n'
 
 printf 'Kira Use Map\n'
-sed -n '1,160p' "$ROOT/ATHENA-USE-MAP.md"
+sed -n '1,160p' "$ROOT/KIRA-USE-MAP.md"
 printf '\n'
 
 printf 'Skill Router\n'
