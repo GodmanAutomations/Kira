@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$DIR/.." && pwd)"
+
+if REPO_ROOT="$(git -C "$ROOT" rev-parse --show-toplevel 2>/dev/null)"; then
+  :
+else
+  REPO_ROOT="$(cd "$ROOT/../../.." && pwd)"
+fi
+
+branch="$(git -C "$REPO_ROOT" branch --show-current 2>/dev/null || printf 'unknown')"
+upstream="$(git -C "$REPO_ROOT" rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' 2>/dev/null || printf 'none')"
+primary_remote="$(git -C "$REPO_ROOT" remote get-url kira 2>/dev/null || printf 'missing')"
+last_commit="$(git -C "$REPO_ROOT" log -1 --oneline 2>/dev/null || printf 'none')"
+local_kira_head="$(git -C "$REPO_ROOT" symbolic-ref --short refs/remotes/kira/HEAD 2>/dev/null || printf 'unknown')"
+dirty_count="$(git -C "$REPO_ROOT" status --short 2>/dev/null | wc -l | tr -d ' ')"
+
+sync_state="no upstream"
+if [ "$upstream" != "none" ]; then
+  counts="$(git -C "$REPO_ROOT" rev-list --left-right --count "$upstream...HEAD" 2>/dev/null || printf 'unknown unknown')"
+  behind="${counts%%[[:space:]]*}"
+  ahead="${counts##*[[:space:]]}"
+  if [ "$ahead" = "0" ] && [ "$behind" = "0" ]; then
+    sync_state="up to date with $upstream"
+  elif [ "$ahead" = "0" ]; then
+    sync_state="behind $upstream by $behind"
+  elif [ "$behind" = "0" ]; then
+    sync_state="ahead of $upstream by $ahead"
+  else
+    sync_state="diverged from $upstream: ahead $ahead, behind $behind"
+  fi
+fi
+
+if [ "$dirty_count" = "0" ]; then
+  worktree_state="clean"
+else
+  worktree_state="dirty: $dirty_count changed path(s)"
+fi
+
+printf 'Kira Coding Anchor status\n'
+printf 'repo: %s\n' "$REPO_ROOT"
+printf 'branch: %s\n' "$branch"
+printf 'upstream: %s\n' "$upstream"
+printf 'primary_remote: %s\n' "$primary_remote"
+printf 'local_kira_head: %s\n' "$local_kira_head"
+printf 'last_checkpoint: %s\n' "$last_commit"
+printf 'worktree: %s\n' "$worktree_state"
+printf 'sync: %s\n' "$sync_state"
+printf '\n'
+printf 'Read-only check: no fetch, stage, commit, push, or file writes performed.\n'
+
+if [ "$dirty_count" != "0" ]; then
+  printf '\nChanged paths:\n'
+  git -C "$REPO_ROOT" status --short
+fi

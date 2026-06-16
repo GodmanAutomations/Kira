@@ -36,6 +36,9 @@ Use `bin/kira-coding-anchor-doctor` after edits to this packet.
 
 Use `bin/kira-coding-anchor-brief` for a compact re-entry snapshot.
 
+Use `bin/kira-coding-anchor-status` when Stephen asks where the work stands,
+whether a checkpoint is local, or whether the branch is synced.
+
 Read `KIRA-LANDING.md` and `KIRA-COMPATIBILITY.md` before renaming branches,
 helper scripts, worktree paths, remotes, or compatibility surfaces.
 

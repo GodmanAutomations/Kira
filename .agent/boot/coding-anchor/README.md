@@ -53,6 +53,7 @@ Run the doctor directly with:
 - `bin/kira-coding-anchor-search` - preferred Kira retrieval wrapper.
 - `bin/kira-coding-anchor-readiness` - preferred Kira readiness wrapper.
 - `bin/kira-coding-anchor-checkpoint` - preferred Kira checkpoint wrapper.
+- `bin/kira-coding-anchor-status` - read-only branch, sync, and checkpoint snapshot.
 - `bin/athena-coding-anchor-boot` - boot front door.
 - `bin/athena-coding-anchor-brand` - ignored brand guide generator.
 - `bin/athena-coding-anchor-doctor` - health and structure check.

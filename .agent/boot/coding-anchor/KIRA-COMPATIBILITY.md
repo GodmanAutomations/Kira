@@ -17,6 +17,7 @@ they are safe to retire.
 | Human search helper | `bin/kira-coding-anchor-search` |
 | Human readiness helper | `bin/kira-coding-anchor-readiness` |
 | Human checkpoint helper | `bin/kira-coding-anchor-checkpoint` |
+| Human status helper | `bin/kira-coding-anchor-status` |
 | Use map | `KIRA-USE-MAP.md` |
 | Landing note | `KIRA-LANDING.md` |
 
