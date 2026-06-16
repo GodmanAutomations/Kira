@@ -1,6 +1,6 @@
 ---
 name: trading-risk-gate
-description: Athena-local ruin, ergodicity, sequence-risk, and win-rate/reward-risk gate.
+description: Kira-local ruin, ergodicity, sequence-risk, and win-rate/reward-risk gate.
 context_trigger: "ruin, is this safe, should I risk, veto, ergodic, sequence risk, WR vs RR, position size, bankruptcy, absorbing barrier"
 source: "Adapted from examples/skills/decision/trading-risk-gate/SKILL.md, examples/protocols/safety/SAF-001-law-of-ruin.md, and examples/protocols/decision/DEC-193-ergodicity-check.md."
 ---

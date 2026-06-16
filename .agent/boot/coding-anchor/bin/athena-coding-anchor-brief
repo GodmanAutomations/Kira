@@ -3,7 +3,7 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
-printf 'Athena Coding Anchor brief\n'
+printf 'Kira Coding Anchor brief\n'
 printf 'root: %s\n' "$ROOT"
 printf '\n'
 
@@ -23,7 +23,7 @@ printf 'Open loops\n'
 sed -n '1,120p' "$ROOT/OPEN-LOOPS.md"
 printf '\n'
 
-printf 'Athena use map\n'
+printf 'Kira use map\n'
 sed -n '1,120p' "$ROOT/ATHENA-USE-MAP.md"
 printf '\n'
 

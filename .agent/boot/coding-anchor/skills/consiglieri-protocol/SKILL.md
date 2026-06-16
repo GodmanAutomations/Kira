@@ -1,6 +1,6 @@
 ---
 name: consiglieri-protocol
-description: Athena-local trust, safety, social-contract, and high-stakes communication review skill.
+description: Kira-local trust, safety, social-contract, and high-stakes communication review skill.
 context_trigger: "high-stakes meeting, social contract, partnership, collaboration, should I trust, pre-flight, vibe check, exit strategy, blast radius, condescending, response"
 source: "Adapted from examples/skills/quality/consiglieri-protocol/SKILL.md and examples/protocols/decision/DEC-197-consiglieri-protocol.md."
 ---

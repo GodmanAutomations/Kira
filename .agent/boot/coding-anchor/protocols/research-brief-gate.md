@@ -13,7 +13,7 @@ standards, or recommendations that could drift.
 6. Record confidence and what would change the answer.
 7. Link the sources used in user-facing answers.
 
-## Athena Boundary
+## Kira Boundary
 
 Generated research briefs live under `research-briefs/` and are ignored by Git.
 They are working notes, not public docs, unless Stephen explicitly asks to

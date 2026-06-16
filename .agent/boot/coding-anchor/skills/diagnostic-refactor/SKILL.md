@@ -1,7 +1,7 @@
 ---
 name: diagnostic-refactor
 description: Generate a read-only refactor bill of materials before changing code, docs, scripts, or workflows.
-target_agent: "Codex working inside Athena-Public or the Athena Coding Anchor boot packet"
+target_agent: "Codex working inside Kira or the Kira Coding Anchor boot packet"
 trigger_conditions:
   - "User asks to refactor, clean up, tighten, reorganize, fix tech debt, or reduce code smell"
   - "A file or workflow looks stale, duplicated, overly complex, or risky to edit directly"
@@ -11,7 +11,7 @@ file_paths:
   - ".agent/boot/coding-anchor/reports/"
   - ".agent/boot/coding-anchor/protocols/diagnostic-refactor-scan.md"
   - "examples/skills/coding/diagnostic-refactor/SKILL.md"
-rationale: "Athena has many stale paths and overlapping docs. This skill prevents blind rewrites by forcing a non-destructive report before edits."
+rationale: "Kira has many stale paths and overlapping docs. This skill prevents blind rewrites by forcing a non-destructive report before edits."
 invocation_example: |
   User: "Clean up the stale workflow scripts"
   Codex: Run or draft a diagnostic report first, list dead paths and risks, then implement only the smallest verified fix.

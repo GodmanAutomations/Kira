@@ -1,13 +1,13 @@
 ---
 name: academic-delivery
-description: Athena-local formal deliverable pipeline for reports, essays, briefs, decks, and knowledge work.
+description: Kira-local formal deliverable pipeline for reports, essays, briefs, decks, and knowledge work.
 context_trigger: "deliverable, report, essay, brief, assignment, capstone, submission, docx, pdf, deck, rubric, APA, MLA, Harvard, formal report"
 source: "Adapted from examples/skills/workflow/academic-delivery/SKILL.md."
 ---
 
 # Academic Delivery
 
-Use this skill when Athena needs to produce or review a formal knowledge
+Use this skill when Kira needs to produce or review a formal knowledge
 deliverable with a brief, audience, rubric, format, deadline, citation standard,
 or submission gate.
 

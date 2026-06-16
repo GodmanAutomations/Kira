@@ -1,8 +1,8 @@
 ---
 name: seo-auditor
-description: Athena-local technical SEO, content structure, and search visibility triage skill.
+description: Kira-local technical SEO, content structure, and search visibility triage skill.
 context_trigger: "SEO, audit website, rank, ranking, lighthouse, technical SEO, site audit, search performance, metadata, organic search"
-source: "Adapted from examples/skills/business/seo-auditor/SKILL.md plus current Athena content and UX protocols."
+source: "Adapted from examples/skills/business/seo-auditor/SKILL.md plus current Kira content and UX protocols."
 ---
 
 # SEO Auditor

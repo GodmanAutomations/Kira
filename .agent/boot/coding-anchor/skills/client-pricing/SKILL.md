@@ -1,6 +1,6 @@
 ---
 name: client-pricing
-description: Athena-local quote, scope, anchor, floor, and pricing-pushback skill.
+description: Kira-local quote, scope, anchor, floor, and pricing-pushback skill.
 context_trigger: "pricing, quote, proposal, how much should I charge, rate card, hourly rate, project fee, scope creep, pricing pushback, client budget"
 source: "Adapted from examples/skills/business/client-pricing/SKILL.md"
 ---

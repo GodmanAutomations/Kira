@@ -16,7 +16,7 @@ STAMP="$(date '+%Y%m%d-%H%M%S')"
 OUT="$OUT_DIR/$STAMP-$SLUG-handoff.md"
 
 {
-  printf '# Athena Coding Anchor Handoff: %s\n\n' "$TOPIC"
+  printf '# Kira Coding Anchor Handoff: %s\n\n' "$TOPIC"
   printf 'Generated: %s\n\n' "$(date '+%Y-%m-%dT%H:%M:%S%z')"
 
   printf '## 1. Primary Request And Intent\n\n'

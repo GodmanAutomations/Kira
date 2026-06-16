@@ -1,7 +1,7 @@
 ---
 name: atomic-execution
 description: Break implementation plans into one verification-gated task block at a time.
-target_agent: "Codex working inside Athena-Public or the Athena Coding Anchor boot packet"
+target_agent: "Codex working inside Kira or the Kira Coding Anchor boot packet"
 trigger_conditions:
   - "User says implement this plan, hit the next slice, execute roadmap, start building phase, or atomic execution"
   - "A task spans multiple files and needs progress preserved without context bloat"
@@ -11,7 +11,7 @@ file_paths:
   - ".agent/boot/coding-anchor/tasks/"
   - ".agent/boot/coding-anchor/protocols/atomic-execution-loop.md"
   - "examples/skills/coding/atomic-execution/SKILL.md"
-rationale: "Athena's source skill prevents long-context drift by forcing small task blocks with explicit verification. This adapted version makes that executable in the Coding Anchor boot packet."
+rationale: "Kira's source skill prevents long-context drift by forcing small task blocks with explicit verification. This adapted version makes that executable in the Coding Anchor boot packet."
 invocation_example: |
   User: "hit the next slice"
   Codex: Pick one small slice, optionally run `bin/athena-coding-anchor-task "adopt atomic execution"`, execute only that task, run its verification, then update the result.

@@ -1,6 +1,6 @@
 # Decision Journal Gate
 
-Use this gate before making or recording meaningful Athena Coding Anchor
+Use this gate before making or recording meaningful Kira Coding Anchor
 decisions.
 
 ## Gate
@@ -22,7 +22,7 @@ When something goes wrong:
 3. Classify the failure as process, execution, information, or luck.
 4. Change the system only when the classification warrants it.
 
-## Athena Boundary
+## Kira Boundary
 
 Generated decision notes live under `decisions/` and are ignored by Git.
 The truth log remains for compact verified facts and packet-level decisions.

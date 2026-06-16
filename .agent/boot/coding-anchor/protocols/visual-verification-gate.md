@@ -18,7 +18,7 @@ done.
 For UI work, build success is not enough. The claim is only verified after the
 surface is seen in the relevant viewport or rendered artifact.
 
-## Athena Boundary
+## Kira Boundary
 
 Generated visual reports live under `visual-checks/` and are ignored by Git
 unless Stephen explicitly asks to preserve one as a receipt artifact.

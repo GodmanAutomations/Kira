@@ -1,6 +1,6 @@
 ---
 name: decision-journal
-description: Athena-local decision, tradeoff, and post-mortem logging skill.
+description: Kira-local decision, tradeoff, and post-mortem logging skill.
 context_trigger: "decision, should I, trade-off, regret, post-mortem, what went wrong, calibration, prediction, hindsight, journal, decided"
 source: "Adapted from examples/skills/decision/decision-journal/SKILL.md"
 ---

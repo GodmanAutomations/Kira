@@ -1,6 +1,6 @@
 ---
 name: zenith-execution
-description: Athena-local sizing, stop-condition, simulation, and execution-constraint planning skill.
+description: Kira-local sizing, stop-condition, simulation, and execution-constraint planning skill.
 context_trigger: "position sizing, Kelly, stop loss, Monte Carlo, simulate, rebalance, trade execution, portfolio optimization, execution constraints"
 source: "Adapted from examples/skills/decision/zenith-execution/SKILL.md and examples/protocols/decision/DEC-330-economic-expected-value.md."
 ---

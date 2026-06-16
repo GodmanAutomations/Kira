@@ -46,7 +46,7 @@ landing pages, or search-dependent content.
 - no internal links into or out of the page
 - SEO recommendations that ignore the actual distribution channel
 
-## Athena Boundary
+## Kira Boundary
 
 Generated SEO audits live under `seo-audits/` and are ignored by Git.
 This gate helps prepare and review pages; it does not publish, crawl external

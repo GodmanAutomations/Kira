@@ -1,8 +1,8 @@
 ---
 name: distribution-physics
-description: Athena-local go-to-market, channel fit, and distribution viability skill.
+description: Kira-local go-to-market, channel fit, and distribution viability skill.
 context_trigger: "go-to-market, distribution, channel, GTM, launch, market entry, acquisition, organic vs paid, CAC, LTV"
-source: "Adapted from examples/skills/business/distribution-physics/SKILL.md plus current Athena strategy protocols."
+source: "Adapted from examples/skills/business/distribution-physics/SKILL.md plus current Kira strategy protocols."
 ---
 
 # Distribution Physics

@@ -4,11 +4,11 @@ Use this to decide where a task belongs.
 
 ## Stay Here
 
-- Athena coding-agent boot behavior
+- Kira coding-agent boot behavior
 - local boot mechanics
 - launch scripts
 - local protocols, schemas, receipts, and mission notes
-- reinvention of Coding Anchor working patterns as Athena behavior
+- reinvention of Coding Anchor working patterns as Kira behavior
 
 ## Route To Project Code
 
@@ -18,10 +18,10 @@ truth.
 
 ## Route To Framework Docs
 
-If the task is about Athena public onboarding, workflows, protocols, or release
+If the task is about Kira public onboarding, workflows, protocols, or release
 quality, use the repo's authoritative docs and `.context/` surfaces.
 
 ## Route To Source Analysis
 
 If Stephen asks what the source CodeX packet did, inspect it as evidence. Do
-not copy private-room identity text into live Athena instructions.
+not copy private-room identity text into live Kira instructions.

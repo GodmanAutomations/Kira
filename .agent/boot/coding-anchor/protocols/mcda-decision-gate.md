@@ -21,7 +21,7 @@ Use this gate when a choice has multiple options, criteria, or stakeholders.
 - false precision from arbitrary numbers
 - hiding a gut/value conflict behind a spreadsheet-looking table
 
-## Athena Boundary
+## Kira Boundary
 
 Generated matrices live under `decision-matrices/` and are ignored by Git.
 Use decision notes for final rationale when a choice needs durable review.

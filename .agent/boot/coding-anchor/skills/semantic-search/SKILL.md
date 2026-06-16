@@ -1,18 +1,18 @@
 ---
 name: semantic-search
-description: Search Athena's local knowledge graph before acting on repo architecture, workflows, skills, protocols, or memory.
-target_agent: "Codex working inside Athena-Public or the Athena Coding Anchor boot packet"
+description: Search Kira's local knowledge graph before acting on repo architecture, workflows, skills, protocols, or memory.
+target_agent: "Codex working inside Kira or the Kira Coding Anchor boot packet"
 trigger_conditions:
-  - "User asks to look up Athena skills, workflows, protocols, architecture, or memory"
+  - "User asks to look up Kira skills, workflows, protocols, architecture, or memory"
   - "User asks whether the repo already has a pattern, skill, script, or protocol"
-  - "Task requires choosing which Athena artifact to use next"
+  - "Task requires choosing which Kira artifact to use next"
 file_paths:
   - ".agent/scripts/smart_search.py"
   - ".context/TAG_INDEX.md"
   - ".context/PROTOCOL_SUMMARIES.md"
   - "docs/SEMANTIC_SEARCH.md"
   - "examples/skills/"
-rationale: "Athena is retrieval-led. This skill uses the repo's actual search script and indexes instead of relying on training data or stale path memory."
+rationale: "Kira is retrieval-led. This skill uses the repo's actual search script and indexes instead of relying on training data or stale path memory."
 invocation_example: |
   User: "Look at the skills and architecture; what can you adopt?"
   Codex: Run `.agent/boot/coding-anchor/bin/athena-coding-anchor-search "skills architecture adopt" --limit 5`, inspect the returned files, then choose the smallest useful skill to adopt.
@@ -22,7 +22,7 @@ model: default
 
 # Semantic Search
 
-Use this skill when Athena-specific context should be retrieved before deciding
+Use this skill when Kira-specific context should be retrieved before deciding
 what to build, modify, or load.
 
 ## Command
@@ -52,7 +52,7 @@ python3 .agent/scripts/smart_search.py "query" --limit 5
 
 - Finding protocols or workflows.
 - Choosing which skill to adopt.
-- Checking whether Athena already has a pattern.
+- Checking whether Kira already has a pattern.
 - Grounding architecture work in `docs/ARCHITECTURE.md`,
   `docs/SEMANTIC_SEARCH.md`, and `.context/` indexes.
 

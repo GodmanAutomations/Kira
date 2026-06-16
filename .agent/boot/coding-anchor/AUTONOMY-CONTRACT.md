@@ -1,6 +1,6 @@
 # Autonomy Contract
 
-This is the Athena translation of the part that made Coding Anchor useful:
+This is the Kira translation of the part that made Coding Anchor useful:
 initiative with a visible steering wheel.
 
 ## Default Authority

@@ -1,6 +1,6 @@
 ---
 name: trade-journal-analyzer
-description: Athena-local post-action analytics, pattern extraction, drawdown classification, and edge review skill.
+description: Kira-local post-action analytics, pattern extraction, drawdown classification, and edge review skill.
 context_trigger: "analyze trades, journal patterns, win rate, edge audit, losing streak, drawdown, post-action review, campaign review, experiment review, performance review"
 source: "Adapted from examples/skills/workflow/trade-journal-analyzer/SKILL.md."
 ---

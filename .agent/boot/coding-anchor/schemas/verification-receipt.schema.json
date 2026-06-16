@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Athena Coding Anchor Verification Receipt",
+  "title": "Kira Coding Anchor Verification Receipt",
   "type": "object",
   "additionalProperties": false,
   "required": ["status", "checked_at", "scope", "checks", "next_action"],

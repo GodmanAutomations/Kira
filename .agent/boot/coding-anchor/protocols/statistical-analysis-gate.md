@@ -43,7 +43,7 @@ campaign metrics, regression output, or research claims.
 - "not significant" treated as "no effect"
 - practical decision made from a statistically tiny effect
 
-## Athena Boundary
+## Kira Boundary
 
 Generated statistical analysis plans live under `statistical-analyses/` and
 are ignored by Git. This gate prepares and reviews analysis; it does not claim

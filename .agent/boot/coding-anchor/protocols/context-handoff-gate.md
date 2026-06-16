@@ -1,7 +1,7 @@
 # Context Handoff Gate
 
 Use this gate when the session is long, the context feels heavy, or another
-agent/run may need to resume Athena Coding Anchor work.
+agent/run may need to resume Kira Coding Anchor work.
 
 ## Gate
 
@@ -21,7 +21,7 @@ agent/run may need to resume Athena Coding Anchor work.
 - Generated directories that must remain ignored.
 - The next handhold.
 
-## Athena Boundary
+## Kira Boundary
 
 This packet does not rewrite `.context/memory_bank/activeContext.md`.
 Generated handoffs are local boot-packet artifacts and are ignored by Git

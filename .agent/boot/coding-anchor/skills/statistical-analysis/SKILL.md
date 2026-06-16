@@ -1,6 +1,6 @@
 ---
 name: statistical-analysis
-description: Athena-local data audit, assumption check, hypothesis test, effect-size, and reporting skill.
+description: Kira-local data audit, assumption check, hypothesis test, effect-size, and reporting skill.
 context_trigger: "statistics, statistical analysis, regression, chi-square, correlation, reliability, Cronbach, hypothesis test, p-value, survey analysis, t-test, ANOVA, confidence interval"
 source: "Adapted from examples/skills/research/statistical-analysis/SKILL.md."
 ---

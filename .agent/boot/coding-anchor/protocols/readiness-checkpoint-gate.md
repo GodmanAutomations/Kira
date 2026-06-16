@@ -1,6 +1,6 @@
 # Readiness Checkpoint Gate
 
-Use this gate before treating a long Athena Coding Anchor run as ready to
+Use this gate before treating a long Kira Coding Anchor run as ready to
 save, publish, hand off, or expand into a new workstream.
 
 ## Trigger

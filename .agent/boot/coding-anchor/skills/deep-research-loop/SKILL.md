@@ -1,6 +1,6 @@
 ---
 name: deep-research-loop
-description: Athena-local multi-source research and claim-checking skill.
+description: Kira-local multi-source research and claim-checking skill.
 context_trigger: "research, deep dive, investigate, compile, multi-source, current facts, pricing, policy, docs, citations, literature search"
 source: "Adapted from examples/skills/research/deep-research-loop/SKILL.md"
 ---

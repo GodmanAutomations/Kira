@@ -1,11 +1,11 @@
 {
   "status": "active",
   "updated_at": "2026-06-14T00:00:00Z",
-  "active_mission": "Install Athena Coding Anchor as the repo-local boot spine.",
+  "active_mission": "Install Kira Coding Anchor as the repo-local boot spine.",
   "next_moves": [
-    "Run the boot script from the Athena worktree.",
+    "Run the boot script from the Kira worktree.",
     "Run the doctor script after packet edits.",
-    "Use mission notes only when a real Athena project effort needs a handhold."
+    "Use mission notes only when a real Kira project effort needs a handhold."
   ],
   "verified": [
     "Packet adapted from the live CodeX Coding Anchor source on 2026-06-14."

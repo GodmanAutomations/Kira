@@ -1,6 +1,6 @@
 ---
 name: mcda-solver
-description: Athena-local multi-criteria decision matrix skill for tradeoff-heavy choices.
+description: Kira-local multi-criteria decision matrix skill for tradeoff-heavy choices.
 context_trigger: "decision matrix, multi-criteria, MCDA, weighted scoring, trade-off analysis, alternatives, prioritization, ranking"
 source: "Adapted from examples/skills/decision/mcda-solver/SKILL.md and examples/protocols/decision/DEC-121-mcda-eev-framework.md"
 ---

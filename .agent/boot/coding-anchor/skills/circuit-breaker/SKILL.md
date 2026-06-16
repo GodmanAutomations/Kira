@@ -1,6 +1,6 @@
 ---
 name: circuit-breaker
-description: Athena-local stop rule for repeated failures, fatigue, compulsive loops, or cumulative red flags.
+description: Kira-local stop rule for repeated failures, fatigue, compulsive loops, or cumulative red flags.
 context_trigger: "losing streak, tilt, red flag, burnout, keep going, one more try, repeated failure, fatigue, emergency stop, circuit breaker"
 source: "Adapted from examples/skills/quality/circuit-breaker/SKILL.md and examples/protocols/safety/SAF-48-circuit-breaker-systemic.md"
 ---

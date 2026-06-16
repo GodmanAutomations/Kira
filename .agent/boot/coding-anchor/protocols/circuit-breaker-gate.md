@@ -22,7 +22,7 @@ or rising blast radius.
 - wanting to rewrite because a small fix is annoying
 - skipped verification because the answer feels obvious
 
-## Athena Boundary
+## Kira Boundary
 
 Generated breaker notes live under `circuit-breakers/` and are ignored by Git.
 They are working AARs, not public artifacts.

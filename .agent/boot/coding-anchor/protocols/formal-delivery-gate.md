@@ -42,7 +42,7 @@ capstone, assignment, client document, or research artifact.
 - relying on clean prose while missing the actual acceptance criteria
 - formatting afterthoughts that break the submission/export requirement
 
-## Athena Boundary
+## Kira Boundary
 
 Generated delivery plans live under `formal-deliverables/` and are ignored by
 Git. This gate helps plan and verify formal outputs; it does not submit,

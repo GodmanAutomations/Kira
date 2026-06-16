@@ -1,6 +1,6 @@
 ---
 name: power-inversion
-description: Athena-local negotiation and commitment-protection skill.
+description: Kira-local negotiation and commitment-protection skill.
 context_trigger: "negotiation, BATNA, leverage, pricing pushback, protect this deal, deposit, escrow, commitment, they want info first, too expensive"
 source: "Adapted from examples/skills/quality/power-inversion/SKILL.md, examples/protocols/decision/DEC-64-commitment-device-framework.md, and examples/protocols/decision/DEC-163-precommitment-heuristic.md"
 ---

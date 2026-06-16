@@ -1,6 +1,6 @@
 # Skill Router
 
-This is the Coding Anchor routing layer for Athena's 26 example skills. It
+This is the Coding Anchor routing layer for Kira's 26 example skills. It
 keeps skill use retrieval-led and prevents copying the whole library into boot
 context.
 
@@ -8,7 +8,7 @@ Verified: 2026-06-14
 
 ## Routing Rule
 
-1. If the task is about Athena context, run `bin/athena-coding-anchor-search`.
+1. If the task is about Kira context, run `bin/athena-coding-anchor-search`.
 2. If the task is implementation, use `skills/atomic-execution/SKILL.md`.
 3. If a source skill matches, read its `SKILL.md` before using it.
 4. Adopt a source skill into this packet only when it changes repeated Codex
@@ -23,7 +23,7 @@ Verified: 2026-06-14
 
 | Skill | Local Path | Use When |
 | :--- | :--- | :--- |
-| `semantic-search` | `skills/semantic-search/SKILL.md` | Find Athena workflows, protocols, docs, memory, or prior patterns before deciding. |
+| `semantic-search` | `skills/semantic-search/SKILL.md` | Find Kira workflows, protocols, docs, memory, or prior patterns before deciding. |
 | `atomic-execution` | `skills/atomic-execution/SKILL.md` | Turn a plan into one small, verification-gated implementation slice. |
 | `diagnostic-refactor` | `skills/diagnostic-refactor/SKILL.md` | Produce a read-only bill of materials before changing messy or stale surfaces. |
 | `red-team-review` | `skills/red-team-review/SKILL.md` | Stress-test significant artifacts before shipping, merging, or calling them ready. |
@@ -72,7 +72,7 @@ Verified: 2026-06-14
 
 - `examples/skills/` contains 26 `SKILL.md` files in this checkout.
 - Several source skills encode private or domain-specific operating patterns.
-  Use them from source unless repeated Athena boot work proves they belong in
+  Use them from source unless repeated Kira boot work proves they belong in
   this packet.
 - The current boot packet intentionally adopts only foundation skills:
   retrieval first, spec before feature work, diagnosis before refactor,

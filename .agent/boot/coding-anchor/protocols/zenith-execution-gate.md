@@ -40,7 +40,7 @@ capital, committing repeated capacity, or setting execution constraints.
 - no drawdown pause rule
 - execution plan cannot name when it will stop
 
-## Athena Boundary
+## Kira Boundary
 
 Generated execution plans live under `execution-plans/` and are ignored by Git.
 This gate prepares sizing and execution constraints; it does not place trades,

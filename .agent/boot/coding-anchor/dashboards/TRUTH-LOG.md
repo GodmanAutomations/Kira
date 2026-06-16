@@ -1,10 +1,10 @@
 # Truth Log
 
-Use this file for verified claims about the Athena Coding Anchor packet.
+Use this file for verified claims about the Kira Coding Anchor packet.
 
 ## 2026-06-14
 
-- Verified: the Athena transplant worktree was created at
+- Verified: the Kira transplant worktree was created at
   `/Users/stephengodman/000_AI/agent-frameworks/Athena-Public-codex-boot`.
 - Verified: the transplant branch is `codex/athena-coding-anchor-boot`.
 - Verified: the source CodeX packet existed at adaptation time.
@@ -12,9 +12,9 @@ Use this file for verified claims about the Athena Coding Anchor packet.
   this checkout; the example `semantic-search` skill referenced an old
   `examples/scripts/smart_search.py` path.
 - Verified: `python3 .agent/scripts/smart_search.py "semantic search skill
-  routing" --limit 5` returned Athena grounding with fallback because
+  routing" --limit 5` returned Kira grounding with fallback because
   `GOOGLE_API_KEY` was missing.
-- Decision: rebuild the useful shape as Athena-local boot mechanics, not as a
+- Decision: rebuild the useful shape as Kira-local boot mechanics, not as a
   restore of old Anchor/Gemini state.
 - Decision: adopt a corrected `semantic-search` skill locally before adopting
   heavier coding or review skills.
@@ -28,11 +28,11 @@ Use this file for verified claims about the Athena Coding Anchor packet.
   `.agent/scripts/parallel_orchestrator.py` in this checkout.
 - Decision: add `SKILL-ROUTER.md` as the compact skill classification surface
   before adopting more skills.
-- Decision: adopt `diagnostic-refactor` because Athena has many stale paths and
+- Decision: adopt `diagnostic-refactor` because Kira has many stale paths and
   cleanup should start with a bill of materials, not a blind rewrite.
 - Decision: adopt `red-team-review` because the boot packet is becoming
   durable enough to need an adversarial readiness gate before merge or release.
-- Decision: adopt `spec-driven-dev` because Athena can now execute quickly and
+- Decision: adopt `spec-driven-dev` because Kira can now execute quickly and
   needs a compact requirements gate before unclear feature work.
 - Verified: the source `micro-commit` skill referenced a missing
   `.context/memories/protocols/engineering/44-micro-commit-protocol.md` path;
@@ -56,7 +56,7 @@ Use this file for verified claims about the Athena Coding Anchor packet.
 - Verified: `.context/memory_bank/activeContext.md` exists in this checkout,
   but the boot packet will not rewrite it during this transplant.
 - Decision: adopt `context-compactor` as a local ignored continuation handoff
-  generator so long Athena Coding Anchor sessions keep branch, files,
+  generator so long Kira Coding Anchor sessions keep branch, files,
   verification, and next-slice state.
 - Decision: adopt `deep-research-loop` so external/current facts get source,
   conflict, and confidence discipline before driving implementation.
@@ -90,7 +90,7 @@ Use this file for verified claims about the Athena Coding Anchor packet.
 - Verified: `distribution-physics` references
   `.context/memories/protocols/business/106-distribution-physics.md`, but that
   file was not found in this checkout.
-- Verified: current Athena distribution strategy lives in
+- Verified: current Kira distribution strategy lives in
   `examples/protocols/strategy/STR-162-product-market-operations-fit.md` and
   `examples/protocols/strategy/STR-526-business-viability-assessment.md`.
 - Decision: adopt `distribution-physics` as PMOD plus channel tax, CAC/LTV,

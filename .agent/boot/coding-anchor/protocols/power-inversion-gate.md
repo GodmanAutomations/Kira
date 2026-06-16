@@ -21,7 +21,7 @@ release where Stephen could lose leverage.
 - Stephen would have no recourse if they bypass, ghost, or extract the asset.
 - "Just send it first" is doing the work of a missing contract.
 
-## Athena Boundary
+## Kira Boundary
 
 Generated negotiation notes live under `negotiations/` and are ignored by Git.
 This gate protects leverage; it does not authorize payments, contracts, or

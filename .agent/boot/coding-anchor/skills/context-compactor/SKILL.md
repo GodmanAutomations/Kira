@@ -1,6 +1,6 @@
 ---
 name: context-compactor
-description: Athena-local continuation handoff skill for long sessions and context pressure.
+description: Kira-local continuation handoff skill for long sessions and context pressure.
 context_trigger: "context window, running low, compress, compact, too long, token limit, summarize context, handoff, resume, next slice"
 source: "Adapted from examples/skills/workflow/context-compactor/SKILL.md and examples/protocols/architecture/ARC-502-context-lifecycle.md"
 ---
@@ -16,7 +16,7 @@ to summarize/compact, or the next agent needs a reliable continuation handhold.
   next slice.
 - Preserve Stephen corrections and wording preferences.
 - Drop redundant tool output, chatter, and superseded plans.
-- Do not overwrite Athena's public memory bank from this boot packet.
+- Do not overwrite Kira's public memory bank from this boot packet.
 - Write local continuation handholds under `context-handoffs/`, which is ignored
   by Git unless Stephen deliberately promotes one.
 

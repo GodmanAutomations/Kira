@@ -21,7 +21,7 @@ accepting scope changes.
 - lowering price before the client names budget
 - giving strategy, access, or deliverables before commitment
 
-## Athena Boundary
+## Kira Boundary
 
 Generated quote notes live under `quotes/` and are ignored by Git.
 This gate helps prepare pricing; it does not contact the client or send a quote

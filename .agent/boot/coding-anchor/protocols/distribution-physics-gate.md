@@ -32,7 +32,7 @@ finding them.
 - platform dependency without backup channel
 - fixing copy when the channel itself is broken
 
-## Athena Boundary
+## Kira Boundary
 
 Generated distribution plans live under `distribution-plans/` and are ignored
 by Git. This gate helps prepare strategy; it does not launch campaigns, spend

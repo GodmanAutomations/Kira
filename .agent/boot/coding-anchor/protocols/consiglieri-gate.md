@@ -45,7 +45,7 @@ negotiations, trust decisions, or emotionally loaded responses.
 - unclear exit
 - two or more Vibe Veto signals
 
-## Athena Boundary
+## Kira Boundary
 
 Generated trust reviews live under `trust-reviews/` and are ignored by Git.
 This gate helps prepare judgment and communication; it does not contact anyone,

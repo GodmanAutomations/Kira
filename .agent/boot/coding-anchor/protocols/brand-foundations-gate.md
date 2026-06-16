@@ -22,7 +22,7 @@ identity, or launch messaging.
 - naming decisions that conflict with repo, product, or public identity
 - pretending uncertain brand decisions are final
 
-## Athena Boundary
+## Kira Boundary
 
 Generated brand guides live under `brand-guides/` and are ignored by Git.
 This gate helps prepare identity and positioning; it does not rename the repo,

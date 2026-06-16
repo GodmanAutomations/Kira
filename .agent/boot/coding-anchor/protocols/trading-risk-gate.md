@@ -38,7 +38,7 @@ dominate the upside.
 - upside is reversible but downside is irreversible
 - sizing or optimism used to bypass a ruin veto
 
-## Athena Boundary
+## Kira Boundary
 
 Generated risk reviews live under `risk-reviews/` and are ignored by Git.
 This gate prepares risk judgment; it does not place trades, move money, enter

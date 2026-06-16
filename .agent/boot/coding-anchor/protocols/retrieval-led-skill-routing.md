@@ -1,6 +1,6 @@
 # Retrieval-Led Skill Routing
 
-Use this before adopting or invoking Athena repo machinery.
+Use this before adopting or invoking Kira repo machinery.
 
 1. Search first when the right skill, workflow, protocol, or architecture file
    is not already known.

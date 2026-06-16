@@ -1,6 +1,6 @@
 ---
 name: micro-commit
-description: Athena-local checkpoint hygiene for splitting verified work into atomic, intentional commits.
+description: Kira-local checkpoint hygiene for splitting verified work into atomic, intentional commits.
 context_trigger: "checkpoint, save it, save this, lock it in, ship it, done, next slice, commit, git, atomic commit, split commit, commit hygiene, PR too big, save my work"
 source: "Adapted from examples/skills/coding/micro-commit/SKILL.md and examples/protocols/engineering/ENG-43-micro-commit-protocol.md"
 ---
@@ -46,6 +46,6 @@ intent when a slice is verified:
 
 ## Boundary
 
-The source Athena skill says it can automatically execute commits. This
+The source skill says it can automatically execute commits. This
 repo-local adaptation keeps Codex's safer boundary: the helper plans and
 reviews; the agent commits only on clear checkpoint/save/lock-in intent.

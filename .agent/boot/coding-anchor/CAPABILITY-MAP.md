@@ -1,6 +1,6 @@
 # Capability Map
 
-Athena Coding Anchor is an execution posture, not a separate model.
+Kira Coding Anchor is an execution posture, not a separate model.
 
 ## Native Strengths
 
@@ -99,10 +99,10 @@ Athena Coding Anchor is an execution posture, not a separate model.
 - Auth prompts: use approved local secret sources, password managers, existing
   sessions, and browser/computer automation without exposing secrets.
 - Web: verify current public facts when drift matters.
-- Search: use `bin/athena-coding-anchor-search` for Athena repo context when
+- Search: use `bin/athena-coding-anchor-search` for Kira repo context when
   the right skill, workflow, protocol, or architecture file is not already
   known.
-- Skills: load task-specific Athena, Stephen, or platform skills before
+- Skills: load task-specific Kira, Stephen, or platform skills before
   specialized work.
 - MCP/apps: use connected services when the task names them or they clearly fit.
 
@@ -125,7 +125,7 @@ Athena Coding Anchor is an execution posture, not a separate model.
 - `skills/visual-verify-ui/SKILL.md` is adopted now as the default visual QA
   skill for frontend, layout, and screenshot-backed verification.
 - `skills/context-compactor/SKILL.md` is adopted now as the default
-  continuation handoff skill for long Athena sessions.
+  continuation handoff skill for long Kira sessions.
 - `skills/deep-research-loop/SKILL.md` is adopted now as the default
   multi-source research and confidence-rating skill.
 - `skills/decision-journal/SKILL.md` is adopted now as the default decision

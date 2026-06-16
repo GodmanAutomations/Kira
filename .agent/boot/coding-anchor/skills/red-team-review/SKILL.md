@@ -1,7 +1,7 @@
 ---
 name: red-team-review
 description: Run an adversarial review gate before shipping significant boot, docs, code, or release artifacts.
-target_agent: "Codex working inside Athena-Public or the Athena Coding Anchor boot packet"
+target_agent: "Codex working inside Kira or the Kira Coding Anchor boot packet"
 trigger_conditions:
   - "User asks for review, red team, QA, critique, stress test, pre-mortem, or readiness check"
   - "A significant artifact is about to be merged, committed, released, or treated as durable"

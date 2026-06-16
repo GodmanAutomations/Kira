@@ -1,6 +1,6 @@
 ---
 name: visual-verify-ui
-description: Athena-local visual QA gate for frontend and UI work.
+description: Kira-local visual QA gate for frontend and UI work.
 context_trigger: "check UI, screenshot, does this look right, visual QA, responsive, browser test, layout check, frontend, viewport"
 source: "Adapted from examples/skills/coding/visual-verify-ui/SKILL.md and examples/protocols/engineering/ENG-99-visual-verification.md"
 ---

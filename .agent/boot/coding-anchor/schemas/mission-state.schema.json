@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Athena Coding Anchor Mission State",
+  "title": "Kira Coding Anchor Mission State",
   "type": "object",
   "additionalProperties": false,
   "required": ["status", "updated_at", "active_mission", "next_moves", "verified"],

@@ -41,7 +41,7 @@ sales calls, launches, outreach, experiments, or operational attempts.
 - continuing when system-wide decay is visible
 - journal entries too vague to audit
 
-## Athena Boundary
+## Kira Boundary
 
 Generated performance reviews live under `performance-reviews/` and are ignored
 by Git. This gate reviews records and recommends next actions; it does not

@@ -1,7 +1,7 @@
 ---
 name: spec-driven-dev
 description: Build a compact design spec before implementing unclear or multi-file features.
-target_agent: "Codex working inside Athena-Public or the Athena Coding Anchor boot packet"
+target_agent: "Codex working inside Kira or the Kira Coding Anchor boot packet"
 trigger_conditions:
   - "User asks to build an app, create a feature, start a project, spec out, or design something"
   - "A change touches more than three files or has unclear success criteria"
@@ -11,7 +11,7 @@ file_paths:
   - ".agent/boot/coding-anchor/specs/"
   - ".agent/boot/coding-anchor/protocols/spec-first-gate.md"
   - "examples/skills/coding/spec-driven-dev/SKILL.md"
-rationale: "Athena has enough machinery to build fast. This skill prevents building the wrong thing by pinning goal, requirements, non-requirements, architecture, edge cases, and acceptance checks first."
+rationale: "Kira has enough machinery to build fast. This skill prevents building the wrong thing by pinning goal, requirements, non-requirements, architecture, edge cases, and acceptance checks first."
 invocation_example: |
   User: "Build a dashboard"
   Codex: Create or draft a spec first, confirm success criteria when needed, then implement against that spec with atomic execution.

@@ -1,6 +1,6 @@
 # Micro-Commit Gate
 
-Use this gate before checkpointing, staging, or committing work in Athena.
+Use this gate before checkpointing, staging, or committing work in Kira.
 
 Stephen often will not say `commit`. When a durable slice is verified, Codex
 should surface the checkpoint option in plain language: "This slice is verified;
@@ -23,7 +23,7 @@ If a diff includes multiple unrelated features, docs changes, generated
 artifacts, or local runtime files, split it. A commit should be easy to review
 and easy to revert.
 
-## Athena Boundary
+## Kira Boundary
 
 Generated checkpoint plans live under `commit-plans/` and are ignored by Git.
 They are handholds, not release artifacts. The command name may mention commit;

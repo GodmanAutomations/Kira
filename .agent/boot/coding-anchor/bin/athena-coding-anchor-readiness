@@ -10,7 +10,7 @@ fi
 OUT_DIR="$ROOT/readiness-reports"
 mkdir -p "$OUT_DIR"
 
-SCOPE="${1:-Athena Coding Anchor readiness}"
+SCOPE="${1:-Kira Coding Anchor readiness}"
 STAMP="$(date '+%Y%m%d-%H%M%S')"
 SLUG="$(printf '%s' "$SCOPE" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9' '-' | sed 's/^-//;s/-$//' | cut -c1-60)"
 [ -n "$SLUG" ] || SLUG="readiness"
@@ -51,7 +51,7 @@ runtime_dirs=(
 )
 
 {
-  printf '# Athena Coding Anchor Readiness\n\n'
+  printf '# Kira Coding Anchor Readiness\n\n'
   printf 'Scope: %s\n\n' "$SCOPE"
   printf 'Generated: %s\n\n' "$(date '+%Y-%m-%dT%H:%M:%S%z')"
   printf 'Repo: `%s`\n\n' "$REPO_ROOT"

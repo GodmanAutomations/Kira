@@ -1,6 +1,6 @@
 ---
 name: brand-foundations
-description: Athena-local brand guide, voice, positioning, and visual-direction skill.
+description: Kira-local brand guide, voice, positioning, and visual-direction skill.
 context_trigger: "brand, branding, brand guidelines, logo, visual identity, tone of voice, brand pillars, positioning statement, naming"
 source: "Adapted from examples/skills/business/brand-foundations/SKILL.md"
 ---
