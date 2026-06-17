@@ -26,7 +26,7 @@ This is the current landing state for the Kira Coding Anchor boot packet.
 - Keep `KIRA-USE-MAP.md` and `athena-coding-anchor-*` helper names stable
   for now. They are compatibility targets, not identity claims.
 - Prefer `kira-coding-anchor-*` wrappers for human-facing boot, doctor,
-  search, readiness, checkpoint, brief, and heartbeat work.
+  search, spec, task, readiness, checkpoint, brief, and heartbeat work.
 - Keep the old remote branch `codex/athena-coding-anchor-boot` for now as a
   compatibility pointer. The observed `kira` ref is `4aca0a7`; do not delete
   it until downstream references are checked.

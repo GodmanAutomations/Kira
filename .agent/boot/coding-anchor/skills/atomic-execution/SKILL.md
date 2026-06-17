@@ -7,6 +7,7 @@ trigger_conditions:
   - "A task spans multiple files and needs progress preserved without context bloat"
   - "Codex needs to turn a roadmap, plan, or design into concrete verified work"
 file_paths:
+  - ".agent/boot/coding-anchor/bin/kira-coding-anchor-task"
   - ".agent/boot/coding-anchor/bin/athena-coding-anchor-task"
   - ".agent/boot/coding-anchor/tasks/"
   - ".agent/boot/coding-anchor/protocols/atomic-execution-loop.md"
@@ -14,7 +15,7 @@ file_paths:
 rationale: "Kira's source skill prevents long-context drift by forcing small task blocks with explicit verification. This adapted version makes that executable in the Coding Anchor boot packet."
 invocation_example: |
   User: "hit the next slice"
-  Codex: Pick one small slice, optionally run `bin/athena-coding-anchor-task "adopt atomic execution"`, execute only that task, run its verification, then update the result.
+  Codex: Pick one small slice, optionally run `bin/kira-coding-anchor-task "adopt atomic execution"`, execute only that task, run its verification, then update the result.
 auto-invoke: false
 model: default
 ---
@@ -29,7 +30,7 @@ large, blurry implementation pass.
 Create a task template from the repository root:
 
 ```bash
-.agent/boot/coding-anchor/bin/athena-coding-anchor-task "short task name"
+.agent/boot/coding-anchor/bin/kira-coding-anchor-task "short task name"
 ```
 
 The generated task file is intentionally ignored by Git. Promote durable

@@ -48,7 +48,7 @@ Kira skills, workflows, protocols, or architecture surfaces.
 Use `SKILL-ROUTER.md` to decide whether a source skill is adopted, adopt-soon,
 usable from source, or needs repair.
 
-Use `bin/athena-coding-anchor-spec "<feature>"` before unclear or multi-file
+Use `bin/kira-coding-anchor-spec "<feature>"` before unclear or multi-file
 feature work.
 
 Use `bin/athena-coding-anchor-refactor-report "<target>"` before cleanup or
@@ -60,7 +60,7 @@ significant boot, docs, code, or release artifact ready.
 Use `bin/kira-coding-anchor-checkpoint "<scope>"` after a verified durable
 slice so Stephen does not have to remember the word `commit`.
 
-Use `bin/athena-coding-anchor-task "<task name>"` when the next slice needs an
+Use `bin/kira-coding-anchor-task "<task name>"` when the next slice needs an
 explicit XML task handhold.
 
 Use `protocols/credential-prompt-handling.md` when a task hits an API,

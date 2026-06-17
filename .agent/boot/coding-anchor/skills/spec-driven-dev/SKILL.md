@@ -7,6 +7,7 @@ trigger_conditions:
   - "A change touches more than three files or has unclear success criteria"
   - "Codex catches itself thinking it will figure out requirements as it goes"
 file_paths:
+  - ".agent/boot/coding-anchor/bin/kira-coding-anchor-spec"
   - ".agent/boot/coding-anchor/bin/athena-coding-anchor-spec"
   - ".agent/boot/coding-anchor/specs/"
   - ".agent/boot/coding-anchor/protocols/spec-first-gate.md"
@@ -28,7 +29,7 @@ Use this skill before implementing unclear, multi-file, or durable features.
 Create a spec template from the repository root:
 
 ```bash
-.agent/boot/coding-anchor/bin/athena-coding-anchor-spec "feature name"
+.agent/boot/coding-anchor/bin/kira-coding-anchor-spec "feature name"
 ```
 
 Specs are ignored by Git by default. Promote durable requirements into project

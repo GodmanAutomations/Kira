@@ -51,6 +51,8 @@ Run the doctor directly with:
 - `bin/kira-coding-anchor-tick` - preferred Kira heartbeat wrapper.
 - `bin/kira-coding-anchor-brief` - preferred Kira re-entry wrapper.
 - `bin/kira-coding-anchor-search` - preferred Kira retrieval wrapper.
+- `bin/kira-coding-anchor-spec` - preferred Kira design-spec wrapper.
+- `bin/kira-coding-anchor-task` - preferred Kira atomic-task wrapper.
 - `bin/kira-coding-anchor-readiness` - preferred Kira readiness wrapper.
 - `bin/kira-coding-anchor-checkpoint` - preferred Kira checkpoint wrapper.
 - `bin/kira-coding-anchor-status` - read-only branch, sync, and checkpoint snapshot.

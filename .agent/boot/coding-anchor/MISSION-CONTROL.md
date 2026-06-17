@@ -104,9 +104,9 @@ packet:
 1. Use this packet on the next serious Kira coding mission.
 2. Search Kira context with `bin/athena-coding-anchor-search` before choosing
    skills or protocols for broad repo work.
-3. Use `bin/athena-coding-anchor-spec` before unclear or multi-file feature
+3. Use `bin/kira-coding-anchor-spec` before unclear or multi-file feature
    work.
-4. Use `bin/athena-coding-anchor-task` when a plan needs a concrete XML task
+4. Use `bin/kira-coding-anchor-task` when a plan needs a concrete XML task
    handhold.
 5. Use `bin/athena-coding-anchor-refactor-report` before editing messy or stale
    surfaces.

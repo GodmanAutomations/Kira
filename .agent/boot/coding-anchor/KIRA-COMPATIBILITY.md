@@ -15,6 +15,8 @@ they are safe to retire.
 | Human boot helper | `bin/kira-coding-anchor-boot` |
 | Human doctor helper | `bin/kira-coding-anchor-doctor` |
 | Human search helper | `bin/kira-coding-anchor-search` |
+| Human spec helper | `bin/kira-coding-anchor-spec` |
+| Human task helper | `bin/kira-coding-anchor-task` |
 | Human readiness helper | `bin/kira-coding-anchor-readiness` |
 | Human checkpoint helper | `bin/kira-coding-anchor-checkpoint` |
 | Human status helper | `bin/kira-coding-anchor-status` |

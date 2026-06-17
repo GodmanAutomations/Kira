@@ -22,9 +22,9 @@ Verified on 2026-06-14:
 
 | Need | Use | Why |
 | :--- | :--- | :--- |
-| Find relevant Kira context before acting | `skills/semantic-search/SKILL.md` + `bin/athena-coding-anchor-search` | Matches Kira's retrieval-first architecture and works in this checkout. |
-| Spec before feature work | `skills/spec-driven-dev/SKILL.md` + `bin/athena-coding-anchor-spec` | Pins goal, scope, architecture, edge cases, and acceptance checks before building. |
-| Execute the next slice | `skills/atomic-execution/SKILL.md` + `bin/athena-coding-anchor-task` | Turns plans into one verification-gated task instead of a sprawling pass. |
+| Find relevant Kira context before acting | `skills/semantic-search/SKILL.md` + `bin/kira-coding-anchor-search` | Matches Kira's retrieval-first architecture and works in this checkout. |
+| Spec before feature work | `skills/spec-driven-dev/SKILL.md` + `bin/kira-coding-anchor-spec` | Pins goal, scope, architecture, edge cases, and acceptance checks before building. |
+| Execute the next slice | `skills/atomic-execution/SKILL.md` + `bin/kira-coding-anchor-task` | Turns plans into one verification-gated task instead of a sprawling pass. |
 | Diagnose before refactoring | `skills/diagnostic-refactor/SKILL.md` + `bin/athena-coding-anchor-refactor-report` | Creates a bill of materials before touching stale or messy surfaces. |
 | Review before shipping | `skills/red-team-review/SKILL.md` + `bin/athena-coding-anchor-red-team` | Finds shared blind spots before merge, release, or durable closeout. |
 | Plan checkpoints | `skills/micro-commit/SKILL.md` + `bin/athena-coding-anchor-checkpoint` | Splits verified work into intentional save points without requiring Stephen to say `commit`. |
@@ -43,7 +43,7 @@ Verified on 2026-06-14:
 | Analyze data and experiments | `skills/statistical-analysis/SKILL.md` + `bin/athena-coding-anchor-statistics` | Audits data quality, assumptions, tests, effect sizes, confidence, and practical meaning. |
 | Review repeated-action performance | `skills/trade-journal-analyzer/SKILL.md` + `bin/athena-coding-anchor-performance-review` | Classifies records as noise, execution gap, structural flaw, or edge decay before changing the system. |
 | Deliver formal work products | `skills/academic-delivery/SKILL.md` + `bin/athena-coding-anchor-deliverable` | Forces intake, V1 draft, red-team, revision, compile, and exit-gate verification before delivery. |
-| Check readiness before save or handoff | `protocols/readiness-checkpoint-gate.md` + `bin/athena-coding-anchor-readiness` | Summarizes adopted skills, helpers, ignored generated artifacts, source-only boundaries, and git state. |
+| Check readiness before save or handoff | `protocols/readiness-checkpoint-gate.md` + `bin/kira-coding-anchor-readiness` | Summarizes adopted skills, helpers, ignored generated artifacts, source-only boundaries, and git state. |
 | Pause damaging loops | `skills/circuit-breaker/SKILL.md` + `bin/athena-coding-anchor-circuit-breaker` | Stops repeated failures, fatigue, and compulsive retrying before damage compounds. |
 | Protect negotiation leverage | `skills/power-inversion/SKILL.md` + `bin/athena-coding-anchor-negotiation` | Maps BATNA, protects assets, and requires commitment before releasing value. |
 | Prepare client quotes | `skills/client-pricing/SKILL.md` + `bin/athena-coding-anchor-quote` | Defines scope, anchor, floor, payment terms, and pushback boundaries. |
@@ -60,7 +60,7 @@ Verified on 2026-06-14:
 
 Before broad Kira work:
 
-1. Run `bin/athena-coding-anchor-search "<topic>" --limit 5`.
+1. Run `bin/kira-coding-anchor-search "<topic>" --limit 5`.
 2. Check `SKILL-ROUTER.md` for the matching source or adopted skill.
 3. Read the highest-signal files returned by search.
 4. Load a skill only when its trigger matches the task and it changes the next
@@ -70,7 +70,7 @@ Before broad Kira work:
 Before feature work:
 
 1. Use `skills/spec-driven-dev/SKILL.md`.
-2. Create a compact spec with `bin/athena-coding-anchor-spec`.
+2. Create a compact spec with `bin/kira-coding-anchor-spec`.
 3. Convert acceptance criteria into atomic execution slices.
 
 When executing a plan:
@@ -209,7 +209,7 @@ When producing or reviewing a formal deliverable:
 Before checkpointing, publishing, or handing off a long boot-packet run:
 
 1. Use `protocols/readiness-checkpoint-gate.md`.
-2. Create a readiness report with `bin/athena-coding-anchor-readiness`.
+2. Create a readiness report with `bin/kira-coding-anchor-readiness`.
 3. Confirm doctor, syntax checks, schemas, stale/private scan, ignored
    artifacts, and intentional git state before saving or publishing.
 

@@ -8,7 +8,7 @@ Verified: 2026-06-14
 
 ## Routing Rule
 
-1. If the task is about Kira context, run `bin/athena-coding-anchor-search`.
+1. If the task is about Kira context, run `bin/kira-coding-anchor-search`.
 2. If the task is implementation, use `skills/atomic-execution/SKILL.md`.
 3. If a source skill matches, read its `SKILL.md` before using it.
 4. Adopt a source skill into this packet only when it changes repeated Codex
@@ -17,7 +17,7 @@ Verified: 2026-06-14
    private workspace assumptions until repaired.
 6. Before checkpointing a long adoption run, use
    `protocols/readiness-checkpoint-gate.md` and
-   `bin/athena-coding-anchor-readiness`.
+   `bin/kira-coding-anchor-readiness`.
 
 ## Adopted Now
 
