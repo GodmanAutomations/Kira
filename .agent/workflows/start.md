@@ -11,24 +11,33 @@ description: Boot the Kira system and load context
 
 // turbo
 
+- [ ] Load `.agent/boot/coding-anchor/START-HERE.md` — packet entry sequence
+- [ ] Load `.agent/boot/coding-anchor/BOOT.md` — boot procedure and operating gates
 - [ ] Load `.agent/boot/coding-anchor/KIRA-LANDING.md` — branch, remote, and naming state
 - [ ] Load `.agent/boot/coding-anchor/CODING-ANCHOR-IDENTITY.md` — Kira-local execution posture
 - [ ] Load `.agent/boot/coding-anchor/AUTONOMY-CONTRACT.md` — authority and stop/ask gates
 - [ ] Load `.agent/boot/coding-anchor/CURRENT.md` — current verified boot state
-- [ ] Load `.agent/boot/coding-anchor/MISSION-CONTROL.md` and `.agent/boot/coding-anchor/OPEN-LOOPS.md`
+- [ ] Load `.agent/boot/coding-anchor/MISSION-CONTROL.md` and `.agent/boot/coding-anchor/OPEN-LOOPS.md` — active state and loose ends
+- [ ] Load `.agent/boot/coding-anchor/KIRA-USE-MAP.md` and `.agent/boot/coding-anchor/SKILL-ROUTER.md` — skill/tool routing
+- [ ] Run `.agent/boot/coding-anchor/bin/kira-coding-anchor-status`
 - [ ] Run `.agent/boot/coding-anchor/bin/kira-coding-anchor-doctor`
 - [ ] Record heartbeat with `.agent/boot/coding-anchor/bin/kira-coding-anchor-tick`
 - [ ] Load `.context/project_state.md` and `.context/CANONICAL.md` when the task needs broader Kira state
 
-**Confirm**: "Kira Coding Anchor boot complete. Boot packet loaded, doctor checked, heartbeat recorded."
+**Confirm**: "Kira Coding Anchor boot complete. Boot packet loaded, status checked, doctor passed, heartbeat recorded."
 
-## Phase 2: Triple-Lock Reminder
+## Phase 2: Kira Work Loop
 
-Every response MUST follow the Triple-Lock:
+For non-trivial work, use the smallest routing loop that gives a verified next
+move:
 
-1. **Search** (Semantic) → FIRST
-2. **Save** (Quicksave) → SECOND
-3. **Speak** (Response) → LAST
+1. Search Kira context with `.agent/boot/coding-anchor/bin/kira-coding-anchor-search` when the relevant files, workflow, or skill are not already obvious.
+2. Use `.agent/boot/coding-anchor/KIRA-USE-MAP.md` and `.agent/boot/coding-anchor/SKILL-ROUTER.md` to choose the right gate.
+3. Use `.agent/boot/coding-anchor/bin/kira-coding-anchor-spec` before unclear or multi-file feature work.
+4. Use `.agent/boot/coding-anchor/bin/kira-coding-anchor-task` when a plan needs a one-slice execution handhold.
+5. Make the smallest useful change.
+6. Verify with deterministic checks before claiming confidence.
+7. Use `.agent/boot/coding-anchor/bin/kira-coding-anchor-readiness` and `.agent/boot/coding-anchor/bin/kira-coding-anchor-checkpoint` before durable save, publish, or handoff decisions.
 
 ---
 
@@ -37,7 +46,7 @@ Every response MUST follow the Triple-Lock:
 | Command | Effect |
 |---------|--------|
 | `/start` | Boot system (this workflow) |
-| `/end` | Close session, commit to memory |
+| `/end` | Close session and file insights |
 | `/think` | Deep reasoning mode |
 | `/ultrathink` | Maximum depth analysis |
 
