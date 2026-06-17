@@ -18,11 +18,55 @@ from pathlib import Path
 TIMEOUT_SECONDS = 30
 PROJECT_ROOT = Path(__file__).parent.parent.parent.resolve()
 
-# Paths for grep fallback
+# Paths for fallback search
+BOOT_PACKET_DIR = PROJECT_ROOT / ".agent" / "boot" / "coding-anchor"
+WORKFLOWS_DIR = PROJECT_ROOT / ".agent" / "workflows"
+DOCS_DIR = PROJECT_ROOT / "docs"
+EXAMPLE_SKILLS_DIR = PROJECT_ROOT / "examples" / "skills"
 CANONICAL_PATH = PROJECT_ROOT / ".context" / "CANONICAL.md"
 PROTOCOL_SUMMARIES_PATH = PROJECT_ROOT / ".context" / "PROTOCOL_SUMMARIES.md"
 SESSION_LOGS_DIR = PROJECT_ROOT / ".context" / "memories" / "session_logs"
 MEMORY_BANK_DIR = PROJECT_ROOT / ".context" / "memory_bank"
+
+FALLBACK_TEXT_SUFFIXES = {
+    "",
+    ".json",
+    ".md",
+    ".py",
+    ".sh",
+    ".toml",
+    ".txt",
+    ".yaml",
+    ".yml",
+}
+
+BOOT_PACKET_GENERATED_DIRS = {
+    "brand-guides",
+    "circuit-breakers",
+    "commit-plans",
+    "context-handoffs",
+    "decision-matrices",
+    "decisions",
+    "distribution-plans",
+    "execution-plans",
+    "formal-deliverables",
+    "missions",
+    "negotiations",
+    "performance-reviews",
+    "quotes",
+    "readiness-reports",
+    "receipts",
+    "reports",
+    "research-briefs",
+    "reviews",
+    "risk-reviews",
+    "seo-audits",
+    "specs",
+    "statistical-analyses",
+    "tasks",
+    "trust-reviews",
+    "visual-checks",
+}
 
 
 # Stopwords for keyword extraction
@@ -32,6 +76,34 @@ STOPWORDS = {"the", "and", "for", "is", "in", "to", "of", "a", "an", "on", "at",
 def _extract_keywords(query: str) -> list[str]:
     """Split a multi-word query into individual searchable keywords."""
     return [w for w in query.split() if len(w) >= 2 and w.lower() not in STOPWORDS]
+
+
+def _iter_text_files(root: Path):
+    """Yield small text-like files for local fallback search."""
+    if not root.exists():
+        return
+
+    for path in root.rglob("*"):
+        if not path.is_file():
+            continue
+        try:
+            relative_parts = path.relative_to(root).parts
+        except ValueError:
+            relative_parts = path.parts
+        if root == BOOT_PACKET_DIR and any(
+            part in BOOT_PACKET_GENERATED_DIRS for part in relative_parts[:-1]
+        ):
+            continue
+        if path.name == ".gitkeep":
+            continue
+        if path.suffix.lower() not in FALLBACK_TEXT_SUFFIXES:
+            continue
+        try:
+            if path.stat().st_size > 500_000:
+                continue
+        except OSError:
+            continue
+        yield path
 
 
 def run_grep_fallback(query: str, limit: int = 10) -> None:
@@ -56,6 +128,50 @@ def run_grep_fallback(query: str, limit: int = 10) -> None:
         if key not in seen:
             seen.add(key)
             results.append(f"[{tag}] {line.strip()}")
+
+    def _search_root(tag: str, root: Path, max_matches: int = 12):
+        matches = 0
+        for path in _iter_text_files(root):
+            try:
+                display_path = path.relative_to(PROJECT_ROOT)
+            except ValueError:
+                display_path = path
+
+            path_lower = str(display_path).lower()
+            path_hits = sum(1 for k in keywords if k.lower() in path_lower)
+            if path_hits:
+                _add_unique(
+                    f"{tag}-PATH({path_hits}/{len(keywords)})",
+                    f"{display_path}: file path matched query terms",
+                )
+                matches += 1
+                if matches >= max_matches:
+                    return
+
+            try:
+                text = path.read_text(encoding="utf-8", errors="ignore")
+            except OSError:
+                continue
+
+            for lineno, line in enumerate(text.splitlines(), 1):
+                line_lower = line.lower()
+                hits = sum(1 for k in keywords if k.lower() in line_lower)
+                if hits < min(2, len(keywords)):
+                    continue
+                _add_unique(
+                    f"{tag}({hits}/{len(keywords)})",
+                    f"{display_path}:{lineno}: {line}",
+                )
+                matches += 1
+                if matches >= max_matches:
+                    return
+
+    # 0. Search the Kira-local surfaces first. These are the files operators
+    # need when vector search is cold or unavailable during boot work.
+    _search_root("BOOT_PACKET", BOOT_PACKET_DIR)
+    _search_root("WORKFLOW", WORKFLOWS_DIR)
+    _search_root("DOCS", DOCS_DIR)
+    _search_root("EXAMPLE_SKILL", EXAMPLE_SKILLS_DIR)
 
     # Build grep pattern: keyword1|keyword2|keyword3 (extended regex OR)
     grep_pattern = "|".join(keywords)
