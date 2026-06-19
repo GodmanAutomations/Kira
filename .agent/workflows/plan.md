@@ -1,85 +1,100 @@
----created: 2026-01-06
-last_updated: 2026-01-30
+---
+description: Build a Kira execution plan from current repo truth, then convert it into one verified task slice
 ---
 
----description: Structured planning protocol for tasks (Plan -> Pre-Mortem -> Verification)
-created: 2026-01-06
-last_updated: 2026-01-06
----
+# /plan - Kira Planning Workflow
 
-# Protocol: Structured Task Planning
+> **Latency Profile**: LOW for narrow work, MEDIUM for multi-file or high-risk work.
+> **Philosophy**: Plan only enough to make execution safe and obvious.
 
-This workflow enforces a "measure twice, cut once" approach.
+## Phase 0: Establish The Boundary
 
-## 1. Triage: Complexity Check
+// turbo
 
-**ASK:** Is this a "Heavy" or "Lite" task?
+- [ ] Run `.agent/boot/coding-anchor/bin/kira-coding-anchor-status` when branch, sync, or dirty state matters
+- [ ] Read the latest user request and identify the intended outcome in one sentence
+- [ ] Identify the repo boundary, target files, and sources of truth
+- [ ] Search Kira context with `.agent/boot/coding-anchor/bin/kira-coding-anchor-search "<topic>" --limit 5` when the relevant workflow, protocol, or skill is not obvious
+- [ ] Check `.agent/boot/coding-anchor/KIRA-USE-MAP.md` and `.agent/boot/coding-anchor/SKILL-ROUTER.md` when choosing a gate
 
-* **Lite Task**: Simple bugs, typos, minor UI tweaks ( < 15 mins).
-  * **Action**: Write a 1-paragraph summary in the chat.
-  * **Proceed**: Go directly to execution.
-* **Heavy Task**: New features, refactors, architecture changes, high-risk migrations.
-  * **Action**: Proceed to Step 2 (Full Protocol).
+## Phase 1: Choose Planning Depth
 
-## 2. Analysis & Mode Switch (Heavy Only)
+Pick the lightest plan that fits the task:
 
-1. **Stop and Analyze**: Do not rush. Read the user's request and context carefully.
-2. **Enter PLANNING Mode**: Use `task_boundary` to switch to `PLANNING` mode.
-3. **Check Knowledge**: Check if there are existing Knowledge Items (KIs) or protocols relevant to this task.
+| Depth | Use When | Output |
+| :--- | :--- | :--- |
+| Micro | One file, obvious edit, low risk | One sentence outcome and verification command |
+| Standard | Multiple steps or files, but clear goal | Short plan with files, risks, and checks |
+| Spec-first | Unclear feature, product decision, public surface, or more than three files | `.agent/boot/coding-anchor/bin/kira-coding-anchor-spec "<scope>"` |
+| Diagnostic | Cleanup, refactor, stale-state, or messy ownership boundary | `.agent/boot/coding-anchor/bin/athena-coding-anchor-refactor-report "<scope>"` |
+| High-risk | Destructive, paid, credential-sensitive, public launch, or irreversible action | Stop after one blocker question or create a review gate |
 
-## 3. Generate Implementation Plan (Heavy Only)
+Do not create ceremony for a tiny edit. Do not skip the spec when the success
+criteria are unclear.
 
-Create or update `implementation_plan.md`. **MANDATORY:** Apply **Protocol 272 (Harness Engineering)**.
-Do not just describe *what* to do. Define the parameters that make the solution inevitable.
+## Phase 2: Build The Plan
 
-```markdown
-# [Task Name]
+For a standard plan, write:
 
-## Goal & Harness (The Box)
-> **Protocol 272**: Define the constraints so tightly that execution is trivial.
-- **The Constraint Box**: Hard limits (Tech stack, performance, specific styles).
-- **The Input**: Starting state (File A, Variable B).
-- **The Output**: Exact definition of done (JSON Schema, UI Screenshot, Passing Test).
+1. **Goal**: what will be true when done.
+2. **Inputs**: files, docs, commands, data, or external sources used.
+3. **Scope**: what will change and what will not.
+4. **Steps**: three to seven concrete actions.
+5. **Risks**: failure modes worth preventing.
+6. **Verification**: deterministic checks required before confidence.
+7. **Next slice**: the first atomic unit to execute.
 
-## User Review Required
-Document anything that requires user review or clarification.
+For spec-first work, generate the spec template, then fill it from repo truth:
 
-## Proposed Changes
-List the specific actions or file edits. Group by component/file.
-- [Filename]
-    - [Action: Create/Edit/Delete]
-    - [Details: what changes?]
-
-## Pre-Mortem & Troubleshooting
-**Failure Analysis:**
-- Point of Failure 1: [What could go wrong?] -> [How to prevent/fix?]
-- Point of Failure 2: ...
-
-## Verification Plan
-**How will we know it worked?**
-- [ ] Command to run: `...`
-- [ ] Manual check: ...
+```bash
+.agent/boot/coding-anchor/bin/kira-coding-anchor-spec "<scope>"
 ```
 
-## 4. Initialize Task Tracking (Heavy Only)
+Keep generated specs ignored unless Stephen explicitly asks to promote one into
+durable project docs.
 
-Create or update `task.md` with a granular checklist using IDs.
+## Phase 3: Convert Plan To Execution
 
-## 5. Review (Heavy Only)
+When the user asks to proceed, or the request already implies execution:
 
-**STOP.** Do not proceed to execution yet.
+1. Create or mentally hold one atomic task.
+2. Use `.agent/boot/coding-anchor/bin/kira-coding-anchor-task "<scope>"` when a durable task handhold helps.
+3. Execute only the first verified slice.
+4. Run the verification named in the plan.
+5. If the check fails, fix inside the same slice before expanding scope.
 
-* Ask the user to review the plan.
-* Only switch to `EXECUTION` mode after approval.
+Do not wait for approval when the plan has one safe interpretation and the user
+already asked to make it happen. Ask only when materially different plans would
+produce different outcomes.
 
-## 6. Deviation Handling
+## Phase 4: Checkpoint Or Hand Off
 
-**IF** the plan fails mid-execution:
+For a durable plan or completed slice:
 
-1. **STOP**. Do not blindly retry more than once.
-2. **Report**: Tell the user what failed and why.
-3. **Update**: Propose a modified plan.
-4. **Confirm**: Wait for user approval before diverting.
+1. Run `.agent/boot/coding-anchor/bin/kira-coding-anchor-readiness "<scope>"` when the plan is multi-slice, public, or ready to save.
+2. Run `.agent/boot/coding-anchor/bin/kira-coding-anchor-checkpoint "<scope>"` before staging a verified atomic unit.
+3. Stage only files that belong to the current slice.
+4. Commit and push only when requested or when the ongoing slice pattern clearly calls for save/publish hygiene.
+5. Leave the next handhold explicit.
+
+## Phase 5: Response Shape
+
+For planning-only requests, return:
+
+1. Goal.
+2. Plan.
+3. Verification.
+4. First execution slice.
+
+For plan-plus-execution requests, return:
+
+1. What changed.
+2. What passed.
+3. What remains unverified.
+4. Next handhold.
+
+**Confirm**: "Kira plan complete. Boundary found, route chosen, verification named, next slice clear."
 
 ---
-**Trigger:** When the user says `/plan` or "Make a plan", run this workflow.
+
+# workflow #plan #spec #task #kira
