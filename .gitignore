@@ -32,6 +32,8 @@
 !.agent/boot/coding-anchor/missions/.gitkeep
 .agent/boot/coding-anchor/receipts/*
 !.agent/boot/coding-anchor/receipts/.gitkeep
+.agent/boot/coding-anchor/autoloops/*
+!.agent/boot/coding-anchor/autoloops/.gitkeep
 .agent/boot/coding-anchor/reports/*
 !.agent/boot/coding-anchor/reports/.gitkeep
 .agent/boot/coding-anchor/reviews/*

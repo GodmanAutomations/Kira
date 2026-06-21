@@ -35,9 +35,10 @@ move:
 2. Use `.agent/boot/coding-anchor/KIRA-USE-MAP.md` and `.agent/boot/coding-anchor/SKILL-ROUTER.md` to choose the right gate.
 3. Use `.agent/boot/coding-anchor/bin/kira-coding-anchor-spec` before unclear or multi-file feature work.
 4. Use `.agent/boot/coding-anchor/bin/kira-coding-anchor-task` when a plan needs a one-slice execution handhold.
-5. Make the smallest useful change.
-6. Verify with deterministic checks before claiming confidence.
-7. Use `.agent/boot/coding-anchor/bin/kira-coding-anchor-readiness` and `.agent/boot/coding-anchor/bin/kira-coding-anchor-checkpoint` before durable save, publish, or handoff decisions.
+5. Use `.agent/boot/coding-anchor/bin/kira-coding-anchor-autoloop "<scope>" --passes N` when Stephen asks to keep moving through known same-scope slices.
+6. Make the smallest useful change.
+7. Verify with deterministic checks before claiming confidence.
+8. Use `.agent/boot/coding-anchor/bin/kira-coding-anchor-readiness` and `.agent/boot/coding-anchor/bin/kira-coding-anchor-checkpoint` before durable save, publish, or handoff decisions.
 
 ---
 

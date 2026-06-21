@@ -63,6 +63,11 @@ slice so Stephen does not have to remember the word `commit`.
 Use `bin/kira-coding-anchor-task "<task name>"` when the next slice needs an
 explicit XML task handhold.
 
+Use `bin/kira-coding-anchor-autoloop "<scope>" --passes N` when Stephen wants
+Kira to keep moving through known work efficiently. Treat it as a conductor:
+generate a loop report, execute one verified pass, then rerun or stop at the
+next gate.
+
 Use `protocols/credential-prompt-handling.md` when a task hits an API,
 password, token, or login prompt.
 

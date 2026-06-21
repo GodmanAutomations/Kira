@@ -12,7 +12,7 @@ This file provides persistent context to any AI coding agent working in this wor
 [Athena Docs Index]|root: .
 |IMPORTANT: Always consult authoritative files before relying on training data.
 |.framework/v8.2-stable/modules:{Core_Identity.md,Output_Standards.md}
-|.agent/workflows (23):{start.md,end.md,do.md,plan.md,research.md,ultrathink.md,diagnose.md,...}
+|.agent/workflows (24):{start.md,end.md,do.md,autoloop.md,plan.md,research.md,ultrathink.md,diagnose.md,...}
 |examples/workflows (70):{ultrastart.md,ultraend.md,audit.md,battleplan.md,minmax.md,project.md,dream.md,...}
 |examples/protocols (150 across 15 categories):{architecture/,decision/,trading/,safety/,...}
 |examples/skills (26):{coding/spec-driven-dev,research/deep-research-loop,quality/red-team-review,...}
@@ -27,6 +27,7 @@ This file provides persistent context to any AI coding agent working in this wor
 | Command | File | Purpose |
 |:--------|:-----|:--------|
 | **`/do`** | **`.agent/workflows/do.md`** | **Universal entry point — auto-detects intent and routes** |
+| `/autoloop` | `.agent/workflows/autoloop.md` | Bounded multi-slice conductor for efficient verified work |
 | `/start` | `.agent/workflows/start.md` | Boot the agent session |
 | `/end` | `.agent/workflows/end.md` | Close session, file insights |
 | `/tutorial` | `examples/workflows/tutorial.md` | Guided first-session walkthrough |

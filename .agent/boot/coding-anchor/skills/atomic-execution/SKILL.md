@@ -33,6 +33,17 @@ Create a task template from the repository root:
 .agent/boot/coding-anchor/bin/kira-coding-anchor-task "short task name"
 ```
 
+Prefill the handhold when the files, action, verification, and done condition
+are already known:
+
+```bash
+.agent/boot/coding-anchor/bin/kira-coding-anchor-task "short task name" \
+  --files "path/to/file" \
+  --action "Make the smallest useful change" \
+  --verify "git diff --check" \
+  --done "The slice is verified"
+```
+
 The generated task file is intentionally ignored by Git. Promote durable
 decisions to `KIRA-USE-MAP.md`, `MISSION-CONTROL.md`, or `dashboards/TRUTH-LOG.md`
 only when they help future sessions.

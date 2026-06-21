@@ -22,10 +22,12 @@ Then work in slices:
 1. Inventory the live state.
 2. Search Kira context when the right skill, workflow, or protocol is not
    already known.
-3. Name the intended move.
-4. Change the least necessary surface.
-5. Verify with a real check.
-6. Record only useful evidence.
+3. Use `bin/kira-coding-anchor-autoloop "<scope>" --passes N` when Stephen
+   asks to keep moving through known work.
+4. Name the intended move.
+5. Change the least necessary surface.
+6. Verify with a real check.
+7. Record only useful evidence.
 
 If the task points at another repo, obey that repo's local `AGENTS.md` or
 `CLAUDE.md` after this packet has established posture.

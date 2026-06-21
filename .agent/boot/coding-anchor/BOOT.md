@@ -24,46 +24,48 @@ Boot sequence:
 6. For unclear feature work, write a compact spec before implementation.
 7. For implementation work, use atomic execution to take one verified slice at
    a time.
-8. After a verified durable slice, surface a checkpoint option in plain
+8. When Stephen asks to keep moving, use the bounded auto-loop conductor to
+   generate a priority queue, pass plan, verification target, and stop gates.
+9. After a verified durable slice, surface a checkpoint option in plain
    language; Stephen does not need to remember the word `commit`.
-9. If an API, password, token, or login prompt appears, use approved local
+10. If an API, password, token, or login prompt appears, use approved local
    secret sources directly and escalate only for human-presence blockers.
-10. For UI or visual work, verify with browser/screenshot evidence before
+11. For UI or visual work, verify with browser/screenshot evidence before
     calling it done.
-11. For long sessions, create a compact continuation handoff before context
+12. For long sessions, create a compact continuation handoff before context
     gets mushy.
-12. For external/current facts, run the research brief gate before acting.
-13. For meaningful choices, record the decision shape before outcome drift.
-14. For multi-factor choices, use MCDA before pretending the answer is obvious.
-15. If repeated failures or fatigue appear, trigger the circuit breaker before
+13. For external/current facts, run the research brief gate before acting.
+14. For meaningful choices, record the decision shape before outcome drift.
+15. For multi-factor choices, use MCDA before pretending the answer is obvious.
+16. If repeated failures or fatigue appear, trigger the circuit breaker before
     compounding damage.
-16. Before releasing leverage in a deal, map BATNA and secure commitment.
-17. Before quoting work, define scope, anchor, floor, payment terms, and
+17. Before releasing leverage in a deal, map BATNA and secure commitment.
+18. Before quoting work, define scope, anchor, floor, payment terms, and
     pushback boundaries.
-18. Before naming, public positioning, website copy, or visual identity work,
+19. Before naming, public positioning, website copy, or visual identity work,
     define brand purpose, enemy, audience, voice, value, proof, and visual
     direction.
-19. Before launch or acquisition work, check PMOD, product-channel fit,
+20. Before launch or acquisition work, check PMOD, product-channel fit,
     channel-model fit, CAC, LTV, margin, payback, and one testable experiment.
-20. Before publishing public/search-dependent pages, check metadata, headings,
+21. Before publishing public/search-dependent pages, check metadata, headings,
     links, indexability, content gaps, and barnacle opportunities.
-21. Before high-stakes meetings, partnerships, collaborations, or loaded
+22. Before high-stakes meetings, partnerships, collaborations, or loaded
     messages, run the trust review gate.
-22. Before repeated risk or trading-style exposure, run the ruin, ergodicity,
+23. Before repeated risk or trading-style exposure, run the ruin, ergodicity,
     and sequence-risk gate.
-23. Before sizing an exposure, allocating capital, or setting execution
+24. Before sizing an exposure, allocating capital, or setting execution
     constraints, confirm the risk gate passed and define Half-Kelly,
     invalidation, simulation, and pause rules.
-24. Before interpreting data, survey results, experiments, or metrics, audit
+25. Before interpreting data, survey results, experiments, or metrics, audit
     data quality, assumptions, effect sizes, uncertainty, and practical meaning.
-25. After repeated actions produce a record, classify performance as noise,
+26. After repeated actions produce a record, classify performance as noise,
     execution gap, structural flaw, or edge decay before changing the system.
-26. Before producing or sending a formal deliverable, intake the brief, draft
+27. Before producing or sending a formal deliverable, intake the brief, draft
     V1 as working copy, red-team it, revise, compile, and verify the exit gate.
-27. Before checkpointing a long boot-packet run, generate a readiness report
+28. Before checkpointing a long boot-packet run, generate a readiness report
     that names adopted skills, helpers, ignored artifacts, source-only skills,
     and current git state.
-28. Before shipping or merging significant artifacts, run the red-team review
+29. Before shipping or merging significant artifacts, run the red-team review
    gate.
 
 If the boot feels thin, read:
@@ -83,6 +85,7 @@ If the boot feels thin, read:
 - `protocols/spec-first-gate.md`
 - `protocols/visual-verification-gate.md`
 - `protocols/autonomous-work-loop.md`
+- `protocols/auto-loop-conductor.md`
 - `protocols/atomic-execution-loop.md`
 - `protocols/brand-foundations-gate.md`
 - `protocols/circuit-breaker-gate.md`

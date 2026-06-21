@@ -25,6 +25,7 @@ Pick one primary route before acting:
 | Simple answer or explanation | Answer directly from known or local context | Verify any repo-specific claim against files |
 | Kira/repo context lookup | Search local Kira context | `.agent/boot/coding-anchor/bin/kira-coding-anchor-search "<topic>" --limit 5` |
 | Implementation or fix | One atomic execution slice | `.agent/boot/coding-anchor/bin/kira-coding-anchor-task "<scope>"` when a task handhold helps |
+| Repeated next-slice work | Bounded auto-loop conductor | `.agent/boot/coding-anchor/bin/kira-coding-anchor-autoloop "<scope>" --passes N --task` when a task handhold helps |
 | Unclear or multi-file feature work | Spec before code | `.agent/boot/coding-anchor/bin/kira-coding-anchor-spec "<scope>"` |
 | Refactor or cleanup | Diagnose before editing | `.agent/boot/coding-anchor/bin/athena-coding-anchor-refactor-report "<scope>"` |
 | Review or shipping check | Red-team before confidence | `.agent/boot/coding-anchor/bin/athena-coding-anchor-red-team "<scope>"` |
@@ -56,10 +57,11 @@ Ask one blocker question only when:
 For implementation work:
 
 1. Search or read the smallest relevant surface.
-2. Name the intended move.
-3. Edit only the files in the current atomic unit.
-4. Preserve unrelated user or agent work.
-5. Avoid broad rewrites unless the chosen route explicitly calls for them.
+2. Use `kira-coding-anchor-autoloop "<scope>" --passes N` when Stephen asks to keep moving through repeated slices.
+3. Name the intended move.
+4. Edit only the files in the current atomic unit.
+5. Preserve unrelated user or agent work.
+6. Avoid broad rewrites unless the chosen route explicitly calls for them.
 
 For non-code work:
 
@@ -74,6 +76,7 @@ Run the smallest deterministic check that proves the slice:
 
 - Markdown workflow change: `git diff --check` plus referenced-path check
 - Boot-packet change: `.agent/boot/coding-anchor/bin/kira-coding-anchor-doctor`
+- Auto-loop change: run `.agent/boot/coding-anchor/bin/kira-coding-anchor-autoloop "<scope>" --passes 2` and inspect the ignored report
 - Script change: `bash -n <script>` and the relevant runtime smoke test
 - JSON schema or data change: `python3 -m json.tool <file>` and schema-specific validation
 - UI change: browser or screenshot verification across the relevant viewport

@@ -53,6 +53,7 @@ Run the doctor directly with:
 - `bin/kira-coding-anchor-search` - preferred Kira retrieval wrapper.
 - `bin/kira-coding-anchor-spec` - preferred Kira design-spec wrapper.
 - `bin/kira-coding-anchor-task` - preferred Kira atomic-task wrapper.
+- `bin/kira-coding-anchor-autoloop` - preferred Kira bounded auto-loop wrapper.
 - `bin/kira-coding-anchor-readiness` - preferred Kira readiness wrapper.
 - `bin/kira-coding-anchor-checkpoint` - preferred Kira checkpoint wrapper.
 - `bin/kira-coding-anchor-status` - read-only branch, sync, and checkpoint snapshot.
@@ -81,7 +82,8 @@ Run the doctor directly with:
 - `bin/athena-coding-anchor-seo-audit` - ignored SEO triage generator.
 - `bin/athena-coding-anchor-spec` - design spec-template generator.
 - `bin/athena-coding-anchor-statistics` - ignored statistical analysis plan generator.
-- `bin/athena-coding-anchor-task` - atomic task-template generator.
+- `bin/athena-coding-anchor-task` - atomic task-template generator with optional prefilled fields.
+- `bin/athena-coding-anchor-autoloop` - ignored auto-loop conductor report and optional task generator.
 - `bin/athena-coding-anchor-tick` - heartbeat writer.
 - `bin/athena-coding-anchor-trust-review` - ignored social-contract trust review generator.
 - `bin/athena-coding-anchor-visual-report` - ignored visual QA report generator.
@@ -110,6 +112,7 @@ Run the doctor directly with:
 - `skills/visual-verify-ui/SKILL.md` - adopted visual QA skill.
 - `skills/zenith-execution/SKILL.md` - adopted sizing, stop-condition, and execution-constraint skill.
 - `protocols/credential-prompt-handling.md` - API/password prompt handling.
+- `protocols/auto-loop-conductor.md` - bounded multi-slice conductor protocol.
 - `protocols/formal-delivery-gate.md` - formal deliverable delivery gate.
 - `protocols/readiness-checkpoint-gate.md` - readiness and checkpoint review.
 - `protocols/` - before/after work protocols.

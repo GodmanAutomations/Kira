@@ -36,6 +36,7 @@ packet:
 - adversarial review gates
 - atomic execution slices
 - autonomous work loop
+- bounded auto-loop conductor for efficient multi-slice work
 - true boot entrypoint
 - no private-room identity restore
 
@@ -96,6 +97,9 @@ packet:
   floor, and pricing-pushback skill.
 - `SKILL-ROUTER.md` now classifies the 26 example skills and marks stale-path
   hazards.
+- `auto-loop-conductor.md` and `kira-coding-anchor-autoloop` now provide a
+  bounded loop report for repeated verified slices without turning Kira into a
+  blind autopilot.
 - The packet should be treated as posture and verification machinery, not as
   project business logic.
 
@@ -108,55 +112,57 @@ packet:
    work.
 4. Use `bin/kira-coding-anchor-task` when a plan needs a concrete XML task
    handhold.
-5. Use `bin/athena-coding-anchor-refactor-report` before editing messy or stale
+5. Use `bin/kira-coding-anchor-autoloop "<scope>" --passes N` when Stephen asks
+   Kira to keep moving through known work efficiently.
+6. Use `bin/athena-coding-anchor-refactor-report` before editing messy or stale
    surfaces.
-6. Use `bin/athena-coding-anchor-red-team` before shipping or merging
+7. Use `bin/athena-coding-anchor-red-team` before shipping or merging
    significant boot artifacts.
-7. Use `bin/athena-coding-anchor-checkpoint` after a verified durable slice,
+8. Use `bin/athena-coding-anchor-checkpoint` after a verified durable slice,
    and prompt in plain language rather than waiting for Stephen to say
    `commit`.
-8. Use `protocols/credential-prompt-handling.md` when auth blocks progress.
-9. Use `bin/athena-coding-anchor-visual-report` when UI or visual artifact work
+9. Use `protocols/credential-prompt-handling.md` when auth blocks progress.
+10. Use `bin/athena-coding-anchor-visual-report` when UI or visual artifact work
    needs proof beyond code/build success.
-10. Use `bin/athena-coding-anchor-compact` before a long session loses the next
+11. Use `bin/athena-coding-anchor-compact` before a long session loses the next
    handhold.
-11. Use `bin/athena-coding-anchor-research-brief` for source-backed external
+12. Use `bin/athena-coding-anchor-research-brief` for source-backed external
    research.
-12. Use `bin/athena-coding-anchor-decision` for meaningful decisions or
+13. Use `bin/athena-coding-anchor-decision` for meaningful decisions or
    post-mortem handholds.
-13. Use `bin/athena-coding-anchor-mcda` when a choice has multiple options and
+14. Use `bin/athena-coding-anchor-mcda` when a choice has multiple options and
    weighted criteria.
-14. Use `bin/athena-coding-anchor-brand` when naming, voice, positioning, or
+15. Use `bin/athena-coding-anchor-brand` when naming, voice, positioning, or
    visual identity work needs a grounded guide.
-15. Use `bin/athena-coding-anchor-distribution` when launch, acquisition, or
+16. Use `bin/athena-coding-anchor-distribution` when launch, acquisition, or
    channel strategy needs a PMOD and Four Fits check.
-16. Use `bin/athena-coding-anchor-seo-audit` when a public page, docs surface,
+17. Use `bin/athena-coding-anchor-seo-audit` when a public page, docs surface,
    article, or landing page needs SEO triage.
-17. Use `bin/athena-coding-anchor-trust-review` when a meeting, partnership,
+18. Use `bin/athena-coding-anchor-trust-review` when a meeting, partnership,
    collaboration, or loaded message needs a social-contract safety check.
-18. Use `bin/athena-coding-anchor-risk-gate` when repeated exposure, leverage,
+19. Use `bin/athena-coding-anchor-risk-gate` when repeated exposure, leverage,
    sequence risk, or absorbing barriers need a ruin-first review.
-19. Use `bin/athena-coding-anchor-execution-plan` after a risk gate passes and
+20. Use `bin/athena-coding-anchor-execution-plan` after a risk gate passes and
    sizing, invalidation, simulation, or pause rules are needed.
-20. Use `bin/athena-coding-anchor-statistics` when data, surveys,
+21. Use `bin/athena-coding-anchor-statistics` when data, surveys,
    experiments, metrics, or claims need statistical analysis planning.
-21. Use `bin/athena-coding-anchor-performance-review` when repeated actions
+22. Use `bin/athena-coding-anchor-performance-review` when repeated actions
    need post-action analytics and edge review.
-22. Use `bin/athena-coding-anchor-deliverable` when a formal report, essay,
+23. Use `bin/athena-coding-anchor-deliverable` when a formal report, essay,
    deck, proposal, assignment, capstone, or client document needs an intake to
    delivery plan.
-23. Use `bin/athena-coding-anchor-readiness` before checkpointing, publishing,
+24. Use `bin/athena-coding-anchor-readiness` before checkpointing, publishing,
    or handing off a long boot-packet run.
-24. Use `bin/athena-coding-anchor-circuit-breaker` when repeated failure or
+25. Use `bin/athena-coding-anchor-circuit-breaker` when repeated failure or
    fatigue makes continuing risky.
-25. Use `bin/athena-coding-anchor-negotiation` before releasing leverage in a
+26. Use `bin/athena-coding-anchor-negotiation` before releasing leverage in a
    deal, quote, partnership, or information exchange.
-26. Use `bin/athena-coding-anchor-quote` before sending or revising client
+27. Use `bin/athena-coding-anchor-quote` before sending or revising client
    pricing.
-27. Create a mission note with `bin/athena-coding-anchor-mission` when a project
+28. Create a mission note with `bin/athena-coding-anchor-mission` when a project
    effort needs a durable local handhold.
-28. Use the truth log for verified claims.
-29. Keep private CodeX room material out of Kira unless Stephen explicitly
+29. Use the truth log for verified claims.
+30. Keep private CodeX room material out of Kira unless Stephen explicitly
    asks for a scoped adaptation pass.
 
 ## Definition Of Good

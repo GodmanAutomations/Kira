@@ -25,6 +25,7 @@ Verified on 2026-06-14:
 | Find relevant Kira context before acting | `skills/semantic-search/SKILL.md` + `bin/kira-coding-anchor-search` | Matches Kira's retrieval-first architecture and works in this checkout. |
 | Spec before feature work | `skills/spec-driven-dev/SKILL.md` + `bin/kira-coding-anchor-spec` | Pins goal, scope, architecture, edge cases, and acceptance checks before building. |
 | Execute the next slice | `skills/atomic-execution/SKILL.md` + `bin/kira-coding-anchor-task` | Turns plans into one verification-gated task instead of a sprawling pass. |
+| Loop through known work efficiently | `protocols/auto-loop-conductor.md` + `bin/kira-coding-anchor-autoloop` | Runs status, doctor, inventory, priority queue, pass plan, verification, and stop gates without becoming blind autopilot. |
 | Diagnose before refactoring | `skills/diagnostic-refactor/SKILL.md` + `bin/athena-coding-anchor-refactor-report` | Creates a bill of materials before touching stale or messy surfaces. |
 | Review before shipping | `skills/red-team-review/SKILL.md` + `bin/athena-coding-anchor-red-team` | Finds shared blind spots before merge, release, or durable closeout. |
 | Plan checkpoints | `skills/micro-commit/SKILL.md` + `bin/athena-coding-anchor-checkpoint` | Splits verified work into intentional save points without requiring Stephen to say `commit`. |
@@ -78,6 +79,14 @@ When executing a plan:
 1. Use `skills/atomic-execution/SKILL.md`.
 2. Generate or mentally hold one task block.
 3. Run the stated verification before taking the next slice.
+
+When Stephen asks Kira to keep moving through multiple slices:
+
+1. Use `protocols/auto-loop-conductor.md`.
+2. Create an ignored loop report with `bin/kira-coding-anchor-autoloop "<scope>" --passes N`.
+3. Add `--task` when pass 1 needs an ignored XML task handhold.
+4. Execute only the next verified pass.
+5. Rerun the loop after each verified pass instead of stacking unverified work.
 
 When refactoring or cleaning up:
 
