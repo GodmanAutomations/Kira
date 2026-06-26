@@ -1,0 +1,131 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+REVIEW_DIR="$ROOT/reviews"
+mkdir -p "$REVIEW_DIR"
+
+ARTIFACT="artifact"
+FILES="TBD"
+CHECKS="TBD"
+DIFF_CMD="git status --short && git diff --stat && git diff --check"
+VERDICT="TBD"
+ARTIFACT_SET=0
+
+usage() {
+  cat <<'USAGE'
+Usage:
+  athena-coding-anchor-code-review "artifact" [--files FILES] [--checks CHECKS] [--diff-cmd CMD] [--verdict VERDICT]
+
+Creates an ignored prompt for a read-only code-review subagent.
+USAGE
+}
+
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --files)
+      shift
+      [ "$#" -gt 0 ] || { printf 'missing value for --files\n' >&2; exit 2; }
+      FILES="$1"
+      ;;
+    --checks)
+      shift
+      [ "$#" -gt 0 ] || { printf 'missing value for --checks\n' >&2; exit 2; }
+      CHECKS="$1"
+      ;;
+    --diff-cmd)
+      shift
+      [ "$#" -gt 0 ] || { printf 'missing value for --diff-cmd\n' >&2; exit 2; }
+      DIFF_CMD="$1"
+      ;;
+    --verdict)
+      shift
+      [ "$#" -gt 0 ] || { printf 'missing value for --verdict\n' >&2; exit 2; }
+      VERDICT="$1"
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    *)
+      if [ "$ARTIFACT_SET" -eq 0 ]; then
+        ARTIFACT="$1"
+        ARTIFACT_SET=1
+      else
+        printf 'unexpected argument: %s\n' "$1" >&2
+        exit 2
+      fi
+      ;;
+  esac
+  shift
+done
+
+SAFE_SLUG="$(printf '%s' "$ARTIFACT" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9._-' '-' | sed 's/^-//; s/-$//')"
+if [ -z "$SAFE_SLUG" ]; then
+  SAFE_SLUG="artifact"
+fi
+
+STAMP="$(date '+%Y%m%d-%H%M%S')"
+FILE="$REVIEW_DIR/$STAMP-$SAFE_SLUG-code-review.md"
+
+cat > "$FILE" <<MD
+# Code Review Subagent Prompt: $ARTIFACT
+
+Created: $(date '+%Y-%m-%dT%H:%M:%S%z')
+
+## Role
+
+You are a read-only code-review subagent for Kira Coding Anchor work.
+
+Do not edit files. Do not commit. Do not push. Do not run destructive commands.
+
+## Artifact
+
+$ARTIFACT
+
+## Files Or Scope
+
+$FILES
+
+## Verification Already Run
+
+$CHECKS
+
+## Suggested Review Commands
+
+\`\`\`bash
+$DIFF_CMD
+\`\`\`
+
+Also inspect every untracked path listed by \`git status --short\` and every
+path listed in the Files Or Scope section above. Plain \`git diff\` does not
+show the contents of untracked files.
+
+## Current Author Verdict
+
+$VERDICT
+
+## Review Priorities
+
+1. Bugs, regressions, broken references, and missing files.
+2. Missing or weak verification.
+3. Secret exposure, private path leakage, or unsafe auth handling.
+4. Stale Kira/Athena compatibility claims.
+5. Scope creep, unrelated edits, or generated artifacts that should stay ignored.
+6. Documentation that says a helper exists when it does not.
+
+## Output Required
+
+Return findings first, ordered by severity:
+
+| Severity | File/Line | Finding | Practical Fix |
+| :--- | :--- | :--- | :--- |
+
+Then include:
+
+- Verification gaps.
+- Residual risk.
+- Verdict: Ready, Ready with follow-up, Not ready, or Needs scoping.
+MD
+
+printf '%s\n' "$FILE"

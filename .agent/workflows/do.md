@@ -29,6 +29,7 @@ Pick one primary route before acting:
 | Unclear or multi-file feature work | Spec before code | `.agent/boot/coding-anchor/bin/kira-coding-anchor-spec "<scope>"` |
 | Refactor or cleanup | Diagnose before editing | `.agent/boot/coding-anchor/bin/athena-coding-anchor-refactor-report "<scope>"` |
 | Review or shipping check | Red-team before confidence | `.agent/boot/coding-anchor/bin/athena-coding-anchor-red-team "<scope>"` |
+| Review completed Codex slice | Read-only code-review subagent | `.agent/boot/coding-anchor/bin/kira-coding-anchor-code-review "<scope>" --files "<changed files>" --checks "<verification>"` |
 | Current external facts | Research with current sources | `.agent/boot/coding-anchor/bin/athena-coding-anchor-research-brief "<scope>"` when a durable brief helps |
 | UI or visual artifact | Visual verification gate | `.agent/boot/coding-anchor/bin/athena-coding-anchor-visual-report "<scope>"` when a report helps |
 | Auth or credential prompt | Credential prompt protocol | `.agent/boot/coding-anchor/protocols/credential-prompt-handling.md` |
@@ -81,6 +82,7 @@ Run the smallest deterministic check that proves the slice:
 - JSON schema or data change: `python3 -m json.tool <file>` and schema-specific validation
 - UI change: browser or screenshot verification across the relevant viewport
 - Research/current-fact answer: cite current sources and name uncertainty
+- Meaningful code, workflow, script, schema, or boot-packet change: run or explicitly skip the code-review subagent gate after deterministic checks
 
 If verification fails, fix inside the same slice or report the exact blocker.
 
@@ -88,11 +90,14 @@ If verification fails, fix inside the same slice or report the exact blocker.
 
 When the slice is verified and should be preserved:
 
-1. Run `.agent/boot/coding-anchor/bin/kira-coding-anchor-readiness "<scope>"` for larger or multi-slice work.
-2. Run `.agent/boot/coding-anchor/bin/kira-coding-anchor-checkpoint "<scope>"`.
-3. Confirm generated artifacts remain ignored unless deliberately promoted.
-4. Stage only the files in the current atomic unit.
-5. Commit and push only when the user asked, the workflow requires a durable checkpoint, or the ongoing slice pattern clearly implies save/publish hygiene.
+1. For meaningful code, workflow, script, schema, or boot-packet changes, create a review prompt with `.agent/boot/coding-anchor/bin/kira-coding-anchor-code-review "<scope>" --files "<changed files>" --checks "<verification>"`.
+2. Spawn a read-only code-review subagent with that prompt when the runtime supports subagents and the review is on the critical path.
+3. Fix Critical or High findings before saving, or mark the slice Not Ready.
+4. Run `.agent/boot/coding-anchor/bin/kira-coding-anchor-readiness "<scope>"` for larger or multi-slice work.
+5. Run `.agent/boot/coding-anchor/bin/kira-coding-anchor-checkpoint "<scope>"`.
+6. Confirm generated artifacts remain ignored unless deliberately promoted.
+7. Stage only the files in the current atomic unit.
+8. Commit and push only when the user asked, the workflow requires a durable checkpoint, or the ongoing slice pattern clearly implies save/publish hygiene.
 
 For long sessions or a likely resume point, generate a compact handoff:
 

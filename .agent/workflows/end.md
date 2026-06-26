@@ -52,6 +52,7 @@ Run the smallest deterministic checks for the touched surface:
 - For referenced paths, confirm the files or helpers exist
 - For scripts, run `bash -n`
 - For schemas, run `python3 -m json.tool`
+- For meaningful code, workflow, script, schema, or boot-packet changes, follow or explicitly skip the code-review subagent gate
 - For stale boot references, search for retired identity paths, missing docs, or private-only surfaces
 
 Do not claim the close is clean unless the verification result is explicit.
@@ -60,13 +61,16 @@ Do not claim the close is clean unless the verification result is explicit.
 
 Before saving, publishing, or handing off a durable slice:
 
-1. Run `.agent/boot/coding-anchor/bin/kira-coding-anchor-readiness "<scope>"`
-2. Run `.agent/boot/coding-anchor/bin/kira-coding-anchor-checkpoint "<scope>"`
-3. Confirm generated reports remain ignored unless deliberately promoted
-4. Stage only the current atomic unit
-5. Commit with a conventional-style message when the change belongs in git
-6. Rebase before pushing a branch that already has an upstream
-7. Push only the intended branch
+1. For meaningful code, workflow, script, schema, or boot-packet changes, create a review prompt with `.agent/boot/coding-anchor/bin/kira-coding-anchor-code-review "<scope>" --files "<changed files>" --checks "<verification>"`
+2. Spawn a read-only code-review subagent with that prompt when the runtime supports subagents and the review is on the critical path
+3. Fix Critical or High findings before saving, or mark the slice Not Ready
+4. Run `.agent/boot/coding-anchor/bin/kira-coding-anchor-readiness "<scope>"`
+5. Run `.agent/boot/coding-anchor/bin/kira-coding-anchor-checkpoint "<scope>"`
+6. Confirm generated reports remain ignored unless deliberately promoted
+7. Stage only the current atomic unit
+8. Commit with a conventional-style message when the change belongs in git
+9. Rebase before pushing a branch that already has an upstream
+10. Push only the intended branch
 
 Closeout does not require a generic numbered session log and does not force
 every session into a commit. Checkpoint when the slice is verified and durable.

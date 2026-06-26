@@ -28,6 +28,7 @@ Verified on 2026-06-14:
 | Loop through known work efficiently | `protocols/auto-loop-conductor.md` + `bin/kira-coding-anchor-autoloop` | Runs status, doctor, inventory, priority queue, pass plan, verification, and stop gates without becoming blind autopilot. |
 | Diagnose before refactoring | `skills/diagnostic-refactor/SKILL.md` + `bin/athena-coding-anchor-refactor-report` | Creates a bill of materials before touching stale or messy surfaces. |
 | Review before shipping | `skills/red-team-review/SKILL.md` + `bin/athena-coding-anchor-red-team` | Finds shared blind spots before merge, release, or durable closeout. |
+| Ask another agent to review Codex's finished slice | `skills/code-review-subagent/SKILL.md` + `bin/kira-coding-anchor-code-review` | Creates a bounded read-only subagent prompt before checkpointing meaningful changes. |
 | Plan checkpoints | `skills/micro-commit/SKILL.md` + `bin/athena-coding-anchor-checkpoint` | Splits verified work into intentional save points without requiring Stephen to say `commit`. |
 | Handle auth prompts | `protocols/credential-prompt-handling.md` | Uses approved local secret sources and computer/browser automation without exposing secrets. |
 | Verify UI visually | `skills/visual-verify-ui/SKILL.md` + `bin/athena-coding-anchor-visual-report` | Requires browser/screenshot evidence for frontend and visual artifact work. |
@@ -99,6 +100,13 @@ Before shipping or merging:
 1. Use `skills/red-team-review/SKILL.md`.
 2. Create a review with `bin/athena-coding-anchor-red-team`.
 3. Convert critical or high findings into atomic execution slices.
+
+Before checkpointing meaningful code, workflow, script, schema, or boot-packet changes:
+
+1. Use `skills/code-review-subagent/SKILL.md`.
+2. Create a prompt with `bin/kira-coding-anchor-code-review "<artifact>" --files "<changed files>" --checks "<verification>"`.
+3. Spawn a read-only review subagent when the runtime supports subagents.
+4. Fix Critical or High findings before saving, or mark the slice Not Ready.
 
 Before checkpointing:
 

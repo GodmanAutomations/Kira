@@ -21,6 +21,11 @@ Use `.agent/boot/coding-anchor/skills/red-team-review/SKILL.md` and
 `.agent/boot/coding-anchor/protocols/red-team-review-gate.md` as the review
 contract.
 
+For Codex-authored code, workflow, script, schema, or boot-packet changes, also
+use `.agent/boot/coding-anchor/skills/code-review-subagent/SKILL.md` and
+`.agent/boot/coding-anchor/protocols/code-review-subagent-gate.md` before a
+durable checkpoint when the runtime supports subagents.
+
 ## Phase 1: Choose Review Depth
 
 Pick the lightest review that can catch meaningful failure:
@@ -60,6 +65,14 @@ For substantial reviews, generate an ignored review handhold:
 
 Generated reviews stay ignored unless Stephen explicitly asks to promote one.
 
+For independent review, generate a subagent prompt:
+
+```bash
+.agent/boot/coding-anchor/bin/kira-coding-anchor-code-review "<artifact>" --files "<changed files>" --checks "<verification already run>"
+```
+
+Spawn a read-only review subagent with that prompt when available.
+
 ## Phase 3: Findings
 
 List findings first, ordered by severity:
@@ -84,6 +97,7 @@ Before declaring readiness:
 
 - Run the deterministic checks relevant to the artifact.
 - For workflow or boot-packet changes, run `git diff --check`, referenced-path checks, and `.agent/boot/coding-anchor/bin/kira-coding-anchor-doctor`.
+- For meaningful Codex-authored changes, run or explicitly skip the code-review subagent gate.
 - For scripts, run `bash -n` and a runtime smoke test.
 - For schemas or JSON data, run `python3 -m json.tool` and schema-specific validation.
 - For UI or visual artifacts, verify with browser or screenshot evidence.

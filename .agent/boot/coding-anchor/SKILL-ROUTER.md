@@ -27,6 +27,7 @@ Verified: 2026-06-14
 | `atomic-execution` | `skills/atomic-execution/SKILL.md` | Turn a plan into one small, verification-gated implementation slice. |
 | `diagnostic-refactor` | `skills/diagnostic-refactor/SKILL.md` | Produce a read-only bill of materials before changing messy or stale surfaces. |
 | `red-team-review` | `skills/red-team-review/SKILL.md` | Stress-test significant artifacts before shipping, merging, or calling them ready. |
+| `code-review-subagent` | `skills/code-review-subagent/SKILL.md` | Prepare or run a read-only review subagent before checkpointing meaningful Codex-authored changes. |
 | `spec-driven-dev` | `skills/spec-driven-dev/SKILL.md` | Create a compact design spec before unclear or multi-file feature work. |
 | `micro-commit` | `skills/micro-commit/SKILL.md` | Split verified work into intentional checkpoints when Stephen says save, lock it in, ship it, done, next, or checkpoint. |
 | `visual-verify-ui` | `skills/visual-verify-ui/SKILL.md` | Verify frontend, layout, and visual artifact work with browser or screenshot evidence. |
@@ -76,9 +77,10 @@ Verified: 2026-06-14
   this packet.
 - The current boot packet intentionally adopts only foundation skills:
   retrieval first, spec before feature work, diagnosis before refactor,
-  adversarial review before shipping, one verified execution slice, then
-  checkpoint hygiene that does not require Stephen to say `commit`, visual
-  proof for UI work, compact handoffs for long sessions, research discipline
+  adversarial review before shipping, independent review-subagent prompts
+  before checkpointing meaningful Codex-authored changes, one verified
+  execution slice, then checkpoint hygiene that does not require Stephen to
+  say `commit`, visual proof for UI work, compact handoffs for long sessions, research discipline
   for external facts, decision notes for meaningful choices, MCDA for weighted
   choices, circuit breakers for damaging loops, then power inversion for
   negotiation leverage, client pricing boundaries, brand foundations for

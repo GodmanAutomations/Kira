@@ -54,6 +54,7 @@ Run the doctor directly with:
 - `bin/kira-coding-anchor-spec` - preferred Kira design-spec wrapper.
 - `bin/kira-coding-anchor-task` - preferred Kira atomic-task wrapper.
 - `bin/kira-coding-anchor-autoloop` - preferred Kira bounded auto-loop wrapper.
+- `bin/kira-coding-anchor-code-review` - preferred Kira code-review subagent prompt wrapper.
 - `bin/kira-coding-anchor-readiness` - preferred Kira readiness wrapper.
 - `bin/kira-coding-anchor-checkpoint` - preferred Kira checkpoint wrapper.
 - `bin/kira-coding-anchor-status` - read-only branch, sync, and checkpoint snapshot.
@@ -77,6 +78,7 @@ Run the doctor directly with:
 - `bin/athena-coding-anchor-quote` - ignored quote prep generator.
 - `bin/athena-coding-anchor-research-brief` - ignored research brief generator.
 - `bin/athena-coding-anchor-red-team` - adversarial review-template generator.
+- `bin/athena-coding-anchor-code-review` - ignored code-review subagent prompt generator.
 - `bin/athena-coding-anchor-risk-gate` - ignored ruin and sequence-risk review generator.
 - `bin/athena-coding-anchor-search` - retrieval-first Kira context lookup.
 - `bin/athena-coding-anchor-seo-audit` - ignored SEO triage generator.
@@ -93,6 +95,7 @@ Run the doctor directly with:
 - `skills/atomic-execution/SKILL.md` - adopted one-slice execution skill.
 - `skills/brand-foundations/SKILL.md` - adopted brand, voice, positioning, and visual-direction skill.
 - `skills/circuit-breaker/SKILL.md` - adopted systemic pause skill.
+- `skills/code-review-subagent/SKILL.md` - adopted independent review-subagent handoff skill.
 - `skills/client-pricing/SKILL.md` - adopted quote and pricing-boundary skill.
 - `skills/consiglieri-protocol/SKILL.md` - adopted trust, safety, and social-contract review skill.
 - `skills/context-compactor/SKILL.md` - adopted continuation handoff skill.
@@ -113,6 +116,7 @@ Run the doctor directly with:
 - `skills/zenith-execution/SKILL.md` - adopted sizing, stop-condition, and execution-constraint skill.
 - `protocols/credential-prompt-handling.md` - API/password prompt handling.
 - `protocols/auto-loop-conductor.md` - bounded multi-slice conductor protocol.
+- `protocols/code-review-subagent-gate.md` - independent code-review subagent gate.
 - `protocols/formal-delivery-gate.md` - formal deliverable delivery gate.
 - `protocols/readiness-checkpoint-gate.md` - readiness and checkpoint review.
 - `protocols/` - before/after work protocols.
