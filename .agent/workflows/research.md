@@ -1,200 +1,109 @@
----created: 2025-12-12
-last_updated: 2026-01-30
+---
+description: Research current or external facts with source discipline, confidence, and Kira handoff hygiene
 ---
 
----description: Ultra-deep research mode — exhaustive multi-source rabbit-hole exploration
-created: 2025-12-12
-last_updated: 2025-12-17
----
+# /research - Kira Research Workflow
 
-# /research — Execution Script
+> **Latency Profile**: MEDIUM by default. Expand only when the decision risk requires it.
+> **Philosophy**: Research to answer the decision, not to exhaust the internet.
 
----
+## Phase 0: Scope The Question
 
-## 🔴 DEFCON 1: Triple Crown Mode (`/think /search /research`)
+// turbo
 
-> **"Triple Crown"** = This topic is **extremely important and personal**. Use **infinite compute + latency**. No shortcuts. No time limits. Go until every question is answered.
+- [ ] State the primary research question in one sentence
+- [ ] Identify the decision, action, or artifact the research supports
+- [ ] List three to five sub-questions only when they materially improve coverage
+- [ ] Identify what could make the answer stale: date, policy, pricing, API behavior, law, release status, market condition, or local context
+- [ ] Run `.agent/boot/coding-anchor/bin/kira-coding-anchor-status` when branch, sync, or dirty state matters
 
-When ALL THREE commands are invoked together:
+If the request is repo-local, search Kira first:
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│  DEFCON 1 = MAXIMUM EVERYTHING                                  │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│  /research  →  10+ searches, 5-10 sources read, 3+ levels deep │
-│       +                                                         │
-│  /search    →  Cross-reference EVERY claim, cite EVERYTHING    │
-│       +                                                         │
-│  /think     →  Full Phase 0-VII on EVERY major finding         │
-│       =                                                         │
-│  ───────────────────────────────────────────────────────────── │
-│  NUCLEAR RESEARCH MODE                                          │
-│                                                                 │
-│  • Exhaustive source gathering (10-20+ searches)               │
-│  • Deep-read 5-10 full articles                                │
-│  • Follow rabbit holes 3+ levels                               │
-│  • Full Tri-Brid analysis on synthesized findings              │
-│  • Adversarial stress-test (steelman + red-team)               │
-│  • Confrontation phase (Phase VII) on conclusions              │
-│  • Permanent deposit to Codex                                  │
-│  • Multi-iteration refinement if gaps found                    │
-│                                                                 │
-│  ⚠️ EXPECT: Extended response time, high token usage,          │
-│            but MAXIMUM information density                      │
-└─────────────────────────────────────────────────────────────────┘
+```bash
+.agent/boot/coding-anchor/bin/kira-coding-anchor-search "<topic>" --limit 5
 ```
 
-**Use Case**: Life-altering decisions, major financial moves, complex multi-stakeholder problems, when "I need to know EVERYTHING before I act."
+If the request depends on current external facts, use live/current sources.
 
----
+## Phase 1: Choose Research Depth
 
-## Behavior
+Pick the lightest depth that can support the answer:
 
-When `/research` is invoked, go **maximum depth**. This is NOT a quick lookup — this is exhaustive investigation.
+| Depth | Use When | Source Bar |
+| :--- | :--- | :--- |
+| Quick check | One narrow fact or repo-local lookup | One authoritative source or local file |
+| Standard brief | Recommendation, comparison, pricing, docs, policy, or API behavior | Three relevant sources when available |
+| Deep brief | High-cost decision, public claim, legal/financial/medical/regulatory risk, or conflicting sources | Primary sources first plus independent cross-checks |
+| Stop and ask | The decision criteria are unknown and would change the answer | One blocker question |
 
-### Depth Levels (All Mandatory)
+Do not force deep research when a primary source answers the question cleanly.
+Do not rely on a single secondary source for important claims.
 
-1. **Layer 1: Initial Survey** (5-10 searches)
-   - Run 5-10 related web searches covering different angles
-   - Include: definitions, recent news, academic sources, industry sources, contrarian views
-   - Save all source URLs for citation
+## Phase 2: Source Discipline
 
-2. **Layer 2: Source Deep-Dive** (Read top sources)
-   - Use `read_url_content` on the 5-10 most promising sources
-   - Extract key claims, data points, quotes
-   - Flag contradictions between sources
+Use `.agent/boot/coding-anchor/skills/deep-research-loop/SKILL.md` and
+`.agent/boot/coding-anchor/protocols/research-brief-gate.md` as the operating
+contract.
 
-3. **Layer 3: Follow the Rabbit Hole**
-   - Identify references/links within sources
-   - Follow 2-3 levels of secondary references
-   - Surface information the initial searches missed
+Research rules:
 
-4. **Layer 4: Cross-Domain Synthesis**
-   - Connect findings across different domains (legal, economic, psychological, technical)
-   - Identify isomorphic patterns (Protocol 23)
-   - Map stakeholder incentives
+1. Prefer primary sources: official docs, source-of-record pages, standards, repos, papers, statutes, or direct data.
+2. Use secondary sources for interpretation, not as sole evidence.
+3. Compare dates and event timing before treating a result as current.
+4. Mark unsupported or single-source claims as unverified.
+5. Track contradictions and explain which source is stronger.
+6. Record confidence and what would change the answer.
+7. Link sources in user-facing answers when web/current research was used.
 
-5. **Layer 5: Adversarial Stress-Test**
-   - Steelman the opposing view
-   - What would a critic say about these findings?
-   - What's missing? What's the blind spot?
+When a durable local handhold helps, generate an ignored research brief:
 
-6. **Layer 6: Actionable Distillation**
-   - Compress findings into decision-relevant format
-   - Clear recommendations with confidence levels
-   - Deposit key insights to Codex (User_Profile or new case study)
-
----
-
-## Output Format
-
-### Mandatory Sections
-
-```markdown
-## Research Target
-[What we're investigating]
-
-## Executive Summary
-[3-5 bullet points of key findings]
-
-## Source Inventory
-| # | Source | Type | Key Claim | Confidence |
-|---|--------|------|-----------|------------|
-| 1 | [URL]  | [Academic/News/Industry/Gov] | [Claim] | [H/M/L] |
-...
-
-## Deep Analysis
-[Full Tri-Brid format with all phases]
-
-## Contradictions & Gaps
-[Where sources disagree, what's unknown]
-
-## Rabbit Hole Findings
-[Secondary/tertiary sources discovered]
-
-## Actionable Recommendations
-[What to DO with this information]
-
-## Codex Deposit
-[What should be saved permanently]
+```bash
+.agent/boot/coding-anchor/bin/athena-coding-anchor-research-brief "<topic>"
 ```
 
----
+Generated briefs stay ignored unless Stephen explicitly asks to promote one.
 
-## Guardrails
+## Phase 3: Synthesize
 
-- **Minimum searches**: 5 (no less)
-- **Minimum sources read**: 3 full articles
-- **Maximum time**: No limit (go as deep as needed)
-- **Citation density**: Every factual claim cited
-- **Contradiction flagging**: Mandatory
+Use this output shape unless the user requested a stricter format:
 
----
+1. **Answer**: direct result or recommendation.
+2. **Evidence**: short source-backed findings.
+3. **Conflicts or gaps**: contradictions, stale edges, or missing data.
+4. **Confidence**: High, Medium, or Low with reason.
+5. **Next action**: what to do, verify, buy, build, send, or decide next.
 
-## ⚠️ Anti-Patterns (Lies of Omission Prevention)
+For substantial research, include a compact source inventory:
 
-> Insight from ChatGPT Pro power users: *"Each model has access to a subset of sources—any one will leave out information."*
+| Source | Type | Used For | Confidence |
+| :--- | :--- | :--- | :--- |
+| `<link or local path>` | Primary/Secondary/Local | Claim checked | High/Medium/Low |
 
-### Pre-Search Checklist
+## Phase 4: Act On The Result
 
-1. **Broad First, Narrow Later**
-   - ❌ "Find A21 LED bulbs with 15,000+ lumens" ← Too specific, misses variants
-   - ✅ "Survey high-lumen LED bulbs, then filter" ← Catches edge cases
+If research supports implementation:
 
-2. **Generate Prompt → Refine → Execute**
-   - Before running 5-10 searches, first draft the research plan
-   - Ask: "What angles might I miss?"
-   - Then execute the refined plan
+1. Convert the recommendation into a `/plan` or `/do` route.
+2. Use `.agent/boot/coding-anchor/bin/kira-coding-anchor-spec "<scope>"` when feature success criteria are unclear.
+3. Use `.agent/boot/coding-anchor/bin/kira-coding-anchor-task "<scope>"` for the first execution slice.
+4. Verify the execution separately from the research.
 
-3. **Date Range Awareness**
-   - ❌ "Only 2025 releases" ← Misses Dec 2024 that's still relevant
-   - ✅ "Most recent as of [date]" ← Captures boundary cases
+If research creates an open loop:
 
-4. **Multi-Source Triangulation**
-   - If high-stakes: run parallel queries on multiple search engines
-   - Compare what each surface vs. omits
-   - Synthesize across sources
+- Add it to the final action list.
+- Update `.agent/boot/coding-anchor/OPEN-LOOPS.md` only when it is durable Kira state, not ordinary task noise.
 
----
+## Phase 5: Verify And Close
 
-## Use Cases
+Before claiming research is complete:
 
-- Market research (competitors, industries)
-- Regulatory deep-dives (MAS, legal frameworks)
-- Academic literature surveys
-- Due diligence investigations
-- Complex multi-stakeholder problems
-- Anything where "surface answers" are insufficient
+- Confirm every important factual claim has a source, local file, or explicit uncertainty marker.
+- Confirm source dates are compatible with the current date.
+- Confirm generated research briefs remain ignored unless deliberately promoted.
+- For repo workflow edits, run `git diff --check`, referenced-path checks, and `.agent/boot/coding-anchor/bin/kira-coding-anchor-doctor`.
+
+**Confirm**: "Kira research complete. Question scoped, sources checked, confidence stated, next action clear."
 
 ---
 
-## Comparison
-
-| Mode | Searches | Sources Read | Depth | Phases | Time |
-|------|----------|--------------|-------|--------|------|
-| `/search` | 2-3 | 0-2 | Medium | Optional | Fast |
-| `/think` | 0-1 | 0 | High (reasoning) | All | Medium |
-| `/research` | 5-10+ | 3-10+ | Maximum | All + Rabbit Hole | Extended |
-
----
-
-## Example
-
-```
-User: /research What are the viable AI-powered trading education business models in SEA?
-
-AI: 
-[Runs 8 searches: competitors, regulations, pricing models, customer segments, 
-tech stack, failure cases, success cases, adjacent industries]
-→ Reads 6 full articles
-→ Follows 4 secondary references
-→ Synthesizes into Tri-Brid format
-→ Deposits key findings to Codex
-```
-
----
-
-## Tagging
-
-#workflow #automation #research
+# workflow #research #sources #kira
