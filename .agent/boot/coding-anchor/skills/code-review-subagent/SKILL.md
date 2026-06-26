@@ -23,10 +23,16 @@ publish, merge, or hand off.
 
 ## Command
 
-Create a review-subagent prompt from the repository root:
+Create a review-subagent prompt for pending work from the repository root:
 
 ```bash
 .agent/boot/coding-anchor/bin/kira-coding-anchor-code-review "artifact name" --files "changed files" --checks "verification already run"
+```
+
+Create a review-subagent prompt for a clean committed HEAD review:
+
+```bash
+.agent/boot/coding-anchor/bin/kira-coding-anchor-code-review "HEAD commit review" --files "$(git show --name-only --format='' HEAD | tr '\n' ' ')" --checks "verification already run" --diff-cmd "git show --name-status --format=short HEAD && git show --check --format=short HEAD && git show --stat --format=short HEAD && git show --patch --format=short HEAD"
 ```
 
 Generated prompts live under `reviews/` and are ignored by Git unless Stephen
@@ -41,7 +47,8 @@ When the Codex runtime exposes subagent tools:
 3. Give it the prompt.
 4. Wait for findings before checkpointing when the review is on the critical
    path.
-5. Fix Critical or High findings before saving, or mark the slice Not Ready.
+5. Fix Critical, High, or valid Medium findings before saving, or mark the
+   slice Not Ready.
 
 ## Rules
 

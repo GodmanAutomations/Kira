@@ -22,13 +22,16 @@ workflow, script, schema, or boot-packet change.
    .agent/boot/coding-anchor/bin/kira-coding-anchor-code-review "<artifact>" --files "<changed files>" --checks "<verification already run>"
    ```
 
+   For a clean committed HEAD review, use the committed-review command in
+   `.agent/boot/coding-anchor/skills/code-review-subagent/SKILL.md`.
+
 3. Spawn a read-only review subagent when the current Codex runtime supports
    subagents.
 4. Give the subagent the generated prompt.
 5. Continue only after reading the subagent findings, unless the review is
    intentionally asynchronous and the handoff records that fact.
-6. Fix Critical or High findings before checkpointing, or explicitly mark the
-   slice Not Ready.
+6. Fix Critical, High, or valid Medium findings before checkpointing, or
+   explicitly mark the slice Not Ready.
 7. Convert accepted fixes into atomic task slices.
 
 ## Subagent Contract

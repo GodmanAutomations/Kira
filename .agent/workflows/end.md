@@ -63,7 +63,7 @@ Before saving, publishing, or handing off a durable slice:
 
 1. For meaningful code, workflow, script, schema, or boot-packet changes, create a review prompt with `.agent/boot/coding-anchor/bin/kira-coding-anchor-code-review "<scope>" --files "<changed files>" --checks "<verification>"`
 2. Spawn a read-only code-review subagent with that prompt when the runtime supports subagents and the review is on the critical path
-3. Fix Critical or High findings before saving, or mark the slice Not Ready
+3. Fix Critical, High, or valid Medium findings before saving, or mark the slice Not Ready
 4. Run `.agent/boot/coding-anchor/bin/kira-coding-anchor-readiness "<scope>"`
 5. Run `.agent/boot/coding-anchor/bin/kira-coding-anchor-checkpoint "<scope>"`
 6. Confirm generated reports remain ignored unless deliberately promoted

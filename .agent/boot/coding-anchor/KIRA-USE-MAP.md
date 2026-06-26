@@ -106,7 +106,7 @@ Before checkpointing meaningful code, workflow, script, schema, or boot-packet c
 1. Use `skills/code-review-subagent/SKILL.md`.
 2. Create a prompt with `bin/kira-coding-anchor-code-review "<artifact>" --files "<changed files>" --checks "<verification>"`.
 3. Spawn a read-only review subagent when the runtime supports subagents.
-4. Fix Critical or High findings before saving, or mark the slice Not Ready.
+4. Fix Critical, High, or valid Medium findings before saving, or mark the slice Not Ready.
 
 Before checkpointing:
 

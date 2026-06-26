@@ -5,10 +5,22 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 REVIEW_DIR="$ROOT/reviews"
 mkdir -p "$REVIEW_DIR"
 
+shell_quote() {
+  printf "'%s'" "$(printf '%s' "$1" | sed "s/'/'\\\\''/g")"
+}
+
+REPO_ROOT="$(git -C "$ROOT" rev-parse --show-toplevel 2>/dev/null || pwd)"
+REPO_ARG="$(shell_quote "$REPO_ROOT")"
+BRANCH="$(git -C "$REPO_ROOT" branch --show-current 2>/dev/null || true)"
+if [ -z "$BRANCH" ]; then
+  BRANCH="detached-or-unknown"
+fi
+HEAD_SHA="$(git -C "$REPO_ROOT" rev-parse --short HEAD 2>/dev/null || printf 'unknown')"
+
 ARTIFACT="artifact"
 FILES="TBD"
 CHECKS="TBD"
-DIFF_CMD="git status --short && git diff --stat && git diff --check"
+DIFF_CMD="git -C $REPO_ARG status --short --untracked-files=all && git -C $REPO_ARG diff HEAD --stat && git -C $REPO_ARG diff HEAD --check && git -C $REPO_ARG diff --cached && git -C $REPO_ARG diff"
 VERDICT="TBD"
 ARTIFACT_SET=0
 
@@ -65,7 +77,7 @@ if [ -z "$SAFE_SLUG" ]; then
   SAFE_SLUG="artifact"
 fi
 
-STAMP="$(date '+%Y%m%d-%H%M%S')"
+STAMP="$(date '+%Y%m%d-%H%M%S')-$$"
 FILE="$REVIEW_DIR/$STAMP-$SAFE_SLUG-code-review.md"
 
 cat > "$FILE" <<MD
@@ -78,6 +90,12 @@ Created: $(date '+%Y-%m-%dT%H:%M:%S%z')
 You are a read-only code-review subagent for Kira Coding Anchor work.
 
 Do not edit files. Do not commit. Do not push. Do not run destructive commands.
+
+## Repository Context
+
+- Repo root: \`$REPO_ROOT\`
+- Branch: \`$BRANCH\`
+- HEAD: \`$HEAD_SHA\`
 
 ## Artifact
 
@@ -97,9 +115,10 @@ $CHECKS
 $DIFF_CMD
 \`\`\`
 
-Also inspect every untracked path listed by \`git status --short\` and every
-path listed in the Files Or Scope section above. Plain \`git diff\` does not
-show the contents of untracked files.
+Also inspect every untracked path listed by
+\`git status --short --untracked-files=all\` and every path listed in the Files
+Or Scope section above. Plain \`git diff\` does not show the contents of
+untracked files.
 
 ## Current Author Verdict
 
