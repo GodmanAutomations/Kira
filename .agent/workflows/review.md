@@ -1,92 +1,119 @@
 ---
-description: Weekly Integration Review — cross-domain health check and priority alignment
+description: Review a Kira artifact with adversarial lenses, severity findings, and verification before readiness
 ---
 
-# Weekly Integration Review (`/review`)
+# /review - Kira Artifact Review
 
-> **Purpose**: Generate a cross-domain life health check, surface constraint conflicts, and identify the week's highest-leverage action.
-> **Frequency**: Weekly, or on demand via `/review`.
+> **Latency Profile**: LOW for narrow artifacts, MEDIUM for release or multi-file reviews.
+> **Philosophy**: Find real failure modes before declaring readiness.
 
-## Steps
-
-### 1. Load Context
+## Phase 0: Scope The Artifact
 
 // turbo
-Load the following files for current state:
 
-- `.context/memory_bank/activeContext.md`
-- `.context/memory_bank/userContext.md`
+- [ ] Name the artifact, branch, file set, decision, or deliverable under review
+- [ ] State the artifact thesis: what must be true for this to be ready
+- [ ] State what would falsify that thesis
+- [ ] Run `.agent/boot/coding-anchor/bin/kira-coding-anchor-status` when branch, sync, or dirty state matters
+- [ ] Search Kira context with `.agent/boot/coding-anchor/bin/kira-coding-anchor-search "<topic>" --limit 5` when the relevant files, protocol, or prior pattern are not obvious
 
-### 2. Generate Domain Health Check
+Use `.agent/boot/coding-anchor/skills/red-team-review/SKILL.md` and
+`.agent/boot/coding-anchor/protocols/red-team-review-gate.md` as the review
+contract.
 
-Scan `activeContext.md` for recent activity across all 6 domains (Career, Finances, Health, Relationships, Growth, Environment). Rate each domain 1-10 based on:
+## Phase 1: Choose Review Depth
 
-- **Recent activity level** (active = good for Career/Growth; may be bad for Health if over-index)
-- **Trend** (↑ improving, → stable, ↓ declining)
-- **Attention needed** (flag if declining for ≥2 weeks)
+Pick the lightest review that can catch meaningful failure:
 
-Output as:
+| Depth | Use When | Output |
+| :--- | :--- | :--- |
+| Quick review | One small file, simple doc, or obvious change | Findings only, with verification gap if any |
+| Standard review | Multi-step artifact, workflow, helper, or durable doc | Severity findings plus practical fixes |
+| Release review | Public, user-facing, high-risk, or merge-ready artifact | Red-team report, verification evidence, and readiness verdict |
+| Stop and ask | Artifact scope or readiness criteria are unclear | One blocker question |
 
-```
-DOMAIN HEALTH CHECK
-| Domain       | Status | Trend  | Attention? |
-|--------------|--------|--------|------------|
-| Career       | X/10   | ↑/→/↓  | ✅/❌       |
-| Finances     | X/10   | ↑/→/↓  | ✅/❌       |
-| Health       | X/10   | ↑/→/↓  | ✅/❌       |
-| Relationships| X/10   | ↑/→/↓  | ✅/❌       |
-| Growth       | X/10   | ↑/→/↓  | ✅/❌       |
-| Environment  | X/10   | ↑/→/↓  | ✅/❌       |
-```
+Do not invent findings just to fill sections. If no material findings exist,
+say that and name residual risk.
 
-### 3. Detect Constraint Conflicts
+## Phase 2: Red-Team Lenses
 
-Cross-reference active tasks and commitments. Flag conflicts:
+Review through these lenses:
 
-```
-CONSTRAINT CONFLICTS DETECTED
-⚠️ [Conflict 1 description]
-⚠️ [Conflict 2 description]
-→ Proposed resolution: [specific tradeoff]
-```
+1. **Skeptic**: what would a competent critic say is wrong?
+2. **User**: who could be confused, harmed, slowed down, or misled?
+3. **Regulator**: what privacy, legal, policy, licensing, or safety exposure exists?
+4. **Cynic**: what hidden incentive, vanity, or convenience bias might be steering the artifact?
+5. **Future**: what breaks after drift, scale, handoff, or time?
 
-### 4. List Pending Decisions
+Run the bias checklist:
 
-Scan `activeContext.md` for open tasks and pending decisions. Classify each:
+- Sycophancy.
+- Cherry-picking.
+- False precision.
+- Complexity bias.
 
-```
-DECISIONS PENDING
-| Decision        | Door Type | Deadline | Recommended Action |
-|-----------------|-----------|----------|-------------------|
-| [Decision 1]    | One/Two   | [Date]   | [Action]          |
-| [Decision 2]    | One/Two   | [Date]   | [Action]          |
-```
-
-### 5. Identify Highest-Leverage Action
-
-Based on all the above, output:
-
-```
-THIS WEEK'S FOCUS
-Based on your priorities and current status, the highest-leverage 
-action this week is: [specific, single focus]
-```
-
-### 6. Quicksave
-
-// turbo
-Run quicksave to checkpoint the review:
+For substantial reviews, generate an ignored review handhold:
 
 ```bash
-python3 .agent/scripts/quicksave.py "Weekly Integration Review completed. [1-line summary of key finding]."
+.agent/boot/coding-anchor/bin/athena-coding-anchor-red-team "<artifact>"
 ```
 
-## Output Format
+Generated reviews stay ignored unless Stephen explicitly asks to promote one.
 
-Combine all sections into a single, clean artifact. Keep it to one page. If the user wants deeper analysis on any domain, they can ask.
+## Phase 3: Findings
 
-## Notes
+List findings first, ordered by severity:
 
-- This workflow references [Protocol 382: Cross-Domain Constraint Propagation](../../examples/protocols/decision/382-cross-domain-constraint-propagation.md).
-- The health ratings are based on available context, not self-reported data. If data is missing, flag it: "Health domain rated with low confidence — no recent data."
-- Avoid sycophancy. If everything is fine, say so briefly. If something is declining, say it directly.
+| Severity | Finding | Evidence | Practical Fix |
+| :--- | :--- | :--- | :--- |
+| Critical/High/Medium/Low | What fails or could fail | File, line, command, source, or observed behavior | Smallest fix that addresses it |
+
+Severity definitions:
+
+- **Critical**: immediate failure, data loss, security issue, or blocking release defect.
+- **High**: materially reduces value, trust, correctness, or operability.
+- **Medium**: important roughness, missed edge case, or likely confusion.
+- **Low**: polish or non-blocking improvement.
+
+Every Critical or High finding needs a practical fix. Convert accepted fixes
+into `/plan` or `/do` atomic slices.
+
+## Phase 4: Verification
+
+Before declaring readiness:
+
+- Run the deterministic checks relevant to the artifact.
+- For workflow or boot-packet changes, run `git diff --check`, referenced-path checks, and `.agent/boot/coding-anchor/bin/kira-coding-anchor-doctor`.
+- For scripts, run `bash -n` and a runtime smoke test.
+- For schemas or JSON data, run `python3 -m json.tool` and schema-specific validation.
+- For UI or visual artifacts, verify with browser or screenshot evidence.
+- For current factual claims, use `/research` or the research brief gate.
+
+If verification was skipped or blocked, the review verdict cannot be Ready.
+
+## Phase 5: Verdict
+
+Use one verdict:
+
+| Verdict | Meaning |
+| :--- | :--- |
+| Ready | No Critical or High findings, verification passed, residual risk named |
+| Ready with follow-up | Only Medium/Low findings remain and they have clear next actions |
+| Not ready | Critical or High findings remain, or verification is blocked |
+| Needs scoping | The artifact or readiness criteria are unclear |
+
+## Phase 6: Response Shape
+
+Return in this order:
+
+1. Findings first, ordered by severity.
+2. Open questions or assumptions.
+3. Verification performed.
+4. Verdict.
+5. Next atomic fix or handhold.
+
+**Confirm**: "Kira review complete. Findings ranked, verification named, readiness verdict clear."
+
+---
+
+# workflow #review #red-team #kira
