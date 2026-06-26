@@ -57,6 +57,10 @@ refactor work that needs a bill of materials.
 Use `bin/athena-coding-anchor-red-team "<artifact>"` before declaring a
 significant boot, docs, code, or release artifact ready.
 
+Use `bin/kira-coding-anchor-code-review "<artifact>" --files "<changed files>"
+--checks "<verification>"` before checkpointing meaningful Codex-authored code,
+workflow, script, schema, or boot-packet changes.
+
 Use `bin/kira-coding-anchor-checkpoint "<scope>"` after a verified durable
 slice so Stephen does not have to remember the word `commit`.
 
