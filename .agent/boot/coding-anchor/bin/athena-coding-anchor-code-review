@@ -9,6 +9,15 @@ shell_quote() {
   printf "'%s'" "$(printf '%s' "$1" | sed "s/'/'\\\\''/g")"
 }
 
+format_scope() {
+  if [ "$1" = "TBD" ]; then
+    printf '%s\n' "$1"
+    return
+  fi
+
+  printf '%s' "$1" | perl -0pe 's/\s+$//; s/\s(?=( [MADRCUT?!] ))/\n/g; s/\s(?=([MADRCUT?!][ MADRCUT?!] ))/\n/g'
+}
+
 REPO_ROOT="$(git -C "$ROOT" rev-parse --show-toplevel 2>/dev/null || pwd)"
 REPO_ARG="$(shell_quote "$REPO_ROOT")"
 BRANCH="$(git -C "$REPO_ROOT" branch --show-current 2>/dev/null || true)"
@@ -79,6 +88,7 @@ fi
 
 STAMP="$(date '+%Y%m%d-%H%M%S')-$$"
 FILE="$REVIEW_DIR/$STAMP-$SAFE_SLUG-code-review.md"
+FILES_DISPLAY="$(format_scope "$FILES")"
 
 cat > "$FILE" <<MD
 # Code Review Subagent Prompt: $ARTIFACT
@@ -103,7 +113,9 @@ $ARTIFACT
 
 ## Files Or Scope
 
-$FILES
+\`\`\`\`text
+$FILES_DISPLAY
+\`\`\`\`
 
 ## Verification Already Run
 
