@@ -50,7 +50,7 @@ search = [
     "google-generativeai>=0.7.0",
     "sentence-transformers>=2.2.0",
     "flashrank>=0.2.9",
-    "torch>=2.0.0",
+    "torch>=2.14.0",
 ]
 cloud = [
     "supabase>=2.0.0",
@@ -62,7 +62,7 @@ full = [
     "anthropic>=0.40.0",
     "flashrank>=0.2.9",
     "sentence-transformers>=2.2.0",
-    "torch>=2.0.0",
+    "torch>=2.14.0",
 ]
 dev = [
     "pytest",
